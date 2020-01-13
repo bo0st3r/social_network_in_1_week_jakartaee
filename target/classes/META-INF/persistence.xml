@@ -12,6 +12,10 @@
 		<class>be.helha.aemt.entity.Offer</class>
 		<class>be.helha.aemt.entity.InternshipOffer</class>
 		<class>be.helha.aemt.entity.JobOffer</class>
+		<class>be.helha.aemt.entity.Member</class>
+		<class>be.helha.aemt.entity.Admin</class>
+		<class>be.helha.aemt.entity.Former</class>
+		<class>be.helha.aemt.entity.Portrait</class>
 				
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 	
@@ -19,5 +23,4 @@
 			
 		</properties>
 	</persistence-unit>
-	
 </persistence>
