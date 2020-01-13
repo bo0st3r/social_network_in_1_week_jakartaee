@@ -10,6 +10,11 @@
 		<class>be.helha.aemt.entity.Portrait</class>
 		<class>be.helha.aemt.entity.Former</class>
 		<class>be.helha.aemt.entity.Member</class>
+		<class>be.helha.aemt.entity.Adresse</class>
+		<class>be.helha.aemt.entity.Evenement</class>
+		<class>be.helha.aemt.entity.Offre</class>
+		<class>be.helha.aemt.entity.OffreStage</class>
+		<class>be.helha.aemt.entity.OffreEmploi</class>
 				
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 	
