@@ -1,7 +1,5 @@
 package be.helha.aemt.entity;
 
-import java.awt.Image;
-import java.util.BitSet;
 import java.util.Date;
 
 import javax.persistence.Entity;

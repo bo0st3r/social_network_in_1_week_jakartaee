@@ -2,7 +2,7 @@ package be.helha.aemt.entity;
 
 import javax.persistence.Entity;
 
-import be.helha.aemt.enumeration.SectionEnum;
+import be.helha.aemt.enumeration.Major;
 
 @Entity
 public class OffreStage extends Offre {
@@ -14,7 +14,7 @@ public class OffreStage extends Offre {
 		super();
 	}
 
-	public OffreStage(String intituleOffre, String nomEntreprise, String descriptionOffre, SectionEnum section,
+	public OffreStage(String intituleOffre, String nomEntreprise, String descriptionOffre, Major section,
 			Adresse adresse, String periode, String duree, boolean possibiliteTFE) {
 		super(intituleOffre, nomEntreprise, descriptionOffre, section, adresse);
 		this.periode = periode;
@@ -23,7 +23,7 @@ public class OffreStage extends Offre {
 	}
 
 	public OffreStage(Integer idOffre, String intituleOffre, String nomEntreprise, String descriptionOffre,
-			SectionEnum section, Adresse adresse, String periode, String duree, boolean possibiliteTFE) {
+			Major section, Adresse adresse, String periode, String duree, boolean possibiliteTFE) {
 		super(idOffre, intituleOffre, nomEntreprise, descriptionOffre, section, adresse);
 		this.periode = periode;
 		this.duree = duree;

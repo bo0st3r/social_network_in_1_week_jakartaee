@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import be.helha.aemt.enumeration.SectionEnum;
+import be.helha.aemt.enumeration.Major;
 
 @Entity
 public class Offre {
@@ -16,14 +16,14 @@ public class Offre {
 	private String intituleOffre;
 	private String nomEntreprise;
 	private String descriptionOffre;
-	private SectionEnum section;
+	private Major section;
 	private Adresse adresse;
 	
 	public Offre() {
 		super();
 	}
 	
-	public Offre(String intituleOffre, String nomEntreprise, String descriptionOffre, SectionEnum section,
+	public Offre(String intituleOffre, String nomEntreprise, String descriptionOffre, Major section,
 			Adresse adresse) {
 		super();
 		this.intituleOffre = intituleOffre;
@@ -34,7 +34,7 @@ public class Offre {
 	}
 	
 	public Offre(Integer idOffre, String intituleOffre, String nomEntreprise, String descriptionOffre,
-			SectionEnum section, Adresse adresse) {
+			Major section, Adresse adresse) {
 		super();
 		this.idOffre = idOffre;
 		this.intituleOffre = intituleOffre;
@@ -68,10 +68,10 @@ public class Offre {
 	public void setDescriptionOffre(String descriptionOffre) {
 		this.descriptionOffre = descriptionOffre;
 	}
-	public SectionEnum getSection() {
+	public Major getSection() {
 		return section;
 	}
-	public void setSection(SectionEnum section) {
+	public void setSection(Major section) {
 		this.section = section;
 	}
 	public Adresse getAdresse() {

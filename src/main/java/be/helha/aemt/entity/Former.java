@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 
+import be.helha.aemt.enumeration.Major;
+
 
 @Entity
 public class Former extends Member implements Serializable {
