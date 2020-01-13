@@ -1,40 +1,50 @@
 package be.helha.aemt.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import be.helha.aemt.enumeration.GroupName;
 import be.helha.aemt.enumeration.Major;
 
-
 @Entity
-public class Former extends Member implements Serializable {
+public class FormerStudent extends Member implements Serializable {
 	private static final long serialVersionUID = 6986371452166977771L;
-	
 	private int graduationYear;
-	private Major major;
 	private String phoneNumber;
 	private boolean approved;
-	
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = true)
+
+	@Enumerated(EnumType.STRING)
+	private Major major;
+
+	@OneToOne(cascade = CascadeType.ALL, optional = true)
 	private Portrait portrait;
 
-	public Former() {
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Offre> offers;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Adresse address;
+
+	public FormerStudent() {
 		super();
 	}
-	
-	public Former(String firstName, String lastName, String username, String password, 
-			Date birthDate, int graduationYear, Major major, String phoneNumber, boolean approved) {
+
+	public FormerStudent(String firstName, String lastName, String username, String password, LocalDate birthDate,
+			int graduationYear, Major major, String phoneNumber, boolean approved) {
 		this(firstName, lastName, username, password, birthDate, graduationYear, major, phoneNumber, approved, null);
 	}
-	
-	public Former(String firstName, String lastName, String username, String password,
-			Date birthDate, int graduationYear, Major major, String phoneNumber, boolean approved, Portrait portrait) {
+
+	public FormerStudent(String firstName, String lastName, String username, String password, LocalDate birthDate,
+			int graduationYear, Major major, String phoneNumber, boolean approved, Portrait portrait) {
 		super(firstName, lastName, username, password, GroupName.FORMER, birthDate);
 		this.graduationYear = graduationYear;
 		this.major = major;
@@ -42,8 +52,6 @@ public class Former extends Member implements Serializable {
 		this.approved = approved;
 		this.portrait = portrait;
 	}
-
-
 
 	public int getGraduationYear() {
 		return graduationYear;
@@ -90,5 +98,5 @@ public class Former extends Member implements Serializable {
 		return "Former [graduationYear=" + graduationYear + ", major=" + major + ", phoneNumber=" + phoneNumber
 				+ ", approved=" + approved + ", portrait=" + portrait + "]";
 	}
-	
+
 }
