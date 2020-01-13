@@ -7,7 +7,9 @@
 	<persistence-unit name="groupeB4JTA" transaction-type="JTA">
 		<jta-data-source>jdbc/groupeB4</jta-data-source>
 		
-<!-- 		<class>be.helha.aemt.modele.Visiteur</class> -->
+		<class>be.helha.aemt.entity.Portrait</class>
+		<class>be.helha.aemt.entity.Former</class>
+		<class>be.helha.aemt.entity.Member</class>
 				
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 	
@@ -15,5 +17,4 @@
 			
 		</properties>
 	</persistence-unit>
-	
 </persistence>
