@@ -1,12 +1,14 @@
 package be.helha.aemt.entity;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 
+import be.helha.aemt.enumeration.GroupName;
 import be.helha.aemt.enumeration.Major;
 
 
@@ -23,21 +25,25 @@ public class Former extends Member implements Serializable {
 	private Portrait portrait;
 
 	public Former() {
-		
-	}
-	
-	public Former(int graduationYear, String phoneNumber, boolean approved, Portrait portrait) {
-		this(graduationYear, null, phoneNumber, approved, portrait);
-	}
-	
-	public Former(int graduationYear, Major major, String phoneNumber, boolean approved, Portrait portrait) {
 		super();
+	}
+	
+	public Former(String firstName, String lastName, String username, String password, 
+			Date birthDate, int graduationYear, Major major, String phoneNumber, boolean approved) {
+		this(firstName, lastName, username, password, birthDate, graduationYear, major, phoneNumber, approved, null);
+	}
+	
+	public Former(String firstName, String lastName, String username, String password,
+			Date birthDate, int graduationYear, Major major, String phoneNumber, boolean approved, Portrait portrait) {
+		super(firstName, lastName, username, password, GroupName.FORMER, birthDate);
 		this.graduationYear = graduationYear;
 		this.major = major;
 		this.phoneNumber = phoneNumber;
 		this.approved = approved;
 		this.portrait = portrait;
 	}
+
+
 
 	public int getGraduationYear() {
 		return graduationYear;
@@ -77,6 +83,12 @@ public class Former extends Member implements Serializable {
 
 	public void setPortrait(Portrait portrait) {
 		this.portrait = portrait;
+	}
+
+	@Override
+	public String toString() {
+		return "Former [graduationYear=" + graduationYear + ", major=" + major + ", phoneNumber=" + phoneNumber
+				+ ", approved=" + approved + ", portrait=" + portrait + "]";
 	}
 	
 }
