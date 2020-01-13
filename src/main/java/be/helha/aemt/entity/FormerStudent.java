@@ -29,10 +29,10 @@ public class FormerStudent extends Member implements Serializable {
 	private Portrait portrait;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	private List<Offre> offers;
+	private List<Offer> offers;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	private Adresse address;
+	private Address address;
 
 	public FormerStudent() {
 		super();
