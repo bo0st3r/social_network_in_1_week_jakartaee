@@ -13,10 +13,10 @@ public class Admin extends Member {
 	}
 
 	public Admin(String firstName, String lastName, String username, String password, LocalDate birthDate, byte[] photo) {
-		super(firstName, lastName, username, password, GroupName.ADMIN, birthDate, photo);
+		super(firstName, lastName, username, password, birthDate, GroupName.ADMIN, photo);
 	}
 
 	public Admin(String firstName, String lastName, String username, String password, LocalDate birthDate) {
-		super(firstName, lastName, username, password, GroupName.ADMIN, birthDate);
+		super(firstName, lastName, username, password, birthDate, GroupName.ADMIN);
 	}
 }
