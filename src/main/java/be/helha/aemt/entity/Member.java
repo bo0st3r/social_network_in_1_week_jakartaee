@@ -22,7 +22,7 @@ import be.helha.aemt.enumeration.GroupName;
 public abstract class Member {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idMembre;
+	private Integer idMember;
 	private String firstName;
 	private String lastName;
 	private String username;
@@ -100,12 +100,12 @@ public abstract class Member {
 		return true;
 	}
 
-	public Integer getIdMembre() {
-		return idMembre;
+	public Integer getIdMember() {
+		return idMember;
 	}
 
-	public void setIdMembre(Integer idMembre) {
-		this.idMembre = idMembre;
+	public void setIdMember(Integer idMembre) {
+		this.idMember = idMembre;
 	}
 
 	public String getFirstName() {
@@ -166,7 +166,7 @@ public abstract class Member {
 
 	@Override
 	public String toString() {
-		return "Member [idMembre=" + idMembre + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
+		return "Member [idMembre=" + idMember + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
 				+ username + ", password=" + password + ", birthDate=" + birthDate + ", groupName=" + groupName + "]";
 	}
 

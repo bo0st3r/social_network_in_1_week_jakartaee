@@ -1,5 +1,6 @@
 package be.helha.aemt.entity;
 
+import java.util.Arrays;
 import java.util.Date;
 
 import javax.persistence.Basic;
@@ -21,6 +22,7 @@ public class Event {
 	private String labelEvent;
 	private Date dateEvent;
 	private String descriptionEvent;
+	private boolean approved;
 	@Lob
 	@Basic(fetch = FetchType.LAZY)
 	private Byte[] imageEvent;
@@ -38,6 +40,7 @@ public class Event {
 		this.labelEvent = labelEvent;
 		this.dateEvent = dateEvent;
 		this.descriptionEvent = descriptionEvent;
+		this.approved = false;
 		this.imageEvent = imageEvent;
 		this.addressEvent = addressEvent;
 	}
@@ -49,6 +52,7 @@ public class Event {
 		this.labelEvent = intituleEvent;
 		this.dateEvent = dateEvent;
 		this.descriptionEvent = descriptionEvent;
+		this.approved = false;
 		this.imageEvent = imageEvent;
 		this.addressEvent = addressEvent;
 	}
@@ -83,6 +87,14 @@ public class Event {
 
 	public void setDescriptionEvent(String descriptionEvent) {
 		this.descriptionEvent = descriptionEvent;
+	}
+
+	public boolean isApproved() {
+		return approved;
+	}
+
+	public void setApproved(boolean approved) {
+		this.approved = approved;
 	}
 
 	public Byte[] getImageEvent() {
@@ -134,8 +146,13 @@ public class Event {
 
 	@Override
 	public String toString() {
-		return "Evenement [idEvenement=" + idEvent + ", intituleEvenement=" + labelEvent + ", dateEvenement="
-				+ dateEvent + "]";
+		return "Event [idEvent=" + idEvent + ", labelEvent=" + labelEvent + ", dateEvent=" + dateEvent
+				+ ", descriptionEvent=" + descriptionEvent + ", approved=" + approved + ", addressEvent=" + addressEvent
+				+ "]";
 	}
+
+	
+
+	
 
 }

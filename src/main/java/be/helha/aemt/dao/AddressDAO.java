@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import be.helha.aemt.entity.Address;
+import be.helha.aemt.helper.Config;
 
 @NamedQuery(name="Address.queryAll", query="SELECT a FROM Adress a") 
 @NamedQuery(name="Address.queryById", query="SELECT a FROM Adress a WHERE a.id = :id")
@@ -20,9 +21,8 @@ import be.helha.aemt.entity.Address;
 @Stateless
 @LocalBean
 public class AddressDAO {
-	@PersistenceContext(unitName = "groupeB4JTA")
+	@PersistenceContext(unitName = Config.UNIT_NAME)
 	private EntityManager em;
-	private EntityTransaction tx;
 	
 	public List<Address> queryAll(){
 		return em.createNamedQuery("Address.queryAll").getResultList();
@@ -65,17 +65,14 @@ public class AddressDAO {
 		if(results.size() > 0)
 		{
 			return results.get(0);
-		}else {
-			return -1;
 		}
+		return -1;
 	}
 	
 	public Address post(Address address) {
 		address.setId(queryIdFromEquals(address));
 		
-		tx.begin();
 		em.persist(address);
-		tx.commit();
 		
 		return address;
 	}

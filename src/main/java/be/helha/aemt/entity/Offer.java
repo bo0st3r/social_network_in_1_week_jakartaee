@@ -1,5 +1,7 @@
 package be.helha.aemt.entity;
 
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,34 +20,41 @@ public class Offer {
 	private String labelOffer;
 	private String companyName;
 	private String descriptionOffer;
+	private Date startingDate;
+	private Date postingDate;
+	private boolean approved;
 	private MajorEnum major;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	private Address adress;
+	private Address address;
 	
 	public Offer() {
 		super();
 	}
-	
-	public Offer(String labelOffer, String companyName, String descriptionOffer, MajorEnum major,
-			Address adress) {
+
+	public Offer(String labelOffer, String companyName, String descriptionOffer, Date startingDate, Date postingDate,
+			boolean approved, MajorEnum major) {
 		super();
 		this.labelOffer = labelOffer;
 		this.companyName = companyName;
 		this.descriptionOffer = descriptionOffer;
+		this.startingDate = startingDate;
+		this.postingDate = postingDate;
+		this.approved = approved;
 		this.major = major;
-		this.adress = adress;
 	}
 	
-	public Offer(Integer idOffer, String labelOffer, String companyName, String descriptionOffer,
-			MajorEnum major, Address adress) {
+	public Offer(String labelOffer, String companyName, String descriptionOffer, Date startingDate, Date postingDate,
+			boolean approved, MajorEnum major, Address address) {
 		super();
-		this.idOffer = idOffer;
 		this.labelOffer = labelOffer;
 		this.companyName = companyName;
 		this.descriptionOffer = descriptionOffer;
+		this.startingDate = startingDate;
+		this.postingDate = postingDate;
+		this.approved = approved;
 		this.major = major;
-		this.adress = adress;
+		this.address = address;
 	}
 
 	public Integer getIdOffer() {
@@ -80,6 +89,30 @@ public class Offer {
 		this.descriptionOffer = descriptionOffer;
 	}
 
+	public Date getPostingDate() {
+		return postingDate;
+	}
+
+	public void setPostingDate(Date postingDate) {
+		this.postingDate = postingDate;
+	}
+
+	public Date getStartingDate() {
+		return startingDate;
+	}
+
+	public void setStartingDate(Date startingDate) {
+		this.startingDate = startingDate;
+	}
+
+	public boolean isApproved() {
+		return approved;
+	}
+
+	public void setApproved(boolean approved) {
+		this.approved = approved;
+	}
+
 	public MajorEnum getMajor() {
 		return major;
 	}
@@ -88,23 +121,24 @@ public class Offer {
 		this.major = major;
 	}
 
-	public Address getAdress() {
-		return adress;
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setAdress(Address adress) {
-		this.adress = adress;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((labelOffer == null) ? 0 : labelOffer.hashCode());
 		result = prime * result + ((companyName == null) ? 0 : companyName.hashCode());
-		result = prime * result + ((major == null) ? 0 : major.hashCode());
+		result = prime * result + ((labelOffer == null) ? 0 : labelOffer.hashCode());
+		result = prime * result + ((postingDate == null) ? 0 : postingDate.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -114,26 +148,30 @@ public class Offer {
 		if (getClass() != obj.getClass())
 			return false;
 		Offer other = (Offer) obj;
-		if (labelOffer == null) {
-			if (other.labelOffer != null)
-				return false;
-		} else if (!labelOffer.equals(other.labelOffer))
-			return false;
 		if (companyName == null) {
 			if (other.companyName != null)
 				return false;
 		} else if (!companyName.equals(other.companyName))
 			return false;
-		if (major != other.major)
+		if (labelOffer == null) {
+			if (other.labelOffer != null)
+				return false;
+		} else if (!labelOffer.equals(other.labelOffer))
+			return false;
+		if (postingDate == null) {
+			if (other.postingDate != null)
+				return false;
+		} else if (!postingDate.equals(other.postingDate))
 			return false;
 		return true;
 	}
+	
 	@Override
 	public String toString() {
-		return "Offre [idOffre=" + idOffer + ", intituleOffre=" + labelOffer + ", nomEntreprise=" + companyName
-				+ ", descriptionOffre=" + descriptionOffer + ", section=" + major + "]";
+		return "Offer [idOffer=" + idOffer + ", labelOffer=" + labelOffer + ", companyName=" + companyName
+				+ ", descriptionOffer=" + descriptionOffer + ", startingDate=" + startingDate + ", postingDate="
+				+ postingDate + ", approved=" + approved + ", major=" + major + ", address=" + address + "]";
 	}
-	
 	
 	
 	

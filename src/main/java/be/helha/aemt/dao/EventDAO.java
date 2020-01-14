@@ -12,14 +12,15 @@ import javax.persistence.Query;
 
 import be.helha.aemt.entity.Address;
 import be.helha.aemt.entity.Event;
+import be.helha.aemt.helper.Config;
 
-@NamedQuery(name="Event.queryAll", query="SELECT e FROM Event e")
+@NamedQuery(name="Event.queryAll", query="SELECT e FROM Event e ORDER BY e.dateEvent ASC")
 @NamedQuery(name="Event.queryById", query="SELECT e FROM Event e WHERE e.idEvent = :id")
 @NamedQuery(name="Event.queryEquals", query="SELECT e FROM Event e WHERE e.labelEvent = :label AND e.dateEvent = :date")
 @NamedQuery(name="Event.queryIdFromEquals", query="SELECT e.idEvent FROM Event e WHERE e.labelEvent = :label AND e.dateEvent = :date")
 
 @NamedQuery(name="Event.update", query="UPDATE Event e "
-		+ "SET e.labelEvent = :label AND e.dateEvent = :date AND e.descriptionEvent = :description AND e.imageEvent = :image AND e.address = :address"
+		+ "SET e.labelEvent = :label AND e.dateEvent = :date AND e.descriptionEvent = :description AND e.imageEvent = :image AND e.address = :address AND e.approved = :approved " 
 		+ "WHERE e.idEvent = :id")
 
 @NamedQuery(name="Event.deleteById", query="DELETE FROM Event e WHERE e.idEvent = :id")
@@ -27,9 +28,8 @@ import be.helha.aemt.entity.Event;
 @Stateless
 @LocalBean
 public class EventDAO {
-	@PersistenceContext(unitName = "groupeB4JTA")
+	@PersistenceContext(unitName = Config.UNIT_NAME)
 	private EntityManager em;
-	private EntityTransaction tx;
 	private AddressDAO addressDao;
 	
 	public List<Event> queryAll(){
@@ -78,9 +78,7 @@ public class EventDAO {
 		event.setIdEvent(queryIdFromEquals(event));
 		event.getAddressEvent().setId(addressDao.queryIdFromEquals(event.getAddressEvent()));;
 		
-		tx.begin();
 		em.persist(event);
-		tx.commit();
 		
 		return event;
 	}
@@ -91,6 +89,7 @@ public class EventDAO {
 		query.setParameter("date", event.getDateEvent());
 		query.setParameter("description", event.getDescriptionEvent());
 		query.setParameter("image", event.getImageEvent());
+		query.setParameter("approved", event.isApproved());
 		query.setParameter("id", event.getIdEvent());
 	
 		addressDao.post(event.getAddressEvent());

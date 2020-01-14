@@ -5,11 +5,18 @@ import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NamedQuery;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import be.helha.aemt.entity.Member;
 import be.helha.aemt.helper.Config;
+
+@NamedQuery(name="Member.updateApproved", query="UPDATE Member m "
+		+ "SET m.approved = :approved " 
+		+ "WHERE m.idMember = :id")
+
+@NamedQuery(name="Member.queryByPortrait", query="SELECT m FROM Member m WHERE m.portrait.idPortrait = :id")
 
 @Stateless
 @LocalBean
@@ -39,5 +46,26 @@ public class MemberDAO {
 		List<Member> tmp = selectU.getResultList();
 
 		return tmp.size() == 0 ? null : tmp.get(0);
+	}
+	
+	public boolean approveFormer(int id) {
+		Query query = em.createNamedQuery("Member.updateApproved");
+		query.setParameter("approved", true);
+		query.setParameter("id", id);
+		
+		if(query.executeUpdate() > 0) {
+			return true;
+		}
+		return false;
+	}
+	
+	public Member queryByPortrait(int idPortrait) {
+		Query query = em.createNamedQuery("Member.queryByPortrait");
+		query.setParameter("id", idPortrait);
+		List<Member> results = query.getResultList();
+		if(results.size() > 0) {
+			return results.get(0);
+		}
+		return null;
 	}
 }

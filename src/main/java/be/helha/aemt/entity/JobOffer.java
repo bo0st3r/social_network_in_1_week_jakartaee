@@ -1,5 +1,7 @@
 package be.helha.aemt.entity;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 
 import be.helha.aemt.enumeration.MajorEnum;
@@ -12,17 +14,21 @@ public class JobOffer extends Offer {
 	public JobOffer() {
 		super();
 	}
+	
+	
 
-	public JobOffer(String labelOffer, String companyName, String descriptionOffer, MajorEnum major, Address adress,
-			String contractType, Double salary) {
-		super(labelOffer, companyName, descriptionOffer, major, adress);
+	public JobOffer(String labelOffer, String companyName, String descriptionOffer, Date startingDate, Date postingDate,
+			boolean approved, MajorEnum major, String contractType, Double salary) {
+		super(labelOffer, companyName, descriptionOffer, startingDate, postingDate, approved, major);
 		this.contractType = contractType;
 		this.salary = salary;
 	}
 
-	public JobOffer(Integer idOffer, String labelOffer, String companyName, String descriptionOffer, MajorEnum major,
-			Address adress, String contractType, Double salary) {
-		super(idOffer, labelOffer, companyName, descriptionOffer, major, adress);
+
+
+	public JobOffer(String labelOffer, String companyName, String descriptionOffer, Date startingDate, Date postingDate,
+			boolean approved, MajorEnum major, Address address, String contractType, Double salary) {
+		super(labelOffer, companyName, descriptionOffer, startingDate, postingDate, approved, major, address);
 		this.contractType = contractType;
 		this.salary = salary;
 	}
