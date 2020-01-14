@@ -25,7 +25,7 @@ public class MemberControl implements Serializable {
 		return gestion.add(member);
 	}
 	
-	public List<Member> getMembers() {
+	public List<Member> selectMembers() {
 		return gestion.selectAll();
 	}
 	

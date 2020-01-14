@@ -9,12 +9,21 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 import be.helha.aemt.enumeration.GroupName;
 import be.helha.aemt.enumeration.Major;
 
 @Entity
+@NamedQueries({
+//	@NamedQuery(name="FormerStudent.updateApproved", query="UPDATE FormerStudent f "
+//			+ "SET f.approved = :approved " 
+//			+ "WHERE f.idMember = :id"),	
+		@NamedQuery(name = "FormerStudent.queryByPortrait", query = "SELECT f FROM FormerStudent f WHERE f.portrait.idPortrait = :id"),
+		@NamedQuery(name = "FormerStudent.queryAll", query = "SELECT f FROM FormerStudent f")
+})
 public class FormerStudent extends Member {
 	private int graduationYear;
 	private String phoneNumber;
@@ -31,17 +40,18 @@ public class FormerStudent extends Member {
 
 	public FormerStudent() {
 	}
-	
+
 	public FormerStudent(String firstName, String lastName, String username, String password, LocalDate birthDate,
 			int graduationYear, Major major, String phoneNumber, boolean approved, Address address) {
-		super(firstName, lastName, username, password, birthDate, new ArrayList<Offer>(), new ArrayList<Event>(), GroupName.FORMER, new byte[0]);
+		super(firstName, lastName, username, password, birthDate, new ArrayList<Offer>(), new ArrayList<Event>(),
+				GroupName.FORMER, new byte[0]);
 		this.graduationYear = graduationYear;
 		this.phoneNumber = phoneNumber;
 		this.approved = approved;
 		this.major = major;
 		this.address = address;
 	}
-	
+
 	public FormerStudent(String firstName, String lastName, String username, String password, LocalDate birthDate,
 			List<Offer> offers, List<Event> events, GroupName groupName, byte[] photo, int graduationYear,
 			String phoneNumber, boolean approved, Major major, Portrait portrait, Address address) {
@@ -107,8 +117,8 @@ public class FormerStudent extends Member {
 	@Override
 	public String toString() {
 		return "FormerStudent [graduationYear=" + graduationYear + ", phoneNumber=" + phoneNumber + ", approved="
-				+ approved + ", major=" + major + ", portrait=" + portrait + ", address=" + address + ", getIdMembre()="
-				+ getIdMembre() + ", getFirstName()=" + getFirstName() + ", getLastName()=" + getLastName()
+				+ approved + ", major=" + major + ", portrait=" + portrait + ", address=" + address + ", getIdMember()="
+				+ getIdMember() + ", getFirstName()=" + getFirstName() + ", getLastName()=" + getLastName()
 				+ ", getUsername()=" + getUsername() + ", getPassword()=" + getPassword() + ", getGroupName()="
 				+ getGroupName() + ", getBirthDate()=" + getBirthDate() + "]";
 	}
