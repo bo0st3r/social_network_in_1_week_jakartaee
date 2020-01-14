@@ -33,7 +33,7 @@ public class PortraitDAO {
 		return em.createNamedQuery("Portrait.queryAll").getResultList();
 	}
 	
-	public Portrait QueryById(int id) {
+	public Portrait queryById(int id) {
 		Query query = em.createNamedQuery("Portrait.queryById");
 		query.setParameter("id", id);
 		

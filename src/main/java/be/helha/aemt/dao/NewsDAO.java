@@ -40,7 +40,7 @@ public class NewsDAO {
 		return query.getResultList();
 	}
 	
-	public News QueryById(int id) {
+	public News queryById(int id) {
 		Query query = em.createNamedQuery("News.queryById");
 		query.setParameter("id", id);
 		

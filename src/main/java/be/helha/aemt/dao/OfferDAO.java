@@ -89,7 +89,7 @@ public class OfferDAO {
 		return offer;
 	}
 	
-	public boolean updateOffer(Offer offer) {
+	public boolean update(Offer offer) {
 		Query query = em.createNamedQuery("Offer.updateOffer");
 		if(offer instanceof JobOffer) {
 			JobOffer job = (JobOffer)offer;
