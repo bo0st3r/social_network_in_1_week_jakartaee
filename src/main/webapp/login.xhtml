@@ -30,16 +30,18 @@
 <div class="container-fluid col-lg-12 ">
     <div class="container-fluid col-lg-3">   </div>
     <div class="container-fluid border col-lg-6 col-sm-12 text-center mt-5 font-weight-bold">
-        <h:form>
+        <form method="POST" action="j_security_check">
             <!--PSEUDO-->
-            <label for="user" class="col-lg-12 p-2">Nom d'utilisateur</label>
-            <input type="text" name="user" id="user" class="col-lg-8 "/>
+            <label for="j_username" class="col-lg-12 p-2">Nom d'utilisateur</label>
+            <input type="text" id="user" class="col-lg-8" name="j_username"/>
             <!--PASSWORD-->
-            <label for="Password" class="col-lg-12 p-2">Mot de passe</label>
-            <input type="password" name="Password" id="Password" class="col-lg-8"/>
+            <label for="j_password" class="col-lg-12 p-2">Mot de passe</label>
+            <input type="password" id="Password" class="col-lg-8" name="j_password"/>
             <!--CONNECTION BUTTON-->
-            <button class="col-lg-5 mt-4 mb-4 btn text-light" style="background-color: #009790"><b>Se connecter</b></button>
-        </h:form>
+            
+<!--             <button type="submit" class="col-lg-5 mt-4 mb-4 btn text-light" style="background-color: #009790"><b>Se connecter</b></button> -->
+            <input type="submit" class="col-lg-5 mt-4 mb-4 btn text-light" style="background-color: #009790" value="Se connecter"/>
+        </form>
     </div>
     <div class="col-lg-6 col-sm-12 text-center offset-3 font-italic mt-5">
         <p>Retrouvez nous sur les réseaux sociaux </p>
@@ -48,7 +50,7 @@
         <a href="https://www.linkedin.com/school/helha/?originalSubdomain=fr"><img src="assets/logoLinkedin.jpg" alt="Responsive image" class="img-fluid m-2 col-lg-2 col-sm-1" /></a>
 
     </div>
-    <div class="container-fluid col-lg-3">   </div>
+    <div class="container-fluid col-lg-3"></div>
 
 
 </div>

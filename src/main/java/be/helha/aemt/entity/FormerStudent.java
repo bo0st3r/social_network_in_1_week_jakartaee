@@ -104,12 +104,12 @@ public class FormerStudent extends Member {
 		this.address = address;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "FormerStudent [graduationYear=" + graduationYear + ", phoneNumber=" + phoneNumber + ", approved="
-//				+ approved + ", major=" + major + ", portrait=" + portrait + ", address=" + address + ", getIdMembre()="
-//				+ getIdMembre() + ", getFirstName()=" + getFirstName() + ", getLastName()=" + getLastName()
-//				+ ", getUsername()=" + getUsername() + ", getPassword()=" + getPassword() + ", getGroupName()="
-//				+ getGroupName() + ", getBirthDate()=" + getBirthDate() + "]";
-//	}
+	@Override
+	public String toString() {
+		return "FormerStudent [graduationYear=" + graduationYear + ", phoneNumber=" + phoneNumber + ", approved="
+				+ approved + ", major=" + major + ", portrait=" + portrait + ", address=" + address + ", getIdMembre()="
+				+ getIdMembre() + ", getFirstName()=" + getFirstName() + ", getLastName()=" + getLastName()
+				+ ", getUsername()=" + getUsername() + ", getPassword()=" + getPassword() + ", getGroupName()="
+				+ getGroupName() + ", getBirthDate()=" + getBirthDate() + "]";
+	}
 }

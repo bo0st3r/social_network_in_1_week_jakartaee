@@ -7,8 +7,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
-
-import be.helha.aemt.ejb.IMemberManagerEJB;
+import be.helha.aemt.ejb.MemberManagerEJB;
 import be.helha.aemt.entity.FormerStudent;
 import be.helha.aemt.entity.Member;
 
@@ -18,7 +17,7 @@ public class MemberControl implements Serializable {
 	private static final long serialVersionUID = -37955545070490897L;
 
 	@EJB
-	private IMemberManagerEJB gestion;
+	private MemberManagerEJB gestion;
 	
 	private Member member = new FormerStudent();
 	

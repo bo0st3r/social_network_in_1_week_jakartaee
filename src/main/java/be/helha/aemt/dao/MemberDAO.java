@@ -20,10 +20,6 @@ public class MemberDAO {
 	public List<Member> selectAll() {
 		String sqlString = "SELECT m FROM Member m";
 		Query selectAll = em.createQuery(sqlString);
-//		System.out.println("DAO IN");
-//		List<Member> m = selectAll.getResultList();
-//		System.out.println(m);
-//		System.out.println("DAO OUT");
 		return selectAll.getResultList();
 	}
 
