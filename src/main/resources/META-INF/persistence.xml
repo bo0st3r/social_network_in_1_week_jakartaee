@@ -23,7 +23,7 @@
 			
 		</properties>
 	</persistence-unit>
-	
+
 <!-- 	<persistence-unit name="groupeB4JTA" transaction-type="RESOURCE_LOCAL"> -->
 		  
 <!-- 		<class>be.helha.aemt.entity.FormerStudent</class> -->

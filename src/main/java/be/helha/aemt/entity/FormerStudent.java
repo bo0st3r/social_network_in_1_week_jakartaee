@@ -28,9 +28,6 @@ public class FormerStudent extends Member implements Serializable {
 	@OneToOne(cascade = CascadeType.ALL, optional = true)
 	private Portrait portrait;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Offer> offers;
-
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Address address;
 
@@ -45,7 +42,7 @@ public class FormerStudent extends Member implements Serializable {
 
 	public FormerStudent(String firstName, String lastName, String username, String password, LocalDate birthDate,
 			int graduationYear, Major major, String phoneNumber, boolean approved, Portrait portrait) {
-		super(firstName, lastName, username, password, GroupName.FORMER, birthDate);
+		super(firstName, lastName, username, password, birthDate, GroupName.FORMER);
 		this.graduationYear = graduationYear;
 		this.major = major;
 		this.phoneNumber = phoneNumber;

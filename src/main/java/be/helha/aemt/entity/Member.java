@@ -1,8 +1,11 @@
 package be.helha.aemt.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -11,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 
 import be.helha.aemt.enumeration.GroupName;
 
@@ -24,6 +28,12 @@ public abstract class Member {
 	private String username;
 	private String password;
 	private LocalDate birthDate;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Offer> offers;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Event> events;
 
 	@Enumerated(EnumType.STRING)
 	private GroupName groupName;
@@ -36,20 +46,32 @@ public abstract class Member {
 
 	}
 
-	public Member(String firstName, String lastName, String username, String password, GroupName groupName,
-			LocalDate birthDate) {
-		this(firstName, lastName, username, password, groupName, birthDate, new byte[0]);
+	public Member(String firstName, String lastName, String username, String password, LocalDate birthDate,
+			GroupName groupName) {
+		this(firstName, lastName, username, password, birthDate, new ArrayList<Offer>(), new ArrayList<Event>(), groupName, new byte[0]);
+	}
+	
+	public Member(String firstName, String lastName, String username, String password, LocalDate birthDate,
+			GroupName groupName, byte[] photo) {
+		this(firstName, lastName, username, password, birthDate, new ArrayList<Offer>(), new ArrayList<Event>(), groupName, photo);
 	}
 
-	public Member(String firstName, String lastName, String username, String password, GroupName groupName,
-			LocalDate birthDate, byte[] photo) {
+	public Member(String firstName, String lastName, String username, String password, LocalDate birthDate,
+			List<Offer> offers, List<Event> events, GroupName groupName) {
+		this(firstName, lastName, username, password, birthDate, offers, events, groupName, new byte[0]);
+	}
+
+	public Member(String firstName, String lastName, String username, String password, LocalDate birthDate,
+			List<Offer> offers, List<Event> events, GroupName groupName, byte[] photo) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.username = username;
 		this.password = password;
-		this.groupName = groupName;
 		this.birthDate = birthDate;
+		this.offers = offers;
+		this.events = events;
+		this.groupName = groupName;
 		this.photo = photo;
 	}
 
@@ -144,8 +166,9 @@ public abstract class Member {
 
 	@Override
 	public String toString() {
-		return "Membre [idMembre=" + idMembre + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
-				+ username + ", password=" + password + ", groupName=" + groupName + ", birthDate=" + birthDate + "]";
+		return "Member [idMembre=" + idMembre + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
+				+ username + ", password=" + password + ", birthDate=" + birthDate + ", groupName=" + groupName + "]";
 	}
 
+	
 }
