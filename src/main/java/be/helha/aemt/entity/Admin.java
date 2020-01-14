@@ -1,6 +1,6 @@
 package be.helha.aemt.entity;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 
@@ -12,11 +12,11 @@ public class Admin extends Member {
 		super();
 	}
 
-	public Admin(String firstName, String lastName, String username, String password, Date birthDate, byte[] photo) {
+	public Admin(String firstName, String lastName, String username, String password, LocalDate birthDate, byte[] photo) {
 		super(firstName, lastName, username, password, GroupName.ADMIN, birthDate, photo);
 	}
 
-	public Admin(String firstName, String lastName, String username, String password, Date birthDate) {
+	public Admin(String firstName, String lastName, String username, String password, LocalDate birthDate) {
 		super(firstName, lastName, username, password, GroupName.ADMIN, birthDate);
 	}
 }

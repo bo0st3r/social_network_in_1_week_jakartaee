@@ -1,9 +1,11 @@
 package be.helha.aemt.entity;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,7 +15,7 @@ import javax.persistence.Lob;
 import be.helha.aemt.enumeration.GroupName;
 
 @Entity
-public class Member {
+public abstract class Member {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idMembre;
@@ -21,24 +23,26 @@ public class Member {
 	private String lastName;
 	private String username;
 	private String password;
+	private LocalDate birthDate;
+
+	@Enumerated(EnumType.STRING)
 	private GroupName groupName;
-	private Date birthDate;
-	
+
 	@Lob
 	@Basic(fetch = FetchType.LAZY)
 	private byte[] photo;
 
 	public Member() {
-		
+
 	}
-	
+
 	public Member(String firstName, String lastName, String username, String password, GroupName groupName,
-			Date birthDate) {
+			LocalDate birthDate) {
 		this(firstName, lastName, username, password, groupName, birthDate, new byte[0]);
 	}
-	
+
 	public Member(String firstName, String lastName, String username, String password, GroupName groupName,
-			Date birthDate, byte[] photo) {
+			LocalDate birthDate, byte[] photo) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -48,8 +52,6 @@ public class Member {
 		this.birthDate = birthDate;
 		this.photo = photo;
 	}
-	
-	
 
 	@Override
 	public int hashCode() {
@@ -124,11 +126,11 @@ public class Member {
 		this.groupName = groupName;
 	}
 
-	public Date getBirthDate() {
+	public LocalDate getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(Date birthDate) {
+	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
 	}
 
@@ -145,6 +147,5 @@ public class Member {
 		return "Membre [idMembre=" + idMembre + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
 				+ username + ", password=" + password + ", groupName=" + groupName + ", birthDate=" + birthDate + "]";
 	}
-	
-	
+
 }
