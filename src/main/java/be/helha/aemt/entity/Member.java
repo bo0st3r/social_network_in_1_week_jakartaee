@@ -29,7 +29,7 @@ public class Member implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idMembre;
+	private Integer idMember;
 	private String firstName;
 	private String lastName;
 	private String username;
@@ -123,12 +123,12 @@ public class Member implements Serializable{
 		return true;
 	}
 
-	public Integer getIdMembre() {
-		return idMembre;
+	public Integer getIdMember() {
+		return idMember;
 	}
 
-	public void setIdMembre(Integer idMembre) {
-		this.idMembre = idMembre;
+	public void setIdMember(Integer idMembre) {
+		this.idMember = idMembre;
 	}
 
 	public String getFirstName() {
@@ -189,7 +189,7 @@ public class Member implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Member [idMembre=" + idMembre + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
+		return "Member [idMembre=" + idMember + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
 				+ username + ", password=" + password + ", birthDate=" + birthDate + ", groupName=" + groupName + "]";
 	}
 

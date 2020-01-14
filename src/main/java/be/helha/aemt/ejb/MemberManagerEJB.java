@@ -25,5 +25,13 @@ public class MemberManagerEJB {
 	public Member findByUsername(String username) {
 		return dao.findByUsername(username);
 	}
+	
+	public boolean approveFormer(int id) {
+		return dao.approveFormer(id);
+	}
+	
+	public Member queryByPortrait(int idPortrait) {
+		return dao .queryByPortrait(idPortrait);
+	}
 
 }

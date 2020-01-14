@@ -17,8 +17,8 @@ public class Portrait implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idPortrait;
-	private String intitule;
-	private String contenu;
+	private String label;
+	private String content;
 	
 	@Lob
 	@Basic(fetch = FetchType.LAZY)
@@ -34,8 +34,8 @@ public class Portrait implements Serializable {
 	
 	public Portrait(String intitule, String contenu, byte[] picture) {
 		super();
-		this.intitule = intitule;
-		this.contenu = contenu;
+		this.label = intitule;
+		this.content = contenu;
 		this.picture = picture;
 	}
 	
@@ -50,20 +50,20 @@ public class Portrait implements Serializable {
 		this.idPortrait = idPortrait;
 	}
 
-	public String getIntitule() {
-		return intitule;
+	public String getLabel() {
+		return label;
 	}
 
-	public void setIntitule(String intitule) {
-		this.intitule = intitule;
+	public void setLabel(String intitule) {
+		this.label = intitule;
 	}
 
-	public String getContenu() {
-		return contenu;
+	public String getContent() {
+		return content;
 	}
 
-	public void setContenu(String contenu) {
-		this.contenu = contenu;
+	public void setContent(String contenu) {
+		this.content = contenu;
 	}
 
 	public byte[] getPicture() {
@@ -78,8 +78,7 @@ public class Portrait implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((contenu == null) ? 0 : contenu.hashCode());
-		result = prime * result + ((intitule == null) ? 0 : intitule.hashCode());
+		result = prime * result + ((label == null) ? 0 : label.hashCode());
 		return result;
 	}
 
@@ -92,22 +91,17 @@ public class Portrait implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Portrait other = (Portrait) obj;
-		if (contenu == null) {
-			if (other.contenu != null)
+		if (label == null) {
+			if (other.label != null)
 				return false;
-		} else if (!contenu.equals(other.contenu))
-			return false;
-		if (intitule == null) {
-			if (other.intitule != null)
-				return false;
-		} else if (!intitule.equals(other.intitule))
+		} else if (!label.equals(other.label))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Portrait [id=" + idPortrait + ", intitule=" + intitule + ", contenu=" + contenu + "]";
+		return "Portrait [id=" + idPortrait + ", intitule=" + label + ", contenu=" + content + "]";
 	}
 
 }
