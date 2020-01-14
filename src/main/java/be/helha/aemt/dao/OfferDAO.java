@@ -20,19 +20,19 @@ import be.helha.aemt.helper.Config;
 @NamedQuery(name="Offer.queryIdFromEquals", query="SELECT o.idOffer FROM Offer o WHERE o.labelOffer = :label AND o.companyName = :company AND o.postingDate = :date")
 
 @NamedQuery(name="Offer.updateOffer", query="UPDATE Offer o "
-		+ "SET o.labelOffer = :label AND o.companyName = :company AND o.descriptionOffer = :description "
-		+ "AND o.postingDate = :date AND o.major = :major AND o.approved = :approved AND o.address = :address "
+		+ "SET o.labelOffer = :label AND o.companyName = :company AND o.descriptionOffer = :description AND o.startingDate = :sDate "
+		+ "AND o.postingDate = :pDate AND o.major = :major AND o.approved = :approved AND o.address = :address "
 		+ "WHERE o.idOffer = :id")
 
 @NamedQuery(name="Offer.updateJobOffer", query="UPDATE Offer o "
-		+ "SET o.labelOffer = :label AND o.companyName = :company AND o.descriptionOffer = :description "
-		+ "AND o.postingDate = :date AND o.contractType = :contract AND o.salary = :salary "
+		+ "SET o.labelOffer = :label AND o.companyName = :company AND o.descriptionOffer = :description AND o.startingDate = :sDate "
+		+ "AND o.postingDate = :pDate AND o.contractType = :contract AND o.salary = :salary "
 		+ "AND o.major = :major AND o.approved = :approved  AND o.address = :address "
 		+ "WHERE o.idOffer = :id")
 @NamedQuery(name="Offer.updateIntershipOffer", query="UPDATE Offer o "
-		+ "SET o.labelOffer = :label AND o.companyName = :company AND o.descriptionOffer = :description "
-		+ "AND o.postingDate = :date AND o.major = :major AND o.approved = :approved  AND o.address = :address "
-		+ "AND o.period = :period AND o.duration = :duration AND o.thesisPossibility = :thesis "
+		+ "SET o.labelOffer = :label AND o.companyName = :company AND o.descriptionOffer = :description AND o.startingDate = :sDate "
+		+ "AND o.postingDate = :pDate AND o.major = :major AND o.approved = :approved  AND o.address = :address "
+		+ "AND o.duration = :duration AND o.thesisPossibility = :thesis "
 		+ "WHERE o.idOffer = :id")
 
 
@@ -99,7 +99,6 @@ public class OfferDAO {
 		}else if(offer instanceof InternshipOffer) {
 			InternshipOffer intern = (InternshipOffer)offer;
 			query = em.createNamedQuery("Offer.updateInternshipOffer");
-			query.setParameter("period", intern.getPeriod());
 			query.setParameter("duration", intern.getDuration());
 			query.setParameter("thesis", intern.isThesisPossibility());
 		}
@@ -107,7 +106,8 @@ public class OfferDAO {
 		query.setParameter("label", offer.getLabelOffer());
 		query.setParameter("company", offer.getCompanyName());
 		query.setParameter("description", offer.getDescriptionOffer());
-		query.setParameter("date", offer.getPostingDate());
+		query.setParameter("pDate", offer.getPostingDate());
+		query.setParameter("sDate", offer.getStartingDate());
 		query.setParameter("major", offer.getMajor());
 		query.setParameter("approved", offer.isApproved());
 		

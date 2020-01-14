@@ -1,13 +1,13 @@
 package be.helha.aemt.entity;
 
 import java.util.Date;
-
+import java.io.Serializable;
 import javax.persistence.Entity;
 
 import be.helha.aemt.enumeration.MajorEnum;
 
 @Entity
-public class InternshipOffer extends Offer {
+public class InternshipOffer extends Offer implements Serializable{
 	private String duration;
 	private boolean thesisPossibility;
 

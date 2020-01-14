@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:h="http://xmlns.jcp.org/jsf/html">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Inscription</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+</head>
+<body>
+<!--HEADER CONNECTE-->
+<div class="container-fluid">
+    <div id="homeHeader" class="row">
+        <div class="container-fluid col-lg-4"></div>
+        <img src="assets/LOGO_HELHa_NEW.jpg"  alt="Responsive image" class="img-fluid col-lg-3 col-sm-8 mt-2 "/>
+        <div class="container-fluid col-lg-4">
+            <div class="mt-3 text-lg-right offset-8">
+                <div class="row text-lg-right">
+                    <a href="test.html">Mon compte</a>
+                </div>
+                <div class="row text-lg-right">
+                    <a href="index.xhtml">Me déconnecter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid col-lg-12 ">
+    <div class="container-fluid col-lg-2">   </div>
+    <div class="container-fluid border col-lg-6 col-sm-12 text-center mt-5 font-weight-bold">
+        <h:form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <!--NOM-->
+                    <label for="nom">Nom</label>
+                    <input type="text" class="form-control" id="nom"/>
+                </div>
+                <div class="form-group col-md-6">
+                    <!--PRENOM-->
+                    <label for="prenom">Prénom</label>
+                    <input type="text" class="form-control" id="prenom"/>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <!--MAIL-->
+                    <label for="mail">Mail</label>
+                    <input type="email" class="form-control" id="mail"/>
+                </div>
+                <div class="form-group col-md-6">
+                    <!--CONFIRMER MAIL-->
+                    <label for="mailConfirm">Confirmer le mail</label>
+                    <input type="email" class="form-control" id="mailConfirm"/>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <!--PSEUDO-->
+                    <label for="pseudo">Nom d'utilisateur</label>
+                    <input type="text" class="form-control" id="pseudo"/>
+                </div>
+                <div class="form-group col-md-6">
+                    <!--ANNEE DIPLOME-->
+                    <label for="anneeDiplome">Année d'obtention du diplôme</label>
+                    <input type="number" class="form-control" id="anneeDiplome" min="2000" max="2050"/>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <!--MOT DE PASSE-->
+                    <label for="motDePasse">Mot de passe</label>
+                    <input type="text" class="form-control" id="motDePasse"/>
+                </div>
+                <div class="form-group col-md-6">
+                    <!--CONFIRM MOT DE PASSE-->
+                    <label for="motDePasseConfirm">Confirmer mot de passe</label>
+                    <input type="text" class="form-control" id="motDePasseConfirm"/>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <!--DATE DE NAISSANCE-->
+                    <label for="naissance">Date de naissance</label>
+                    <input type="date" class="form-control" id="naissance"/>
+                </div>
+                <div class="form-group col-md-6">
+                    <!--SECTION-->
+                    <label for="section">Section</label>
+                    <select type="text" class="form-control" id="section">
+                        <option>Informatique de gestion</option>
+                        <option>Comptabilité</option>
+                        <option>Assistant de direction</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <!--CONNECTION BUTTON-->
+            <button class="col-lg-5 mt-4 mb-4 btn text-light" style="background-color: #009790"><b>Valider</b></button>
+        </h:form>
+    </div>
+    <div class="container-fluid col-lg-2">   </div>
+
+</div>
+
+
+</body>
+</html>
