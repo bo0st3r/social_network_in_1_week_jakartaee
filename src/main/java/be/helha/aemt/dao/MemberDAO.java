@@ -38,10 +38,11 @@ public class MemberDAO {
 		return tmp.size() == 0 ? null : tmp.get(0);
 	}
 	
-	public boolean approveFormer(int id) {
+	public boolean updateFormerApproved(int id, boolean approved) {
 		Query query = em.createNamedQuery("FormerStudent.updateApproved");
-		query.setParameter("approved", true);
+		query.setParameter("approved", approved);
 		query.setParameter("id", id);
+		
 		
 		if(query.executeUpdate() > 0) {
 			return true;

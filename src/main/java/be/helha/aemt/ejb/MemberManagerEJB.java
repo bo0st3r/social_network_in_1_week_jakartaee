@@ -26,8 +26,8 @@ public class MemberManagerEJB {
 		return dao.findByUsername(username);
 	}
 	
-	public boolean approveFormer(int id) {
-		return dao.approveFormer(id);
+	public boolean updateFormerApproved(int id, boolean approved) {
+		return dao.updateFormerApproved(id, approved);
 	}
 	
 	public Member queryByPortrait(int idPortrait) {
