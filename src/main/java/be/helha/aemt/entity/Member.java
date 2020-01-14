@@ -1,5 +1,6 @@
 package be.helha.aemt.entity;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,13 +14,19 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
 import be.helha.aemt.enumeration.GroupName;
 
 @Entity
-public abstract class Member {
+@Inheritance(
+	    strategy = InheritanceType.SINGLE_TABLE
+	)
+public class Member implements Serializable{
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idMembre;
@@ -43,24 +50,9 @@ public abstract class Member {
 	private byte[] photo;
 
 	public Member() {
-
-	}
-
-	public Member(String firstName, String lastName, String username, String password, LocalDate birthDate,
-			GroupName groupName) {
-		this(firstName, lastName, username, password, birthDate, new ArrayList<Offer>(), new ArrayList<Event>(), groupName, new byte[0]);
 	}
 	
-	public Member(String firstName, String lastName, String username, String password, LocalDate birthDate,
-			GroupName groupName, byte[] photo) {
-		this(firstName, lastName, username, password, birthDate, new ArrayList<Offer>(), new ArrayList<Event>(), groupName, photo);
-	}
-
-	public Member(String firstName, String lastName, String username, String password, LocalDate birthDate,
-			List<Offer> offers, List<Event> events, GroupName groupName) {
-		this(firstName, lastName, username, password, birthDate, offers, events, groupName, new byte[0]);
-	}
-
+	
 	public Member(String firstName, String lastName, String username, String password, LocalDate birthDate,
 			List<Offer> offers, List<Event> events, GroupName groupName, byte[] photo) {
 		super();
@@ -74,6 +66,37 @@ public abstract class Member {
 		this.groupName = groupName;
 		this.photo = photo;
 	}
+
+
+//
+//	public Member(String firstName, String lastName, String username, String password, LocalDate birthDate,
+//			GroupName groupName) {
+//		this(firstName, lastName, username, password, birthDate, new ArrayList<Offer>(), new ArrayList<Event>(), groupName, new byte[0]);
+//	}
+//	
+//	public Member(String firstName, String lastName, String username, String password, LocalDate birthDate,
+//			GroupName groupName, byte[] photo) {
+//		this(firstName, lastName, username, password, birthDate, new ArrayList<Offer>(), new ArrayList<Event>(), groupName, photo);
+//	}
+//
+//	public Member(String firstName, String lastName, String username, String password, LocalDate birthDate,
+//			List<Offer> offers, List<Event> events, GroupName groupName) {
+//		this(firstName, lastName, username, password, birthDate, offers, events, groupName, new byte[0]);
+//	}
+//
+//	public Member(String firstName, String lastName, String username, String password, LocalDate birthDate,
+//			List<Offer> offers, List<Event> events, GroupName groupName, byte[] photo) {
+//		super();
+//		this.firstName = firstName;
+//		this.lastName = lastName;
+//		this.username = username;
+//		this.password = password;
+//		this.birthDate = birthDate;
+//		this.offers = offers;
+//		this.events = events;
+//		this.groupName = groupName;
+//		this.photo = photo;
+//	}
 
 	@Override
 	public int hashCode() {

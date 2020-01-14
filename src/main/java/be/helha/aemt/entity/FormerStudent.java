@@ -1,7 +1,7 @@
 package be.helha.aemt.entity;
 
-import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,15 +9,13 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import be.helha.aemt.enumeration.GroupName;
 import be.helha.aemt.enumeration.Major;
 
 @Entity
-public class FormerStudent extends Member implements Serializable {
-	private static final long serialVersionUID = 6986371452166977771L;
+public class FormerStudent extends Member {
 	private int graduationYear;
 	private String phoneNumber;
 	private boolean approved;
@@ -32,30 +30,28 @@ public class FormerStudent extends Member implements Serializable {
 	private Address address;
 
 	public FormerStudent() {
-		super();
 	}
-
+	
 	public FormerStudent(String firstName, String lastName, String username, String password, LocalDate birthDate,
-			int graduationYear, Major major, String phoneNumber, boolean approved) {
-		this(firstName, lastName, username, password, birthDate, graduationYear, major, phoneNumber, approved, null);
-	}
-
-	public FormerStudent(String firstName, String lastName, String username, String password, LocalDate birthDate,
-			int graduationYear, Major major, String phoneNumber, boolean approved, Portrait portrait) {
-		super(firstName, lastName, username, password, birthDate, GroupName.FORMER);
+			int graduationYear, Major major, String phoneNumber, boolean approved, Address address) {
+		super(firstName, lastName, username, password, birthDate, new ArrayList<Offer>(), new ArrayList<Event>(), GroupName.FORMER, new byte[0]);
 		this.graduationYear = graduationYear;
-		this.major = major;
 		this.phoneNumber = phoneNumber;
 		this.approved = approved;
-		this.portrait = portrait;
+		this.major = major;
+		this.address = address;
 	}
-
-	public int getGraduationYear() {
-		return graduationYear;
-	}
-
-	public void setGraduationYear(int graduationYear) {
+	
+	public FormerStudent(String firstName, String lastName, String username, String password, LocalDate birthDate,
+			List<Offer> offers, List<Event> events, GroupName groupName, byte[] photo, int graduationYear,
+			String phoneNumber, boolean approved, Major major, Portrait portrait, Address address) {
+		super(firstName, lastName, username, password, birthDate, offers, events, groupName, photo);
 		this.graduationYear = graduationYear;
+		this.phoneNumber = phoneNumber;
+		this.approved = approved;
+		this.major = major;
+		this.portrait = portrait;
+		this.address = address;
 	}
 
 	public Major getMajor() {
@@ -90,10 +86,30 @@ public class FormerStudent extends Member implements Serializable {
 		this.portrait = portrait;
 	}
 
-	@Override
-	public String toString() {
-		return "Former [graduationYear=" + graduationYear + ", major=" + major + ", phoneNumber=" + phoneNumber
-				+ ", approved=" + approved + ", portrait=" + portrait + "]";
+	public int getGraduationYear() {
+		System.out.println("GEET graduation");
+		return graduationYear;
 	}
 
+	public void setGraduationYear(int graduationYear) {
+		System.out.println("SEET graduation");
+		this.graduationYear = graduationYear;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+//	@Override
+//	public String toString() {
+//		return "FormerStudent [graduationYear=" + graduationYear + ", phoneNumber=" + phoneNumber + ", approved="
+//				+ approved + ", major=" + major + ", portrait=" + portrait + ", address=" + address + ", getIdMembre()="
+//				+ getIdMembre() + ", getFirstName()=" + getFirstName() + ", getLastName()=" + getLastName()
+//				+ ", getUsername()=" + getUsername() + ", getPassword()=" + getPassword() + ", getGroupName()="
+//				+ getGroupName() + ", getBirthDate()=" + getBirthDate() + "]";
+//	}
 }

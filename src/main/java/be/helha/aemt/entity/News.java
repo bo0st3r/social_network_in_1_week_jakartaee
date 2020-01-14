@@ -1,5 +1,7 @@
 package be.helha.aemt.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Basic;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -7,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
-public class News {
+public class News implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idNews;

@@ -1,5 +1,7 @@
 package be.helha.aemt.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +12,7 @@ import javax.persistence.ManyToOne;
 import be.helha.aemt.enumeration.MajorEnum;
 
 @Entity
-public class Offer {
+public class Offer implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idOffer;

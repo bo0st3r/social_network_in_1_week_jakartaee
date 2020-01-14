@@ -1,11 +1,13 @@
 package be.helha.aemt.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 
 import be.helha.aemt.enumeration.MajorEnum;
 
 @Entity
-public class JobOffer extends Offer {
+public class JobOffer extends Offer implements Serializable{
 	private String contractType;
 	private Double salary;
 	
