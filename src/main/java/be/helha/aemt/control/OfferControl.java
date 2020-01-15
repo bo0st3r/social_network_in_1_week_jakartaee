@@ -13,7 +13,7 @@ import be.helha.aemt.ejb.OfferManagerEJB;
 import be.helha.aemt.entity.InternshipOffer;
 import be.helha.aemt.entity.JobOffer;
 import be.helha.aemt.entity.Offer;
-import be.helha.aemt.enumeration.MajorEnum;
+import be.helha.aemt.enumeration.Major;
 
 @SessionScoped
 @Named
@@ -173,8 +173,8 @@ public class OfferControl implements Serializable {
 		List<JobOffer> jobs = queryJob();
 		for (JobOffer jobOffer : jobs) {
 			//System.out.println(jobOffer.isApproved()+"");
-			if(jobOffer.isApproved() || !((iGSelected && jobOffer.getMajor() == MajorEnum.InformatiqueGestion) || 
-					(aDSelected && jobOffer.getMajor() == MajorEnum.AssistantDirection) || (comptaSelected && jobOffer.getMajor() == MajorEnum.Comptabilite)))
+			if(jobOffer.isApproved() || !((iGSelected && jobOffer.getMajor() == Major.InformatiqueGestion) || 
+					(aDSelected && jobOffer.getMajor() == Major.AssistantDirection) || (comptaSelected && jobOffer.getMajor() == Major.Comptabilite)))
 				jobs.remove(jobOffer);
 		}
 		
@@ -184,8 +184,8 @@ public class OfferControl implements Serializable {
 	public List<InternshipOffer> showInternResults(){
 		List<InternshipOffer> intern = queryInternship();
 		for (InternshipOffer internOffer : intern) {
-			if(!internOffer.isApproved() || !((iGSelected && internOffer.getMajor() == MajorEnum.InformatiqueGestion) || 
-					(aDSelected && internOffer.getMajor() == MajorEnum.AssistantDirection) || (comptaSelected && internOffer.getMajor() == MajorEnum.Comptabilite)))
+			if(!internOffer.isApproved() || !((iGSelected && internOffer.getMajor() == Major.InformatiqueGestion) || 
+					(aDSelected && internOffer.getMajor() == Major.AssistantDirection) || (comptaSelected && internOffer.getMajor() == Major.Comptabilite)))
 				intern.remove(internOffer);
 		}
 		

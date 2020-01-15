@@ -87,6 +87,19 @@
                 <!--TITRE OFFRE-->
                 <label class="col-lg-12 p-2" for="nomOffre">Titre de l'offre d'emploi</label>
                 <input id="nomOffre" class="col-lg-8" value="#{offerControl.job.labelOffer}"/>
+                 <div class="form-row ">
+                 	<div class="form-group col-5 offset-2">
+	                    <!--NOM ENTREPRISE-->
+		                <label class="col-lg-12 p-2" for="nomEntreprise">Entreprise</label>
+		                <input type="text" id="nomEntreprise" class="col-lg-12" value="#{offerControl.job.companyName}/>
+		                </div>
+					<div class="form-group col-3">
+		                <!--SALAIRE-->
+		                <label class="col-lg-12 p-2" for="salaire">Salaire</label>
+		                <input type="text" id="salaire" class="col-lg-12" value="#{offerControl.job.salary}/>
+		            </div>
+		        </div>
+                
                 <!--ADRESSE-->
                 <div class="form-row ">
 

@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
+<html xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:h="http://xmlns.jcp.org/jsf/html">
 <head>
     <meta charset="UTF-8"/>
-    <title>Offres</title>
+    <title>Ajout offres</title>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
 </head>
-<h:body style="background-color: #f4F4F4">
-<!-- Header-->
-<div class="container-fluid" style="background-color: white;">
+<body style="background-color: #f4F4F4">
+<!--BON HEADER-->
+<div class="container-fluid" style="background-color:white;">
     <div id="homeHeader" class="row">
         <div class="container-fluid col-lg-4"></div>
-        <img src="assets/LOGO_HELHa_NEW.jpg"  alt="Responsive image" class="img-fluid col-lg-4 col-sm-8 mt-2 "/>
-         <div class="container-fluid col-lg-4"></div>
+        <img src="assets/LOGO_HELHa_NEW.jpg"  alt="Responsive image" class="img-fluid col-lg-3 col-sm-8 mt-2 "/>
+        <div class="container-fluid col-lg-4"></div>
     </div>
 </div>
-<!-- FIN header -->
+<!--FIN HEADER-->
 
 <!--NAVBAR OK-->
 <nav class="navbar navbar-expand-lg text-light nav-fill" style="background-color: #009790">
@@ -77,58 +77,35 @@
             </div>
 </nav>
 <!--FIN NAVBAR-->
-<!--RECHERCHE offre-->
-<div class="container-fluid mt-2">
-    <div class="row">
-        <div class="col-lg-1"></div>
-        <h5 class="col-lg-2 col-sm-12 text-center mt-4">Offres de stages</h5>
-        <div class="col-lg-2 col-sm-12">
-            <p><h:selectBooleanCheckbox value="#{offerControl.iGSelected}"/>Informatique de Gestion</p>
-            <p><h:selectBooleanCheckbox value="#{offerControl.iGSelected}"/>Assistant de direction</p>
-            <p><h:selectBooleanCheckbox value="#{offerControl.comptaSelected}"/>Comptabilité</p>
-        </div>
-        <button class="btn ml-2 mt-4 text-light" style="background-color: #009790;max-height:45px" onclick="#{offerControl.showJobResults()}">Rechercher</button>
-    </div>
-    <!--TRI-->
-    <div class="dropdown col-11 text-lg-right rounded-bottom" >
-        <button class="btn btn-secondary dropdown-toggle align-bottom mt-3" style="background-color: #009790" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Tri
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">par date</a>
-            <a class="dropdown-item" href="#">A-Z</a>
-        </div>
-    </div>
-    <!--FIN TRI-->
-
-</div>
-<!--FIN RECHERCHE offre-->
-
-<div class="container-fluid col-lg-12 ">
-    <div class="container-fluid col-lg-1">   </div>
-    <div class="container-fluid border col-lg-10 col-sm-12 text-center mt-5 font-weight-bold p-2" style="background-color: #eee;">
-        <!-- offre-->
-        <ui:repeat var="offer" value="#{offerControl.showJobResults()}">
-        <div class="card border-dark p-2 col-12">
-            <div class="card-header">#{offer.major.toString()}</div>
-            <div class="card-body text-dark">
-                <h5 class="card-title">#{offer.labelOffer} à partir du #{offer.startingDate}</h5>
-                <p class="card-text">Posté par #{offer.companyName} le #{offer.postingDate}</p>
+<h2 class="text-center pt-2">Admin - Inscription</h2>
+<!--CADRE-->
+<div class="container-fluid col-lg-12 mb-5 ">
+    <div class="container-fluid col-lg-2">   </div>
+    <div class="container-fluid border col-lg-8 col-sm-12 mt-5 p-2" style="background-color: #eee">
+        <h5>Liste des inscriptions à valider</h5>
+        <div class="row">
+            <div class="col-lg-9">
+                <li>NOM PRENOM SECTION ANNEE DIPLOME (DATE NAISSANCE) </li>
+            </div>
+            <div class="col-lg-3 ">
+                <button class="btn btn-success">Accepter</button> <button class="btn btn-danger">Refuser</button>
             </div>
         </div>
-        </ui:repeat>
-        <!--fin offre-->
-    </div>
-    <div class="container-fluid col-lg-1">   </div>
 
+    </div>
+    <div class="container-fluid col-lg-2">   </div>
 </div>
+<!--FIN CADRE-->
+
+
 <!--FOOTER WITH A PROPOS-->
-<div class="fixed-bottom text-right" style="max-height: 150px;min-height: 30px; background-color:#009790">
+<div class="fixed-bottom text-right mt-5" style="max-height: 150px;min-height: 30px; background-color:#009790">
     <footer class="fixed-bottom text-right" >
-        <a class="text-light p-3" href="about.xhtml">A propos</a>
+        <a class="text-light p-3" href="connectionPage.html">A propos</a>
     </footer>
 </div>
 <!--FIN FOOTER-->
 
-</h:body>
+</body>
 </html>
+

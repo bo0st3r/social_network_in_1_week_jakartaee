@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:h="http://www.w3.org/1999/html">
+<html xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<!-- <html lang="fr">-->
 <head>
-    <title>Connection</title>
-    <meta http-equiv="  Content-Type" content="text/html; charset=UTF-8"></meta>
+    <meta charset="UTF-8"/>
+    <title>index</title>
+    	<meta http-equiv="  Content-Type" content="text/html; charset=UTF-8" />
+    
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -76,39 +80,47 @@
             </div>
 </nav>
 <!--FIN NAVBAR-->
-<div class="container-fluid col-lg-12 ">
-    <div class="container-fluid col-lg-3">   </div>
-    <div class="container-fluid border col-lg-6 col-sm-12 text-center mt-5 font-weight-bold"  style="background-color: #eee;">
-        <form method="POST" action="j_security_check">
-            <!--PSEUDO-->
-            <label for="j_username" class="col-lg-12 p-2">Nom d'utilisateur</label>
-            <input type="text" id="user" class="col-lg-8" name="j_username"/>
-            <!--PASSWORD-->
-            <label for="j_password" class="col-lg-12 p-2">Mot de passe</label>
-            <input type="password" id="Password" class="col-lg-8" name="j_password"/>
-            <!--CONNECTION BUTTON-->
-            
-<!--             <button type="submit" class="col-lg-5 mt-4 mb-4 btn text-light" style="background-color: #009790"><b>Se connecter</b></button> -->
-            <input type="submit" class="col-lg-5 mt-4 mb-4 btn text-light" style="background-color: #009790" value="Se connecter"/>
-        </form>
-    </div>
-    <div class="col-lg-6 col-sm-12 text-center offset-3 font-italic mt-5">
-        <p>Retrouvez nous sur les réseaux sociaux </p>
-        <a href="https://www.facebook.com/helhaeconomique/"><img src="assets/facebook.png" alt="Responsive image" class="img-fluid m-2 col-lg-2 col-sm-1 " /></a>
-        <a href="https://www.instagram.com/helhabe/?hl=fr"><img src="assets/instagram.png" alt="Responsive image" class="img-fluid m-2 col-lg-2 col-sm-1" /></a>
-        <a href="https://www.linkedin.com/school/helha/?originalSubdomain=fr"><img src="assets/linkedin.png" alt="Responsive image" class="img-fluid m-2 col-lg-2 col-sm-1" /></a>
-
-    </div>
-    <div class="container-fluid col-lg-3"></div>
-
-
+<div class="text-center">
+	<h2 class="pt-2">Ancien </h2>
+	
+	<!-- ADMIN UNIQUEMENT -->
+	<button class="btn text-light m-1" style="background-color: #009790">Créer portrait</button>
+	<!-- FIN ADMIN UNIQUEMENT -->
 </div>
+
+<!--CADRE-->
+<div class="container-fluid col-lg-12 mb-5 ">
+    <div class="container-fluid col-lg-2">   </div>
+    <div class="container-fluid border col-lg-8 col-sm-12 mt-5 p-2" style="background-color: #eee;">
+        <!--FENETRE DETAIL-->
+        <div class="row">
+            <div class="col-3">
+                <img src="assets/profil.png" style="max-height: 175px; max-width: 175px"/>
+            </div>
+            <div class="col-9 text-center align-self-lg-center">
+                <h3>Nom    Prenom</h3>
+                <h5>Section</h5>
+                <h5>Adresse </h5>
+                <h5>Tel</h5>
+                <h5>Mail</h5>
+                <h5>?</h5>
+            </div>
+        </div>
+
+        <!--FIN FENETRE DETAIL-->
+
+    </div>
+    <div class="container-fluid col-lg-2">   </div>
+</div>
+<!--FIN CADRE-->
+
 <!--FOOTER WITH A PROPOS-->
-<div class="fixed-bottom text-right" style="max-height: 150px;min-height: 30px; background-color:#009790">
+<div class="fixed-bottom text-right mt-5" style="max-height: 150px;min-height: 30px; background-color:#009790">
     <footer class="fixed-bottom text-right" >
         <a class="text-light p-3" href="about.xhtml">A propos</a>
     </footer>
 </div>
 <!--FIN FOOTER-->
+
 </h:body>
 </html>

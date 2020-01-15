@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
-import be.helha.aemt.enumeration.MajorEnum;
+import be.helha.aemt.enumeration.Major;
 
 @Entity
 @NamedQueries({
@@ -21,6 +21,8 @@ import be.helha.aemt.enumeration.MajorEnum;
 
 })
 public class Offer implements Serializable{
+	private static final long serialVersionUID = 5727714600467180931L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idOffer;
@@ -31,7 +33,7 @@ public class Offer implements Serializable{
 	private Date startingDate;
 	private Date postingDate;
 	private boolean approved;
-	private MajorEnum major;
+	private Major major;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Address address;
@@ -42,7 +44,7 @@ public class Offer implements Serializable{
 	}
 
 	public Offer(String labelOffer, String companyName, String descriptionOffer, Date startingDate, Date postingDate,
-			boolean approved, MajorEnum major) {
+			boolean approved, Major major) {
 		super();
 		this.labelOffer = labelOffer;
 		this.companyName = companyName;
@@ -55,7 +57,7 @@ public class Offer implements Serializable{
 	}
 	
 	public Offer(String labelOffer, String companyName, String descriptionOffer, Date startingDate, Date postingDate,
-			boolean approved, MajorEnum major, Address address) {
+			boolean approved, Major major, Address address) {
 		super();
 		this.labelOffer = labelOffer;
 		this.companyName = companyName;
@@ -123,11 +125,11 @@ public class Offer implements Serializable{
 		this.approved = approved;
 	}
 
-	public MajorEnum getMajor() {
+	public Major getMajor() {
 		return major;
 	}
 
-	public void setMajor(MajorEnum major) {
+	public void setMajor(Major major) {
 		this.major = major;
 	}
 

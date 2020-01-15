@@ -5,12 +5,9 @@ import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.NamedQuery;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import be.helha.aemt.entity.News;
-import be.helha.aemt.entity.Offer;
 import be.helha.aemt.entity.Portrait;
 import be.helha.aemt.helper.Config;
 

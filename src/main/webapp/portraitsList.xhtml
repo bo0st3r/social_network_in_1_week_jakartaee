@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
+<html xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:h="http://xmlns.jcp.org/jsf/html">
 <head>
     <meta charset="UTF-8"/>
     <title>Offres</title>
@@ -77,47 +77,33 @@
             </div>
 </nav>
 <!--FIN NAVBAR-->
-<!--RECHERCHE offre-->
-<div class="container-fluid mt-2">
-    <div class="row">
-        <div class="col-lg-1"></div>
-        <h5 class="col-lg-2 col-sm-12 text-center mt-4">Offres de stages</h5>
-        <div class="col-lg-2 col-sm-12">
-            <p><h:selectBooleanCheckbox value="#{offerControl.iGSelected}"/>Informatique de Gestion</p>
-            <p><h:selectBooleanCheckbox value="#{offerControl.iGSelected}"/>Assistant de direction</p>
-            <p><h:selectBooleanCheckbox value="#{offerControl.comptaSelected}"/>Comptabilité</p>
-        </div>
-        <button class="btn ml-2 mt-4 text-light" style="background-color: #009790;max-height:45px" onclick="#{offerControl.showJobResults()}">Rechercher</button>
-    </div>
-    <!--TRI-->
-    <div class="dropdown col-11 text-lg-right rounded-bottom" >
-        <button class="btn btn-secondary dropdown-toggle align-bottom mt-3" style="background-color: #009790" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Tri
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">par date</a>
-            <a class="dropdown-item" href="#">A-Z</a>
-        </div>
-    </div>
-    <!--FIN TRI-->
-
-</div>
-<!--FIN RECHERCHE offre-->
 
 <div class="container-fluid col-lg-12 ">
     <div class="container-fluid col-lg-1">   </div>
     <div class="container-fluid border col-lg-10 col-sm-12 text-center mt-5 font-weight-bold p-2" style="background-color: #eee;">
-        <!-- offre-->
-        <ui:repeat var="offer" value="#{offerControl.showJobResults()}">
-        <div class="card border-dark p-2 col-12">
-            <div class="card-header">#{offer.major.toString()}</div>
-            <div class="card-body text-dark">
-                <h5 class="card-title">#{offer.labelOffer} à partir du #{offer.startingDate}</h5>
-                <p class="card-text">Posté par #{offer.companyName} le #{offer.postingDate}</p>
+<!--PORTRAIT-->
+	<div class="row">
+	<div class="col-lg-1"></div>
+        <div class="card mb-3 p-2 col-9" style="background-color: #eee">
+            <div class="row no-gutters">
+                <div class="col-3">
+                    <img src="assets/portrait-anonyme.png" class="card-img" alt="..."/>
+                </div>
+                <div class="col-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Portrait</h5>
+                        <p class="card-text">Détail du portrait </p>
+                        <p class="card-text"><small class="text-muted">date</small></p>
+                    </div>
+                </div>
+
             </div>
         </div>
-        </ui:repeat>
-        <!--fin offre-->
+        	<div class="col-lg-2 text-center">
+		        <BUTTON class="btn btn-success m-1">Ajouter à l'accueil</BUTTON>
+		        <BUTTON class="btn btn-danger m-1">Supprimer de l'accueil</BUTTON>
+	        </div>	        
+		</div>
     </div>
     <div class="container-fluid col-lg-1">   </div>
 
