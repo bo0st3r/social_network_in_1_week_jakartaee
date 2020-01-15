@@ -5,7 +5,6 @@ import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.NamedQuery;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -20,12 +19,7 @@ public class MemberDAO {
 	private EntityManager em;
 	
 	public List<Member> selectAll() {
-		String sqlString = "SELECT m FROM Member m";
-		Query selectAll = em.createQuery(sqlString);
-//		System.out.println("DAO IN");
-//		List<Member> m = selectAll.getResultList();
-//		System.out.println(m);
-//		System.out.println("DAO OUT");
+		Query selectAll = em.createNamedQuery("Member.queryAll");
 		return selectAll.getResultList();
 	}
 
@@ -38,30 +32,28 @@ public class MemberDAO {
 	}
 	
 	public Member findByUsername(String username) {
-		String sqlString = "SELECT m FROM Member m WHERE m.username = :username";
-
-		Query selectU = em.createQuery(sqlString);
+		Query selectU = em.createNamedQuery("Member.queryByUsername");
 		selectU.setParameter("username", username);
 		List<Member> tmp = selectU.getResultList();
 
 		return tmp.size() == 0 ? null : tmp.get(0);
 	}
-	
-	public boolean approveFormer(FormerStudent former) {
-		Member member = findByUsername(former.getUsername());
-		if(member != null) {
-			FormerStudent approved = (FormerStudent) member;
-			approved.setApproved(!approved.isApproved());
-			approved = em.merge(approved);
-			
-			return ((FormerStudent)findByUsername(former.getUsername())).isApproved();
+
+	public boolean updateFormerApproved(int id, boolean approved) {
+		Query query = em.createNamedQuery("FormerStudent.updateApproved");
+		query.setParameter("approved", approved);
+		query.setParameter("id", id);
+		
+		
+		if(query.executeUpdate() > 0) {
+			return true;
 		}
 		
 		return false;
 	}
 	
 	public FormerStudent queryByPortrait(int idPortrait) {
-		Query query = em.createNamedQuery("Member.queryByPortrait");
+		Query query = em.createNamedQuery("FormerStudent.queryByPortrait");
 		query.setParameter("id", idPortrait);
 		List<FormerStudent> results = query.getResultList();
 		if(results.size() > 0) {

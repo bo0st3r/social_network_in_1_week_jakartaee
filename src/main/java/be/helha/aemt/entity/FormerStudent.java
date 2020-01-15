@@ -18,7 +18,8 @@ import be.helha.aemt.enumeration.Major;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name="Member.queryByPortrait", query="SELECT m FROM FormerStudent m WHERE m.portrait.idPortrait = :id")
+		@NamedQuery(name = "FormerStudent.queryByPortrait", query = "SELECT f FROM FormerStudent f WHERE f.portrait.idPortrait = :id"),
+		@NamedQuery(name = "FormerStudent.queryAll", query = "SELECT f FROM FormerStudent f")
 })
 public class FormerStudent extends Member {
 	private int graduationYear;
@@ -36,17 +37,18 @@ public class FormerStudent extends Member {
 
 	public FormerStudent() {
 	}
-	
+
 	public FormerStudent(String firstName, String lastName, String username, String password, LocalDate birthDate,
 			int graduationYear, Major major, String phoneNumber, boolean approved, Address address) {
-		super(firstName, lastName, username, password, birthDate, new ArrayList<Offer>(), new ArrayList<Event>(), GroupName.FORMER, new byte[0]);
+		super(firstName, lastName, username, password, birthDate, new ArrayList<Offer>(), new ArrayList<Event>(),
+				GroupName.FORMER, new byte[0]);
 		this.graduationYear = graduationYear;
 		this.phoneNumber = phoneNumber;
 		this.approved = approved;
 		this.major = major;
 		this.address = address;
 	}
-	
+
 	public FormerStudent(String firstName, String lastName, String username, String password, LocalDate birthDate,
 			List<Offer> offers, List<Event> events, GroupName groupName, byte[] photo, int graduationYear,
 			String phoneNumber, boolean approved, Major major, Portrait portrait, Address address) {
@@ -109,12 +111,12 @@ public class FormerStudent extends Member {
 		this.address = address;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "FormerStudent [graduationYear=" + graduationYear + ", phoneNumber=" + phoneNumber + ", approved="
-//				+ approved + ", major=" + major + ", portrait=" + portrait + ", address=" + address + ", getIdMembre()="
-//				+ getIdMembre() + ", getFirstName()=" + getFirstName() + ", getLastName()=" + getLastName()
-//				+ ", getUsername()=" + getUsername() + ", getPassword()=" + getPassword() + ", getGroupName()="
-//				+ getGroupName() + ", getBirthDate()=" + getBirthDate() + "]";
-//	}
+	@Override
+	public String toString() {
+		return "FormerStudent [graduationYear=" + graduationYear + ", phoneNumber=" + phoneNumber + ", approved="
+				+ approved + ", major=" + major + ", portrait=" + portrait + ", address=" + address + ", getIdMember()="
+				+ getIdMember() + ", getFirstName()=" + getFirstName() + ", getLastName()=" + getLastName()
+				+ ", getUsername()=" + getUsername() + ", getPassword()=" + getPassword() + ", getGroupName()="
+				+ getGroupName() + ", getBirthDate()=" + getBirthDate() + "]";
+	}
 }

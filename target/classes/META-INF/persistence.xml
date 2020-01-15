@@ -25,7 +25,6 @@
 	</persistence-unit>
 	
 <!-- 	<persistence-unit name="groupeB4" transaction-type="RESOURCE_LOCAL"> -->
-		  
 <!-- 		<class>be.helha.aemt.entity.FormerStudent</class> -->
 <!-- 		<class>be.helha.aemt.entity.Portrait</class> -->
 <!-- 		<class>be.helha.aemt.entity.Address</class> -->
@@ -35,7 +34,6 @@
 <!-- 		<class>be.helha.aemt.entity.JobOffer</class> -->
 <!-- 		<class>be.helha.aemt.entity.Member</class> -->
 <!-- 		<class>be.helha.aemt.entity.Admin</class> -->
-				
 <!-- 		<exclude-unlisted-classes>true</exclude-unlisted-classes> -->
 	
 <!-- 		<properties> -->
@@ -48,7 +46,6 @@
 <!-- 			<property name="javax.persistence.jdbc.password" value=""/>  -->
 <!-- 		    <property name="javax.persistence.jdbc.user" value="gb4"/> -->
 <!-- 			<property name="javax.persistence.jdbc.password" value="5231"/>  -->
-
 <!-- 		</properties> -->
 <!-- 	</persistence-unit> -->
 </persistence>

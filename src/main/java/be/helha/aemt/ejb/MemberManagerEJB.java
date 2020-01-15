@@ -10,7 +10,7 @@ import be.helha.aemt.entity.FormerStudent;
 import be.helha.aemt.entity.Member;
 
 @Stateless
-public class MemberManagerEJB{
+public class MemberManagerEJB {
 	@EJB
 	private MemberDAO dao;
 
@@ -27,8 +27,8 @@ public class MemberManagerEJB{
 		return dao.findByUsername(username);
 	}
 	
-	public boolean approveFormer(FormerStudent formerStudent) {
-		return dao.approveFormer(formerStudent);
+	public boolean updateFormerApproved(int id, boolean approved) {
+		return dao.updateFormerApproved(id, approved);
 	}
 	
 	public FormerStudent queryByPortrait(int idPortrait) {

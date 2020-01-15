@@ -2,7 +2,6 @@ package be.helha.aemt.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Basic;
@@ -26,7 +25,12 @@ import be.helha.aemt.enumeration.GroupName;
 @Entity
 @Inheritance(
 	    strategy = InheritanceType.SINGLE_TABLE
-	)
+)
+@NamedQueries({
+	@NamedQuery(name="Member.queryAll", query="SELECT m FROM Member m"),
+	@NamedQuery(name="Member.queryByUsername", query="SELECT m FROM Member m WHERE m.username = :username"),
+	
+})
 public class Member implements Serializable{
 	
 	@Id
@@ -68,37 +72,6 @@ public class Member implements Serializable{
 		this.groupName = groupName;
 		this.photo = photo;
 	}
-
-
-//
-//	public Member(String firstName, String lastName, String username, String password, LocalDate birthDate,
-//			GroupName groupName) {
-//		this(firstName, lastName, username, password, birthDate, new ArrayList<Offer>(), new ArrayList<Event>(), groupName, new byte[0]);
-//	}
-//	
-//	public Member(String firstName, String lastName, String username, String password, LocalDate birthDate,
-//			GroupName groupName, byte[] photo) {
-//		this(firstName, lastName, username, password, birthDate, new ArrayList<Offer>(), new ArrayList<Event>(), groupName, photo);
-//	}
-//
-//	public Member(String firstName, String lastName, String username, String password, LocalDate birthDate,
-//			List<Offer> offers, List<Event> events, GroupName groupName) {
-//		this(firstName, lastName, username, password, birthDate, offers, events, groupName, new byte[0]);
-//	}
-//
-//	public Member(String firstName, String lastName, String username, String password, LocalDate birthDate,
-//			List<Offer> offers, List<Event> events, GroupName groupName, byte[] photo) {
-//		super();
-//		this.firstName = firstName;
-//		this.lastName = lastName;
-//		this.username = username;
-//		this.password = password;
-//		this.birthDate = birthDate;
-//		this.offers = offers;
-//		this.events = events;
-//		this.groupName = groupName;
-//		this.photo = photo;
-//	}
 
 	@Override
 	public int hashCode() {
