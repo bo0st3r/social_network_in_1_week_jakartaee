@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -12,6 +13,7 @@ import be.helha.aemt.ejb.OfferManagerEJB;
 import be.helha.aemt.entity.InternshipOffer;
 import be.helha.aemt.entity.JobOffer;
 import be.helha.aemt.entity.Offer;
+import be.helha.aemt.enumeration.MajorEnum;
 
 @SessionScoped
 @Named
@@ -24,6 +26,11 @@ public class OfferControl implements Serializable {
 	private Offer offer = new Offer();
 	private JobOffer job = new JobOffer();
 	private InternshipOffer intern = new InternshipOffer();
+	
+	private boolean iGSelected = true;
+	private boolean aDSelected = true;
+	private boolean comptaSelected = true;
+	private boolean toApproveOnlySelected = false;
 	
 	public List<Offer> queryAll(){
 		return gestion.queryAll();
@@ -112,5 +119,89 @@ public class OfferControl implements Serializable {
 	public void setIntern(InternshipOffer intern) {
 		this.intern = intern;
 	}
+
+	public boolean isiGSelected() {
+		return iGSelected;
+	}
+
+	public void setiGSelected(boolean iGSelected) {
+		this.iGSelected = iGSelected;
+		System.out.println(this.iGSelected);
+	}
+
+	public boolean isaDSelected() {
+		return aDSelected;
+	}
+
+	public void setaDSelected(boolean aDSelected) {
+		this.aDSelected = aDSelected;
+	}
+
+	public boolean isComptaSelected() {
+		return comptaSelected;
+	}
+
+	public void setComptaSelected(boolean comptaSelected) {
+		this.comptaSelected = comptaSelected;
+	}
+
+	public boolean isToApproveOnlySelected() {
+		return toApproveOnlySelected;
+	}
+
+	public void setToApproveOnlySelected(boolean toApproveOnlySelected) {
+		this.toApproveOnlySelected = toApproveOnlySelected;
+	}
 	
+	/*****************************
+		 methods used by XHTML
+	*****************************/
+	
+	public void createJobOffer() {
+		job = new JobOffer();
+	}
+	
+	public void createInternshipOffer() {
+		intern = new InternshipOffer();
+	}
+	
+	/**
+	 * 
+	 * Bug si aucun job au final
+	 */
+	public List<JobOffer> showJobResults(){
+		List<JobOffer> jobs = queryJob();
+		for (JobOffer jobOffer : jobs) {
+			//System.out.println(jobOffer.isApproved()+"");
+			if(jobOffer.isApproved() || !((iGSelected && jobOffer.getMajor() == MajorEnum.InformatiqueGestion) || 
+					(aDSelected && jobOffer.getMajor() == MajorEnum.AssistantDirection) || (comptaSelected && jobOffer.getMajor() == MajorEnum.Comptabilite)))
+				jobs.remove(jobOffer);
+		}
+		
+		return jobs;
+	}
+	
+	public List<InternshipOffer> showInternResults(){
+		List<InternshipOffer> intern = queryInternship();
+		for (InternshipOffer internOffer : intern) {
+			if(!internOffer.isApproved() || !((iGSelected && internOffer.getMajor() == MajorEnum.InformatiqueGestion) || 
+					(aDSelected && internOffer.getMajor() == MajorEnum.AssistantDirection) || (comptaSelected && internOffer.getMajor() == MajorEnum.Comptabilite)))
+				intern.remove(internOffer);
+		}
+		
+		return intern;
+	}
+	
+	public String showOffer() {
+		return offer.toString();
+	}
+	
+	public String showJob() {
+		System.out.println(job.toString());
+		return job.toString();
+	}
+	
+	public String showIntern() {
+		return intern.toString();
+	}
 }

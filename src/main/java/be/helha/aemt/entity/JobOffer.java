@@ -87,7 +87,7 @@ public class JobOffer extends Offer implements Serializable{
 
 	@Override
 	public String toString() {
-		return this.toString() + ", OffreEmploi [typeContrat=" + contractType + ", salaire=" + salary + "]";
+		return super.toString() + ", OffreEmploi [typeContrat=" + contractType + ", salaire=" + salary + "]";
 	}
 	
 	

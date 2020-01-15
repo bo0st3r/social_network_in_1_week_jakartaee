@@ -38,6 +38,7 @@ public class Offer implements Serializable{
 	
 	public Offer() {
 		super();
+		address = new Address();
 	}
 
 	public Offer(String labelOffer, String companyName, String descriptionOffer, Date startingDate, Date postingDate,
@@ -50,6 +51,7 @@ public class Offer implements Serializable{
 		this.postingDate = postingDate;
 		this.approved = approved;
 		this.major = major;
+		address = new Address();
 	}
 	
 	public Offer(String labelOffer, String companyName, String descriptionOffer, Date startingDate, Date postingDate,

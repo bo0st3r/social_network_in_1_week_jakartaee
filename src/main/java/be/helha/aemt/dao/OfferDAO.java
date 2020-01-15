@@ -73,7 +73,7 @@ public class OfferDAO {
 	public boolean update(Offer offer) {
 		Offer updated = queryById(offer.getIdOffer());
 		
-		if(offer != null) {
+		if(updated != null) {
 			if(offer instanceof JobOffer) {
 				JobOffer job = (JobOffer)updated;
 				job.setContractType(((JobOffer) offer).getContractType());
