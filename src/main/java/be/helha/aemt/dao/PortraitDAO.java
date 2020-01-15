@@ -10,18 +10,9 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import be.helha.aemt.entity.News;
+import be.helha.aemt.entity.Offer;
 import be.helha.aemt.entity.Portrait;
 import be.helha.aemt.helper.Config;
-
-@NamedQuery(name="Portrait.queryAll", query="SELECT p FROM Portrait p")
-@NamedQuery(name="Portrait.queryById", query="SELECT p FROM Portrait p WHERE p.idPortrait = :id")
-@NamedQuery(name="Portrait.queryIdFromEquals", query="SELECT p .idPortrait FROM Portrait p WHERE p.label = :label")
-
-@NamedQuery(name="Portrait.update", query="UPDATE Portrait p "
-		+ "SET p.label = :label AND p.content = :content "
-		+ "WHERE p.idPortrait = :id")
-
-@NamedQuery(name="Portrait.deleteById", query="DELETE FROM Portrait p WHERE p.idPortrait = :id")
 
 @Stateless
 @LocalBean
@@ -64,24 +55,25 @@ public class PortraitDAO {
 	}
 	
 	public boolean update(Portrait portrait) {
-		Query query = em.createNamedQuery("Portrait.update");
-		query.setParameter("label", portrait.getLabel());
-		query.setParameter("content", portrait.getContent());
-		query.setParameter("id", portrait.getIdPortrait());
+		Portrait updated = queryById(portrait.getIdPortrait());
 		
-		if(query.executeUpdate() > 0) {
-			return true;
+		if(updated != null) {
+			updated.setLabel(portrait.getLabel());
+			updated.setContent(portrait.getContent());
+			
+			updated = em.merge(updated);
+			
+			return portrait.equals(updated);
 		}
+		
 		return false;
 	}
 	
-	public boolean deleteById(int id) {
-		Query query = em.createNamedQuery("Portrait.deleteById");
-		query.setParameter("id", id);
-		if(query.executeUpdate() > 0) {
-			return true;
-		}
-		return false;
+	public boolean delete(Portrait portrait) {
+		em.remove(portrait);
+			
+		return queryIdFromEquals(portrait) == -1;
+		
 	}
 	
 }

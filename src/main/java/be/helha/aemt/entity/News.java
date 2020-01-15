@@ -3,12 +3,24 @@ package be.helha.aemt.entity;
 import java.util.Date;
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
+@Entity
+@NamedQueries({
+	@NamedQuery(name="News.queryAll", query="SELECT n FROM News n ORDER BY n.postingDate ASC"),
+	@NamedQuery(name="News.queryAmount", query="SELECT n FROM News n ORDER BY n.postingDate ASC LIMIT :amount"),
+	@NamedQuery(name="News.queryById", query="SELECT n FROM News n WHERE n.idNews = :id"),
+	@NamedQuery(name="News.queryIdFromEquals", query="SELECT n.idNews FROM News n "
+			+ "WHERE n.name = :name AND n.postingDate = :date")
+
+})
 public class News implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
