@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.persistence.Query;
 
 import be.helha.aemt.dao.MemberDAO;
 import be.helha.aemt.entity.Member;
@@ -26,8 +27,12 @@ public class MemberManagerEJB {
 		return dao.findByUsername(username);
 	}
 	
-	public boolean updateFormerApproved(int id, boolean approved) {
-		return dao.updateFormerApproved(id, approved);
+	public int findIdByUsername(String username) {
+		return dao.findIdByUsername(username);
+	}
+	
+	public boolean updateFormerApproved(String username, boolean approved) {
+		return dao.updateFormerApproved(username, approved);
 	}
 	
 	public Member queryByPortrait(int idPortrait) {
