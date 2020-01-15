@@ -18,21 +18,24 @@ public class MemberControl implements Serializable {
 
 	@EJB
 	private MemberManagerEJB gestion;
-	
+
 	private Member member = new FormerStudent();
-	
-	private Member addMember() {
+
+	public Member addMember() {
 		return gestion.add(member);
 	}
-	
+
 	public List<Member> selectMembers() {
 		return gestion.selectAll();
 	}
-	
-	
+
+	public int findIdByUsername(String username) {
+		return gestion.findIdByUsername(username);
+	}
+
 	/*****************************
-	 	  Pages path getters
-	*****************************/
+	 * Pages path getters
+	 *****************************/
 	public String doIndex() {
 		return "index.xhtml";
 	}
@@ -41,10 +44,9 @@ public class MemberControl implements Serializable {
 		return "list.xhtml";
 	}
 
-	
 	/*****************************
-		   Getters & setters
-	*****************************/
+	 * Getters & setters
+	 *****************************/
 	public Member getUser() {
 		return member;
 	}
