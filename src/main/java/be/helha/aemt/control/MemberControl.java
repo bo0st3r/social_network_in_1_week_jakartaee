@@ -10,6 +10,7 @@ import javax.inject.Named;
 import be.helha.aemt.ejb.MemberManagerEJB;
 import be.helha.aemt.entity.FormerStudent;
 import be.helha.aemt.entity.Member;
+import be.helha.aemt.enumeration.GroupName;
 
 @SessionScoped
 @Named
@@ -20,6 +21,7 @@ public class MemberControl implements Serializable {
 	private MemberManagerEJB gestion;
 
 	private Member member = new FormerStudent();
+	
 
 	public Member addMember() {
 		return gestion.add(member);

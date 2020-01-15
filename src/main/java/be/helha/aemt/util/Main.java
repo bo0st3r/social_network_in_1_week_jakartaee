@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import be.helha.aemt.control.MemberControl;
 import be.helha.aemt.entity.Address;
 import be.helha.aemt.entity.Admin;
 import be.helha.aemt.entity.FormerStudent;
@@ -25,7 +26,7 @@ public class Main {
 		Member m3 = new FormerStudent("Bastien","Decorte","user","77e467eb0169e82e77f090df217a323357c6a157a98c0375e6f6dbafe029c83a",LocalDate.of(2000, 12, 30), 2021, 
 				Major.InformatiqueGestion, "1111111", true, 
 				new Address("Mons", "Rue du coq", "53a", 7500));
-		
+				
 		em.getTransaction().begin();
 		em.persist(m1);
 		em.persist(m2);
