@@ -2,6 +2,7 @@ package be.helha.aemt.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.Basic;
@@ -32,6 +33,7 @@ import be.helha.aemt.enumeration.GroupName;
 	@NamedQuery(name="Member.queryIdByUsername", query="SELECT m.idMember FROM Member m WHERE m.username = :username"),
 })
 public class Member implements Serializable{
+	private static final long serialVersionUID = 3414596716371149696L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,6 +42,7 @@ public class Member implements Serializable{
 	private String lastName;
 	private String username;
 	private String password;
+	private String mail;
 	private LocalDate birthDate;
 	
 	@OneToMany(cascade = CascadeType.ALL)
@@ -59,13 +62,14 @@ public class Member implements Serializable{
 	}
 	
 	
-	public Member(String firstName, String lastName, String username, String password, LocalDate birthDate,
+	public Member(String firstName, String lastName, String username, String password, String mail, LocalDate birthDate,
 			List<Offer> offers, List<Event> events, GroupName groupName, byte[] photo) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.username = username;
 		this.password = password;
+		this.mail = mail;
 		this.birthDate = birthDate;
 		this.offers = offers;
 		this.events = events;
@@ -162,11 +166,41 @@ public class Member implements Serializable{
 		this.photo = photo;
 	}
 
-	@Override
-	public String toString() {
-		return "Member [idMembre=" + idMember + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
-				+ username + ", password=" + password + ", birthDate=" + birthDate + ", groupName=" + groupName + "]";
+
+	public String getMail() {
+		return mail;
 	}
 
-	
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+
+	public List<Offer> getOffers() {
+		return offers;
+	}
+
+
+	public void setOffers(List<Offer> offers) {
+		this.offers = offers;
+	}
+
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
+
+	@Override
+	public String toString() {
+		return "Member [idMember=" + idMember + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
+				+ username + ", password=" + password + ", mail=" + mail + ", birthDate=" + birthDate + ", offers="
+				+ offers + ", events=" + events + ", groupName=" + groupName + ", photo=" + Arrays.toString(photo)
+				+ "]";
+	}
 }

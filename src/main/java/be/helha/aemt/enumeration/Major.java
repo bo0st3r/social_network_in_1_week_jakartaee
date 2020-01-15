@@ -2,7 +2,7 @@ package be.helha.aemt.enumeration;
 
 public enum Major {
 	AssistantDirection("Bachelier Assistant de direction"),
-	Comptabilite("Bachelier en Comptabilité"),
+	Comptabilite("Bachelier en ComptabilitÃ©"),
 	InformatiqueGestion("Bachelier en Informatique de gestion");
 	
 	private String name;

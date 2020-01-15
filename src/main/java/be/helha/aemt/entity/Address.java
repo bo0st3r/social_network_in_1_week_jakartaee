@@ -9,6 +9,8 @@ import javax.persistence.Id;
 
 @Entity
 public class Address implements Serializable {
+	private static final long serialVersionUID = -7471270879571466492L;
+
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Integer id;

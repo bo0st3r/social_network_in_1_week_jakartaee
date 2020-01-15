@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:h="http://xmlns.jcp.org/jsf/html">
+<html xmlns:jsf="http://xmlns.jcp.org/jsf" 
+xmlns:h="http://xmlns.jcp.org/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:c="http://java.sun.com/jsp/jstl/core"
+xmlns:ui="http://java.sun.com/jsf/facelets">
 <head>
     <meta charset="UTF-8"/>
     <title>Inscription</title>
@@ -81,73 +85,87 @@
     <div class="container-fluid border col-lg-6 col-sm-12 text-center mt-5 font-weight-bold">
         <h:form>
             <div class="form-row">
+                <button onclick="#{memberControl.test()}">TEST</button>
                 <div class="form-group col-md-6">
                     <!--NOM-->
                     <label for="nom">Nom</label>
-                    <input type="text" class="form-control" id="nom"/>
+                    <h:inputText value="#{memberControl.former.lastName}" type="text" class="form-control" id="nom"/>
                 </div>
                 <div class="form-group col-md-6">
                     <!--PRENOM-->
                     <label for="prenom">Prénom</label>
-                    <input type="text" class="form-control" id="prenom"/>
+                    <h:inputText value="#{memberControl.former.firstName}" type="text" class="form-control" id="prenom"/>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <!--MAIL-->
                     <label for="mail">Mail</label>
-                    <input type="email" class="form-control" id="mail"/>
+                    <h:inputText value="#{memberControl.former.mail}" type="email" class="form-control" id="mail"/>
                 </div>
                 <div class="form-group col-md-6">
                     <!--CONFIRMER MAIL-->
                     <label for="mailConfirm">Confirmer le mail</label>
-                    <input type="email" class="form-control" id="mailConfirm"/>
+                    <h:inputText value="#{memberControl.mailConfirm}" type="email" class="form-control" id="mailConfirm"/>
                 </div>
             </div>
+            
+            <h:panelGroup layout="block" class="form-row" rendered="#{memberControl.doMailsMatch() == false}">
+                <div class="form-group col">
+            		<h:outputText value="Les mails ne correspondent pas !"/>
+            	</div>
+            </h:panelGroup>
+            
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <!--PSEUDO-->
                     <label for="pseudo">Nom d'utilisateur</label>
-                    <input type="text" class="form-control" id="pseudo"/>
+                    <h:inputText value="#{memberControl.former.username}" type="text" class="form-control" id="pseudo" required="true"/>
                 </div>
                 <div class="form-group col-md-6">
                     <!--ANNEE DIPLOME-->
                     <label for="anneeDiplome">Année d'obtention du diplôme</label>
-                    <input type="number" class="form-control" id="anneeDiplome" min="2000" max="2050"/>
+                    <h:inputText value="#{memberControl.former.graduationYear}" type="number" class="form-control" id="anneeDiplome" min="2000" max="2050" required="true"/>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <!--MOT DE PASSE-->
                     <label for="motDePasse">Mot de passe</label>
-                    <input type="text" class="form-control" id="motDePasse"/>
+                    <h:inputSecret value="#{memberControl.former.password}" type="text" class="form-control" id="motDePasse" required="true"/>
                 </div>
                 <div class="form-group col-md-6">
                     <!--CONFIRM MOT DE PASSE-->
                     <label for="motDePasseConfirm">Confirmer mot de passe</label>
-                    <input type="text" class="form-control" id="motDePasseConfirm"/>
+                    <h:inputSecret value="#{memberControl.pswConfirm}" type="text" class="form-control" id="motDePasseConfirm" required="true"/>
                 </div>
             </div>
+            
+            <h:panelGroup layout="block" class="form-row" rendered="#{memberControl.doPswsMatch() == false}">
+                <div class="form-group col">
+            		<h:outputText value="Les mots de passe ne correspondent pas !"/>
+            	</div>
+            </h:panelGroup>
+            
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <!--DATE DE NAISSANCE-->
                     <label for="naissance">Date de naissance</label>
-                    <input type="date" class="form-control" id="naissance"/>
+                    <h:inputText value="#{memberControl.birthDateToConvert}" type="date" class="form-control" id="naissance" required="true">
+                    	<f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </h:inputText>
                 </div>
                 <div class="form-group col-md-6">
                     <!--SECTION-->
                     <label for="section">Section</label>
-                    <select type="text" class="form-control" id="section">
-                        <option>Informatique de gestion</option>
-                        <option>Comptabilité</option>
-                        <option>Assistant de direction</option>
-                    </select>
+                    <h:selectOneMenu value="#{memberControl.former.major}" class="form-control" id="section" required="true">
+					        <f:selectItems value="#{memberControl.getSelectableMajors()}" />
+					</h:selectOneMenu>
                 </div>
             </div>
 
-
             <!--CONNECTION BUTTON-->
-            <button class="col-lg-5 mt-4 mb-4 btn text-light" style="background-color: #009790"><b>Valider</b></button>
+            <b><h:commandButton action="" class="col-lg-5 mt-4 mb-4 btn text-light" style="background-color: #009790" value="Valider"/></b>
         </h:form>
     </div>
     <div class="container-fluid col-lg-2">   </div>

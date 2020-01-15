@@ -54,23 +54,24 @@ public class MemberDAO {
 		Member m = findByUsername(username);
 		if (m instanceof FormerStudent) {
 			FormerStudent fs = (FormerStudent) m;
-			if(fs.isApproved() == approved) {
+			if (fs.isApproved() == approved) {
 				fs.setApproved(approved);
 				FormerStudent fsMerged = em.merge(fs);
 				return fs.isApproved() != fsMerged.isApproved();
 			} else {
-				throw new IllegalArgumentException("FormerStudent is already " + ((approved)?"approved":"unapproved"));
+				throw new IllegalArgumentException(
+						"FormerStudent is already " + ((approved) ? "approved" : "unapproved"));
 			}
-			
-		} 
-		
+
+		}
+
 		throw new IllegalArgumentException("Given username not related to a FormerStudent.");
 	}
 
-	public Member queryByPortrait(int idPortrait) {
+	public FormerStudent queryByPortrait(int idPortrait) {
 		Query query = em.createNamedQuery("FormerStudent.queryByPortrait");
 		query.setParameter("id", idPortrait);
-		List<Member> results = query.getResultList();
+		List<FormerStudent> results = query.getResultList();
 		if (results.size() > 0) {
 			return results.get(0);
 		}

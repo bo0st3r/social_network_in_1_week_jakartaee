@@ -6,13 +6,15 @@ import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
-import be.helha.aemt.enumeration.MajorEnum;
+import be.helha.aemt.enumeration.Major;
 
 @Entity
 @NamedQueries({
 	@NamedQuery(name="Offer.queryJob", query="SELECT o FROM JobOffer o ORDER BY o.postingDate ASC")
 })
 public class JobOffer extends Offer implements Serializable{
+	private static final long serialVersionUID = 6980329707198003072L;
+	
 	private String contractType;
 	private Double salary;
 	
@@ -23,7 +25,7 @@ public class JobOffer extends Offer implements Serializable{
 	
 
 	public JobOffer(String labelOffer, String companyName, String descriptionOffer, Date startingDate, Date postingDate,
-			boolean approved, MajorEnum major, String contractType, Double salary) {
+			boolean approved, Major major, String contractType, Double salary) {
 		super(labelOffer, companyName, descriptionOffer, startingDate, postingDate, approved, major);
 		this.contractType = contractType;
 		this.salary = salary;
@@ -32,7 +34,7 @@ public class JobOffer extends Offer implements Serializable{
 
 
 	public JobOffer(String labelOffer, String companyName, String descriptionOffer, Date startingDate, Date postingDate,
-			boolean approved, MajorEnum major, Address address, String contractType, Double salary) {
+			boolean approved, Major major, Address address, String contractType, Double salary) {
 		super(labelOffer, companyName, descriptionOffer, startingDate, postingDate, approved, major, address);
 		this.contractType = contractType;
 		this.salary = salary;
