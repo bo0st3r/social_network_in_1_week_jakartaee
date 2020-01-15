@@ -9,8 +9,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name="Portrait.queryAll", query="SELECT p FROM Portrait p"),
+	@NamedQuery(name="Portrait.queryById", query="SELECT p FROM Portrait p WHERE p.idPortrait = :id"),
+	@NamedQuery(name="Portrait.queryIdFromEquals", query="SELECT p .idPortrait FROM Portrait p WHERE p.label = :label")
+
+})
 public class Portrait implements Serializable {
 	private static final long serialVersionUID = 5400446706308443675L;
 	

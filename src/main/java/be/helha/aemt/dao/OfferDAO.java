@@ -14,30 +14,6 @@ import be.helha.aemt.entity.JobOffer;
 import be.helha.aemt.entity.Offer;
 import be.helha.aemt.helper.Config;
 
-@NamedQuery(name="Offer.queryAll", query="SELECT o FROM Offer o ORDER BY o.postingDate ASC") 
-@NamedQuery(name="Offer.queryType", query="SELECT o FROM Offer o WHERE o.dtype LIKE :type ORDER BY o.postingDate ASC")
-@NamedQuery(name="Offer.queryById", query="SELECT o FROM Offer o WHERE o.idOffer = :id")
-@NamedQuery(name="Offer.queryIdFromEquals", query="SELECT o.idOffer FROM Offer o WHERE o.labelOffer = :label AND o.companyName = :company AND o.postingDate = :date")
-
-@NamedQuery(name="Offer.updateOffer", query="UPDATE Offer o "
-		+ "SET o.labelOffer = :label AND o.companyName = :company AND o.descriptionOffer = :description AND o.startingDate = :sDate "
-		+ "AND o.postingDate = :pDate AND o.major = :major AND o.approved = :approved AND o.address = :address "
-		+ "WHERE o.idOffer = :id")
-
-@NamedQuery(name="Offer.updateJobOffer", query="UPDATE Offer o "
-		+ "SET o.labelOffer = :label AND o.companyName = :company AND o.descriptionOffer = :description AND o.startingDate = :sDate "
-		+ "AND o.postingDate = :pDate AND o.contractType = :contract AND o.salary = :salary "
-		+ "AND o.major = :major AND o.approved = :approved  AND o.address = :address "
-		+ "WHERE o.idOffer = :id")
-@NamedQuery(name="Offer.updateIntershipOffer", query="UPDATE Offer o "
-		+ "SET o.labelOffer = :label AND o.companyName = :company AND o.descriptionOffer = :description AND o.startingDate = :sDate "
-		+ "AND o.postingDate = :pDate AND o.major = :major AND o.approved = :approved  AND o.address = :address "
-		+ "AND o.duration = :duration AND o.thesisPossibility = :thesis "
-		+ "WHERE o.idOffer = :id")
-
-
-@NamedQuery(name="Offer.deleteById", query="DELETE FROM Offer o WHERE o.idOffer = :id")
-
 @Stateless
 @LocalBean
 public class OfferDAO {
@@ -50,8 +26,13 @@ public class OfferDAO {
 	}
 	
 	public List<Offer> queryType(String className){
-		Query query = em.createNamedQuery("Offer.queryType");
-		query.setParameter("type", className);
+		Query query = em.createNamedQuery("Offer.queryAll");
+		if(className == JobOffer.class.getSimpleName()) {
+			query = em.createNamedQuery("Offer.queryJob");
+		}else if(className == InternshipOffer.class.getSimpleName()) {
+			query = em.createNamedQuery("Offer.queryIntern");
+		}
+		
 		return query.getResultList();
 	}
 	
@@ -90,44 +71,40 @@ public class OfferDAO {
 	}
 	
 	public boolean update(Offer offer) {
-		Query query = em.createNamedQuery("Offer.updateOffer");
-		if(offer instanceof JobOffer) {
-			JobOffer job = (JobOffer)offer;
-			query = em.createNamedQuery("Offer.updateJobOffer");
-			query.setParameter("contract", job.getContractType());
-			query.setParameter("salary", job.getSalary());
-		}else if(offer instanceof InternshipOffer) {
-			InternshipOffer intern = (InternshipOffer)offer;
-			query = em.createNamedQuery("Offer.updateInternshipOffer");
-			query.setParameter("duration", intern.getDuration());
-			query.setParameter("thesis", intern.isThesisPossibility());
-		}
+		Offer updated = queryById(offer.getIdOffer());
 		
-		query.setParameter("label", offer.getLabelOffer());
-		query.setParameter("company", offer.getCompanyName());
-		query.setParameter("description", offer.getDescriptionOffer());
-		query.setParameter("pDate", offer.getPostingDate());
-		query.setParameter("sDate", offer.getStartingDate());
-		query.setParameter("major", offer.getMajor());
-		query.setParameter("approved", offer.isApproved());
-		
-		offer.setAddress(addressDao.post(offer.getAddress()));
-		query.setParameter("address", offer.getAddress().getId());
-		
-		query.setParameter("id", offer.getIdOffer());
-		if(query.executeUpdate() > 0) {
-			return true;
+		if(offer != null) {
+			if(offer instanceof JobOffer) {
+				JobOffer job = (JobOffer)updated;
+				job.setContractType(((JobOffer) offer).getContractType());
+				job.setSalary(((JobOffer) offer).getSalary());
+			}else if(offer instanceof InternshipOffer) {
+				InternshipOffer intern = (InternshipOffer)offer;
+				intern.setDuration(((InternshipOffer) offer).getDuration());
+				intern.setThesisPossibility(((InternshipOffer) offer).isThesisPossibility());
+			}
+			
+			updated.setLabelOffer(offer.getLabelOffer());
+			updated.setCompanyName(offer.getCompanyName());
+			updated.setDescriptionOffer(offer.getDescriptionOffer());
+			updated.setPostingDate(offer.getPostingDate());
+			updated.setStartingDate(offer.getStartingDate());
+			updated.setMajor(offer.getMajor());
+			updated.setApproved(offer.isApproved());
+			
+			offer.setAddress(addressDao.post(offer.getAddress()));
+			updated.setAddress(offer.getAddress());
+			
+			updated = em.merge(updated);
+			return offer.equals(updated);
 		}
 		return false;
 	}
 	
-	public boolean deleteById(int id) {
-		Query query = em.createNamedQuery("Offer.deleteById");
-		query.setParameter("id", id);
-		if(query.executeUpdate() > 0) {
-			return true;
-		}
-		return false;
+	public boolean delete(Offer offer) {
+		em.remove(offer);
+		
+		return queryIdFromEquals(offer) == -1;
 	}
 	
 }

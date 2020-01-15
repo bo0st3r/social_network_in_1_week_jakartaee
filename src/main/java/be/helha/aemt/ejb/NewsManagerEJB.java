@@ -33,7 +33,7 @@ public class NewsManagerEJB {
 		return dao.update(news);
 	}
 	
-	public boolean deleteById(int id) {
-		return dao.deleteById(id);
+	public boolean delete(News news) {
+		return dao.delete(news);
 	}
 }

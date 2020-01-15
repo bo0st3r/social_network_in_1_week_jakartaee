@@ -9,12 +9,17 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 import be.helha.aemt.enumeration.GroupName;
 import be.helha.aemt.enumeration.Major;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name="Member.queryByPortrait", query="SELECT m FROM FormerStudent m WHERE m.portrait.idPortrait = :id")
+})
 public class FormerStudent extends Member {
 	private int graduationYear;
 	private String phoneNumber;

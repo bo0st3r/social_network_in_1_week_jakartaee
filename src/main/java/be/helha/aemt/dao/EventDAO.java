@@ -14,17 +14,6 @@ import be.helha.aemt.entity.Address;
 import be.helha.aemt.entity.Event;
 import be.helha.aemt.helper.Config;
 
-@NamedQuery(name="Event.queryAll", query="SELECT e FROM Event e ORDER BY e.dateEvent ASC")
-@NamedQuery(name="Event.queryById", query="SELECT e FROM Event e WHERE e.idEvent = :id")
-@NamedQuery(name="Event.queryEquals", query="SELECT e FROM Event e WHERE e.labelEvent = :label AND e.dateEvent = :date")
-@NamedQuery(name="Event.queryIdFromEquals", query="SELECT e.idEvent FROM Event e WHERE e.labelEvent = :label AND e.dateEvent = :date")
-
-@NamedQuery(name="Event.update", query="UPDATE Event e "
-		+ "SET e.labelEvent = :label AND e.dateEvent = :date AND e.descriptionEvent = :description AND e.imageEvent = :image AND e.address = :address AND e.approved = :approved " 
-		+ "WHERE e.idEvent = :id")
-
-@NamedQuery(name="Event.deleteById", query="DELETE FROM Event e WHERE e.idEvent = :id")
-
 @Stateless
 @LocalBean
 public class EventDAO {
@@ -84,32 +73,29 @@ public class EventDAO {
 	}
 	
 	public boolean update(Event event) {
-		Query query = em.createNamedQuery("Event.update");
-		query.setParameter("label", event.getLabelEvent());
-		query.setParameter("date", event.getDateEvent());
-		query.setParameter("description", event.getDescriptionEvent());
-		query.setParameter("image", event.getImageEvent());
-		query.setParameter("approved", event.isApproved());
-		query.setParameter("id", event.getIdEvent());
-	
-		addressDao.post(event.getAddressEvent());
-		Address adress = addressDao.queryEquals(event.getAddressEvent());
-		
-		query.setParameter("address", adress.getId());
-		
-		if(query.executeUpdate() > 0) {
-			return true;
+		Event updated = queryById(event.getIdEvent());
+		if(updated != null) {
+			updated.setLabelEvent(event.getLabelEvent());
+			updated.setDateEvent(event.getDateEvent());
+			updated.setDescriptionEvent(event.getDescriptionEvent());
+			updated.setImageEvent(event.getImageEvent());
+			updated.setApproved(event.isApproved());	
+			
+			addressDao.post(event.getAddressEvent());
+			Address address = addressDao.queryEquals(event.getAddressEvent());
+			
+			updated.setAddressEvent(address);
+			updated = em.merge(updated);
+			
+			return event.equals(updated);
 		}
 		return false;
 	}
 	
-	public boolean deleteById(int id) {
-		Query query = em.createNamedQuery("Event.deleteById");
-		query.setParameter("id", id);
-		if(query.executeUpdate() > 0) {
-			return true;
-		}
-		return false;
+	public boolean delete(Event event) {
+		em.remove(event);
+		
+		return queryIdFromEquals(event) == -1;
 	}
 
 }

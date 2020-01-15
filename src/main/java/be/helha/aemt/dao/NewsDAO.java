@@ -12,18 +12,6 @@ import javax.persistence.Query;
 import be.helha.aemt.entity.News;
 import be.helha.aemt.helper.Config;
 
-@NamedQuery(name="News.queryAll", query="SELECT n FROM News n ORDER BY n.postingDate ASC")
-@NamedQuery(name="News.queryAmount", query="SELECT n FROM News n ORDER BY n.postingDate ASC LIMIT :amount")
-@NamedQuery(name="News.queryById", query="SELECT n FROM News n WHERE n.idNews = :id")
-@NamedQuery(name="News.queryIdFromEquals", query="SELECT n.idNews FROM News n "
-		+ "WHERE n.name = :name AND n.postingDate = :date")
-
-@NamedQuery(name="News.update", query="UPDATE News n "
-		+ "SET n.name = :name AND n.description = :description AND n.postingDate = :date "
-		+ "WHERE n.idNews = :id")
-
-@NamedQuery(name="News.deleteById", query="DELETE FROM News n WHERE n.idNews = :id")
-
 @Stateless
 @LocalBean
 public class NewsDAO {
@@ -72,24 +60,24 @@ public class NewsDAO {
 	}
 	
 	public boolean update(News news) {
-		Query query = em.createNamedQuery("News.update");
-		query.setParameter("name", news.getName());
-		query.setParameter("description", news.getDescription());
-		query.setParameter("postingDate", news.getPostingDate());
-		query.setParameter("id", news.getIdNews());
-		
-		if(query.executeUpdate() > 0) {
-			return true;
+		News updated = queryById(news.getIdNews());
+		if(updated != null) {
+			updated.setName(news.getName());
+			updated.setDescription(news.getDescription());
+			updated.setPostingDate(news.getPostingDate());
+			updated.setPicture(news.getPicture());
+			
+			updated = em.merge(updated);
+			
+			return news.equals(updated);
 		}
+		
 		return false;
 	}
 	
-	public boolean deleteById(int id) {
-		Query query = em.createNamedQuery("News.deleteById");
-		query.setParameter("id", id);
-		if(query.executeUpdate() > 0) {
-			return true;
-		}
-		return false;
+	public boolean delete(News news) {
+		em.remove(news);
+		
+		return queryIdFromEquals(news) == -1;
 	}
 }

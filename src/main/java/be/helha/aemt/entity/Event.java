@@ -13,8 +13,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries({
+@NamedQuery(name="Event.queryAll", query="SELECT e FROM Event e ORDER BY e.dateEvent ASC"),
+@NamedQuery(name="Event.queryById", query="SELECT e FROM Event e WHERE e.idEvent = :id"),
+@NamedQuery(name="Event.queryEquals", query="SELECT e FROM Event e WHERE e.labelEvent = :label AND e.dateEvent = :date"),
+@NamedQuery(name="Event.queryIdFromEquals", query="SELECT e.idEvent FROM Event e WHERE e.labelEvent = :label AND e.dateEvent = :date")
+})
+
 public class Event implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

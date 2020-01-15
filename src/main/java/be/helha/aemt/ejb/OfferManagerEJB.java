@@ -43,7 +43,7 @@ public class OfferManagerEJB {
 		return dao.update(offer);
 	}
 	
-	public boolean deleteById(int id) {
-		return dao.deleteById(id);
+	public boolean delete(Offer offer) {
+		return dao.delete(offer);
 	}
 }

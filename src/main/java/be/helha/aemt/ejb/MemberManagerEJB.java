@@ -6,6 +6,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import be.helha.aemt.dao.MemberDAO;
+import be.helha.aemt.entity.FormerStudent;
 import be.helha.aemt.entity.Member;
 
 @Stateless
@@ -26,12 +27,12 @@ public class MemberManagerEJB{
 		return dao.findByUsername(username);
 	}
 	
-	public boolean approveFormer(int id) {
-		return dao.approveFormer(id);
+	public boolean approveFormer(FormerStudent formerStudent) {
+		return dao.approveFormer(formerStudent);
 	}
 	
-	public Member queryByPortrait(int idPortrait) {
-		return dao .queryByPortrait(idPortrait);
+	public FormerStudent queryByPortrait(int idPortrait) {
+		return dao.queryByPortrait(idPortrait);
 	}
 
 }
