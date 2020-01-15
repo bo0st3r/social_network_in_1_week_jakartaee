@@ -37,7 +37,7 @@ public class MemberManagerEJB {
 	}
 	
 	public FormerStudent queryByPortrait(int idPortrait) {
-		return dao.queryByPortrait(idPortrait);
+		return (FormerStudent) dao.queryByPortrait(idPortrait);
 	}
 
 }
