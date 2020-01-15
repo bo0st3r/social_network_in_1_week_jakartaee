@@ -17,7 +17,7 @@ public class EventManagerEJB {
 		return dao.queryAll();
 	}
 	
-	public Event quesryById(int id) {
+	public Event queryById(int id) {
 		return dao.queryById(id);
 	}
 	
@@ -37,7 +37,7 @@ public class EventManagerEJB {
 		return dao.update(event);
 	}
 	
-	public boolean deleteById(Event event) {
+	public boolean delete(Event event) {
 		return dao.delete(event);
 	}
 }

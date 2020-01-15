@@ -25,6 +25,10 @@ public class AddressManagerEJB {
 		return dao.queryEquals(address);
 	}
 	
+	public int queryIdFromEquals(Address address) {
+		return dao.queryIdFromEquals(address);
+	}
+	
 	public Address post(Address address) {
 		return dao.post(address);
 	}
