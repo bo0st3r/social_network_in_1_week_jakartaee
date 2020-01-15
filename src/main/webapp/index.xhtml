@@ -43,6 +43,8 @@
                 <div class="dropdown-menu" aria-labelledby="navStage">
                     <a class="dropdown-item text-dark" href="internshipOfferList.xhtml">Consulter les offres</a>
                     <a class="dropdown-item text-dark" href="addInternshipOffer.xhtml">Ajouter une offre</a>
+                    <a class="dropdown-item text-dark" href="#">Gérer les offres</a>
+                    
                 </div>
             </li>
             <!--OFFRE EMPLOI-->
@@ -53,6 +55,8 @@
                 <div class="dropdown-menu" aria-labelledby="navEmploi">
                     <a class="dropdown-item text-dark" href="jobOfferList.xhtml">Consulter les offres</a>
                     <a class="dropdown-item text-dark" href="addJobOffer.xhtml">Ajouter une offre</a>
+                    <a class="dropdown-item text-dark" href="#">Gérer les offres</a>
+
                 </div>
             </li>
             <li class="nav-item">
@@ -63,6 +67,19 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link text-light" href="#">Associations</a>
+            </li>
+            <!--ADMIN-->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-light" href="#" id="navEmploi" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Admin
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navEmploi">
+                    <a class="dropdown-item text-dark" href="adminFormerValid.xhtml">Valider les inscriptions (NOMBRE)</a>
+                    <a class="dropdown-item text-dark" href="adminJobOfferValid.xhtml">Valider les offres d'emploi (NOMBRE)</a>
+                    <a class="dropdown-item text-dark" href="adminInternshipOfferValid.xhtml">Valider les offres de stage (NOMBRE)</a>
+					<a class="dropdown-item text-dark" href="portraitsList.xhtml">Gérer les portraits</a>
+                
+                </div>
             </li>
         </ul>
 
@@ -85,14 +102,13 @@
 <!--div de gauche-->
 <div class="container-fluid row">
     <div class="col-lg-9 col-sm-12">
-    <!--EVENEMENTS-->
+            <!--NEWS-->
         <div class="card mb-3 p-2 mt-2" style="background-color: #eee">
             <div class="row no-gutters">
                 <div class="col-8">
                     <div class="card-body">
-                        <h5 class="card-title">Evenement</h5>
-                        <p class="card-text">Détail de l'évenement </p>
-                        <p class="card-text"><small class="text-muted">Save the date</small></p>
+                        <h5 class="card-title">News</h5>
+                        <p class="card-text">Détail de news </p>
                     </div>
                 </div>
                 <div class="col-4">
@@ -100,6 +116,8 @@
                 </div>
             </div>
         </div>
+   
+        
         <!--PORTRAIT-->
         <div class="card mb-3 p-2" style="background-color: #eee">
             <div class="row no-gutters">
@@ -116,6 +134,22 @@
 
             </div>
         </div>
+         <!--EVENEMENTS-->
+        <div class="card mb-3 p-2 mt-2" style="background-color: #eee">
+            <div class="row no-gutters">
+                <div class="col-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Evenement</h5>
+                        <p class="card-text">Détail de l'évenement </p>
+                        <p class="card-text"><small class="text-muted">Save the date</small></p>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <img src="assets/Événements.jpg" class="card-img" alt="..."/>
+                </div>
+            </div>
+        </div>
+
     </div>
     <!--div de droite-->
     <div class="col-lg-3 col-md-12 col-sm-12 text-center mt-4">

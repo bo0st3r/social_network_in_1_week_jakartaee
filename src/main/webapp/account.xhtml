@@ -85,9 +85,10 @@
 <div class="container-fluid col-lg-12 mb-5 " >
     <div class="container-fluid col-lg-2">   </div>
     <div class="container-fluid border col-lg-8 col-sm-12 text-center mt-5 p-2" style="background-color: #eee">
-        <form>
+        <form class="border-bottom border-dark">
+        <h4>Informations personnelles</h4>
             <div class="form-row text-left">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-3">
                     <!--NOM-->
                     <label>Nom </label>
                     <label>Prenom :</label>
@@ -106,8 +107,42 @@
                     <p>SECTION</p>
                 </div>
             </div>
+            <!--TEL-->
             <div class="form-row text-left">
+                <div class="form-group col-md-3">
+                    <!--TEL-->
+                    <label for="tel">Numéro de téléphone</label>
+                </div>
                 <div class="form-group col-md-4">
+                    <!--AJOUTER TEL-->
+                    <input type="text" class="form-control" id="tel"/>
+                </div>
+            </div>
+            <!--ADRESSE-->
+            <div class="form-row text-left">
+                <div class="form-group col-md-3">
+                    <label class="align-middle">Adresse</label>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="rue">Rue</label>
+                    <input type="text" class="form-control" id="rue"/>
+                </div>
+                <div class="form-group col-md-1">
+                    <label for="num">N°</label>
+                    <input type="text" class="form-control" id="num"/>
+                </div>
+                <div class="form-group col-md-1">
+                    <label for="cp">CP</label>
+                    <input type="text" class="form-control" id="cp"/>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="ville">Ville</label>
+                    <input type="text" class="form-control" id="ville"/>
+                </div>
+            </div>
+            <!-- FIN ADRESSE -->
+            <div class="form-row text-left">
+                <div class="form-group col-md-3">
                     <!--MAIL-->
                     <label>Mail</label>
                     <p class="mt-1">MAIL@MAIL.COM</p>
@@ -125,7 +160,7 @@
             </div>
 
             <div class="form-row text-left">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-3">
                     <!--MOT DE PASSE-->
                     <label>Mot de passe </label>
                     <p> *******</p>
@@ -142,7 +177,7 @@
                 </div>
             </div>
             <div class="form-row text-left">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-3">
                     <!--PHOTO-->
                     <label>Ajouter une photo de profil</label>
                 </div>
@@ -156,6 +191,28 @@
             <!--CONNECTION BUTTON-->
             <button type="submit" class="col-lg-5 mt-4 mb-4 btn text-light text-center" style="background-color: #009790"><b>Valider</b></button>
         </form>
+        
+        <h4 class="mt-3">Liste des offres postées</h4>
+        <!-- offre-->
+        
+        <div class="row">
+        <div class="col-lg-2"></div>
+	        <div class="card border-dark p-2 col-8">
+	            <div class="row p-1">
+	                 <div class="card-header col-12">Section</div>
+	            </div>
+	            <div class="card-body text-dark col-11">
+	                <h5 class="card-title">Nom de l'offre</h5>
+	                <p class="card-text">Détail offre</p>
+	            </div>
+	        </div>
+	        <!-- A centrer verticalement -->
+	        <div class="col-lg-2 align-content-center">
+				<button class="btn text-light " style="background-color: #009790">Modifier</button>
+			</div>
+		</div>
+        
+        <!--fin offre-->
 
     </div>
     <div class="container-fluid col-lg-2">   </div>
