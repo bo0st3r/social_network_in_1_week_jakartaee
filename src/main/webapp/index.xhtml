@@ -12,31 +12,81 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
 </head>
-<h:body>
+<h:body style="background-color: #f4F4F4">
 <!-- COULEUR HELHa 009790 -->
 <!-- Header du HOME-->
-<div class="container-fluid">
+<div class="container-fluid" style="background-color: white;">
     <div id="homeHeader" class="row">
         <div class="container-fluid col-lg-4"></div>
         <img src="assets/LOGO_HELHa_NEW.jpg"  alt="Responsive image" class="img-fluid col-lg-4 col-sm-8 mt-2 "/>
-        <div class="container-fluid col-lg-4">
-            <div class="mt-3 text-lg-right offset-8">
-                <div class="row text-lg-right">
-                    <a href="signUp.xhtml">Créer un compte</a>
-                </div>
-                <div class="row text-lg-right">
-                    <a href="login.xhtml">Me connecter</a>
-                </div>
-            </div>
-        </div>
+         <div class="container-fluid col-lg-4"></div>
     </div>
 </div>
+
+<!--NAVBAR OK-->
+<nav class="navbar navbar-expand-lg text-light nav-fill" style="background-color: #009790">
+    <a class="navbar-brand text-light" href="index.xhtml">Accueil</a>
+    <button class="navbar-toggler text-light" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon text-light"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <!--ANNUAIRE-->
+            <li class="nav-item active">
+                <a class="nav-link text-light" href="glossaryFormer.xhtml">Annuaire Alumni <span class="sr-only">(current)</span></a>
+            </li>
+            <!--OFFRE STAGES-->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-light" href="#" id="navStage" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Offres de stages
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navStage">
+                    <a class="dropdown-item text-dark" href="internshipOfferList.xhtml">Consulter les offres</a>
+                    <a class="dropdown-item text-dark" href="addInternshipOffer.xhtml">Ajouter une offre</a>
+                </div>
+            </li>
+            <!--OFFRE EMPLOI-->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-light" href="#" id="navEmploi" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Offres d'emplois
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navEmploi">
+                    <a class="dropdown-item text-dark" href="jobOfferList.xhtml">Consulter les offres</a>
+                    <a class="dropdown-item text-dark" href="addJobOffer.xhtml">Ajouter une offre</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="https://www.helha.be/formation-continue/">Formation continue</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="#">Annonces</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="#">Associations</a>
+            </li>
+        </ul>
+
+    </div>
+    <!--COMPTE-->
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-light" href="#" id="navCompte" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Compte
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navCompte">
+                    <a class="dropdown-item text-dark" href="login.xhtml">Me connecter</a>
+                    <a class="dropdown-item text-dark" href="index.xhtml">Me déconnecter</a>
+                    <a class="dropdown-item text-dark" href="account.xhtml">Mon compte</a>
+                    <a class="dropdown-item text-dark" href="signUp.xhtml">Créer un compte</a>
+                </div>
+            </div>
+</nav>
+<!--FIN NAVBAR-->
 
 <!--div de gauche-->
 <div class="container-fluid row">
     <div class="col-lg-9 col-sm-12">
     <!--EVENEMENTS-->
-        <div class="card mb-3">
+        <div class="card mb-3 p-2 mt-2" style="background-color: #eee">
             <div class="row no-gutters">
                 <div class="col-8">
                     <div class="card-body">
@@ -46,15 +96,15 @@
                     </div>
                 </div>
                 <div class="col-4">
-                    <img src="assets/Événements.jpg" class="card-img mt-4 mr-4" alt="..."/>
+                    <img src="assets/Événements.jpg" class="card-img" alt="..."/>
                 </div>
             </div>
         </div>
         <!--PORTRAIT-->
-        <div class="card mb-3">
+        <div class="card mb-3 p-2" style="background-color: #eee">
             <div class="row no-gutters">
                 <div class="col-3">
-                    <img src="assets/portrait-anonyme.png" class="card-img mt-4 mr-4" alt="..."/>
+                    <img src="assets/portrait-anonyme.png" class="card-img" alt="..."/>
                 </div>
                 <div class="col-8">
                     <div class="card-body">
@@ -71,13 +121,19 @@
     <div class="col-lg-3 col-md-12 col-sm-12 text-center mt-4">
         <h6>Vistez notre site:</h6>
         <a href="https://www.helha.be/"><img src="assets/LOGO_HELHa_NEW.jpg" alt="Responsive image" class="img-fluid col-lg-10 col-sm-7 m-2" /></a>
-        <h6>Retrouvez nous sur les réseaux sociaux</h6>
-        <a href="https://www.facebook.com/helhaeconomique/"><img src="assets/logoFacebook.png" alt="Responsive image" class="img-fluid m-2 col-lg-5 col-sm-3" /></a>
-        <a href="https://www.instagram.com/helhabe/?hl=fr"><img src="assets/logoInstagram.png" alt="Responsive image" class="img-fluid m-2 col-lg-5 col-sm-3" /></a>
-        <a href="https://www.linkedin.com/school/helha/?originalSubdomain=fr"><img src="assets/logoLinkedin.jpg" alt="Responsive image" class="img-fluid m-2 col-lg-5 col-sm-3" /></a>
+        <h6 class="mt-3">Retrouvez nous sur les réseaux sociaux</h6>
+        <a href="https://www.facebook.com/helhaeconomique/"><img src="assets/facebook.png" alt="Responsive image" class="img-fluid m-2 col-lg-3 col-sm-3" /></a>
+        <a href="https://www.instagram.com/helhabe/?hl=fr"><img src="assets/instagram.png" alt="Responsive image" class="img-fluid m-2 col-lg-3 col-sm-3" /></a>
+        <a href="https://www.linkedin.com/school/helha/?originalSubdomain=fr"><img src="assets/linkedin.png" alt="Responsive image" class="img-fluid m-2 col-lg-3 col-sm-3" /></a>
     </div>
 </div>
-<footer style="background-color: #009790">
-</footer>
+<!--FOOTER WITH A PROPOS-->
+<div class="fixed-bottom text-right" style="max-height: 150px;min-height: 30px; background-color:#009790">
+    <footer class="fixed-bottom text-right" >
+        <a class="text-light p-3" href="about.xhtml">A propos</a>
+    </footer>
+</div>
+<!--FIN FOOTER-->
+
 </h:body>
 </html>

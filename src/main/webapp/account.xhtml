@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:h="http://www.w3.org/1999/html">
+<html xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<!-- <html lang="fr">-->
 <head>
-    <title>Connection</title>
-    <meta http-equiv="  Content-Type" content="text/html; charset=UTF-8"></meta>
+    <meta charset="UTF-8"/>
+    <title>index</title>
+    	<meta http-equiv="  Content-Type" content="text/html; charset=UTF-8" />
+    
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -76,39 +80,95 @@
             </div>
 </nav>
 <!--FIN NAVBAR-->
-<div class="container-fluid col-lg-12 ">
-    <div class="container-fluid col-lg-3">   </div>
-    <div class="container-fluid border col-lg-6 col-sm-12 text-center mt-5 font-weight-bold">
-        <form method="POST" action="j_security_check">
-            <!--PSEUDO-->
-            <label for="j_username" class="col-lg-12 p-2">Nom d'utilisateur</label>
-            <input type="text" id="user" class="col-lg-8" name="j_username"/>
-            <!--PASSWORD-->
-            <label for="j_password" class="col-lg-12 p-2">Mot de passe</label>
-            <input type="password" id="Password" class="col-lg-8" name="j_password"/>
+<h2 class="text-center pt-2">Mon compte</h2>
+<!--CADRE-->
+<div class="container-fluid col-lg-12 mb-5 " >
+    <div class="container-fluid col-lg-2">   </div>
+    <div class="container-fluid border col-lg-8 col-sm-12 text-center mt-5 p-2" style="background-color: #eee">
+        <form>
+            <div class="form-row text-left">
+                <div class="form-group col-md-4">
+                    <!--NOM-->
+                    <label>Nom </label>
+                    <label>Prenom :</label>
+                    <p>Nom d'utilisateur</p>
+                    <p>Date de naissance</p>
+                    <p>Diplôme obtenu en</p>
+                    <p>section :</p>
+                </div>
+                <div class="form-group col-md-4">
+                    <!--NOM-->
+                    <label>NOM </label>
+                    <label>PRENOM</label>
+                    <p>PSEUDO</p>
+                    <p>DATE DE NAISSANCE</p>
+                    <p>ANNEE</p>
+                    <p>SECTION</p>
+                </div>
+            </div>
+            <div class="form-row text-left">
+                <div class="form-group col-md-4">
+                    <!--MAIL-->
+                    <label>Mail</label>
+                    <p class="mt-1">MAIL@MAIL.COM</p>
+                </div>
+                <div class="form-group col-md-4">
+                    <!--CONFIRMER MAIL-->
+                    <label for="mailConfirm">Nouveau mail</label>
+                    <input type="email" class="form-control" id="mailConfirm"/>
+                </div>
+                <div class="form-group col-md-4">
+                    <!--CONFIRMER MAIL-->
+                    <label for="mailConfirm">Confirmer le nouveau mail</label>
+                    <input type="email" class="form-control" id="mailConfirm"/>
+                </div>
+            </div>
+
+            <div class="form-row text-left">
+                <div class="form-group col-md-4">
+                    <!--MOT DE PASSE-->
+                    <label>Mot de passe </label>
+                    <p> *******</p>
+                </div>
+                <div class="form-group col-md-4">
+                    <!--MOT DE PASSE-->
+                    <label for="motDePasse">Changer le mot de passe</label>
+                    <input type="password" class="form-control" id="motDePasse"/>
+                </div>
+                <div class="form-group col-md-4">
+                    <!--CONFIRM MOT DE PASSE-->
+                    <label for="motDePasseConfirm">Confirmer le nouveau mot de passe</label>
+                    <input type="password" class="form-control" id="motDePasseConfirm"/>
+                </div>
+            </div>
+            <div class="form-row text-left">
+                <div class="form-group col-md-4">
+                    <!--PHOTO-->
+                    <label>Ajouter une photo de profil</label>
+                </div>
+                <div class="form-group col-md-4 p-1">
+                    <!--PHOTO-->
+                    <input type="file" class="form-control" id="photo"/>
+                </div>
+            </div>
+
+
             <!--CONNECTION BUTTON-->
-            
-<!--             <button type="submit" class="col-lg-5 mt-4 mb-4 btn text-light" style="background-color: #009790"><b>Se connecter</b></button> -->
-            <input type="submit" class="col-lg-5 mt-4 mb-4 btn text-light" style="background-color: #009790" value="Se connecter"/>
+            <button type="submit" class="col-lg-5 mt-4 mb-4 btn text-light text-center" style="background-color: #009790"><b>Valider</b></button>
         </form>
-    </div>
-    <div class="col-lg-6 col-sm-12 text-center offset-3 font-italic mt-5">
-        <p>Retrouvez nous sur les réseaux sociaux </p>
-        <a href="https://www.facebook.com/helhaeconomique/"><img src="assets/facebook.png" alt="Responsive image" class="img-fluid m-2 col-lg-2 col-sm-1 " /></a>
-        <a href="https://www.instagram.com/helhabe/?hl=fr"><img src="assets/instagram.png" alt="Responsive image" class="img-fluid m-2 col-lg-2 col-sm-1" /></a>
-        <a href="https://www.linkedin.com/school/helha/?originalSubdomain=fr"><img src="assets/linkedin.png" alt="Responsive image" class="img-fluid m-2 col-lg-2 col-sm-1" /></a>
 
     </div>
-    <div class="container-fluid col-lg-3"></div>
-
-
+    <div class="container-fluid col-lg-2">   </div>
 </div>
+<!--FIN CADRE-->
+
 <!--FOOTER WITH A PROPOS-->
-<div class="fixed-bottom text-right" style="max-height: 150px;min-height: 30px; background-color:#009790">
+<div class="fixed-bottom text-right mt-5" style="max-height: 150px;min-height: 30px; background-color:#009790">
     <footer class="fixed-bottom text-right" >
         <a class="text-light p-3" href="about.xhtml">A propos</a>
     </footer>
 </div>
 <!--FIN FOOTER-->
+
 </h:body>
 </html>
