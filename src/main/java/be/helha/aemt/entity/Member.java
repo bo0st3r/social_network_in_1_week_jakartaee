@@ -29,7 +29,7 @@ import be.helha.aemt.enumeration.GroupName;
 @NamedQueries({
 	@NamedQuery(name="Member.queryAll", query="SELECT m FROM Member m"),
 	@NamedQuery(name="Member.queryByUsername", query="SELECT m FROM Member m WHERE m.username = :username"),
-	
+	@NamedQuery(name="Member.queryIdByUsername", query="SELECT m.idMember FROM Member m WHERE m.username = :username"),
 })
 public class Member implements Serializable{
 	
