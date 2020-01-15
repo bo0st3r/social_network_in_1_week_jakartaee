@@ -2,7 +2,7 @@
 <html xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:h="http://xmlns.jcp.org/jsf/html">
 <head>
     <meta charset="UTF-8"/>
-    <title>Ajout offres</title>
+    <title>Valider offres</title>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -77,79 +77,31 @@
             </div>
 </nav>
 <!--FIN NAVBAR-->
-<h2 class="text-center pt-2">Ajouter une offre d'emploi</h2>
+<h2 class="text-center pt-2">Admin - Offres de stage</h2>
 <!--CADRE-->
 <div class="container-fluid col-lg-12 mb-5 ">
     <div class="container-fluid col-lg-2">   </div>
-    <div class="container-fluid border col-lg-8 col-sm-12 text-center mt-5 p-2" style="background-color: #eee">
-        <!--FORMULAIRE AJOUT-->
-            <h:form>
-                <!--TITRE OFFRE-->
-                <label class="col-lg-12 p-2" for="nomOffre">Titre de l'offre de stage</label>
-                <input id="nomOffre" class="col-lg-8"/>
-                
-				<!--NOM ENTREPRISE-->
-				<label class="col-lg-12 p-2" for="nomEntreprise">Entreprise</label>
-				<input type="text" id="nomEntreprise" class="col-lg-8"/>
-		           
-                <!--ADRESSE-->
-                <div class="form-row ">
+    <div class="container-fluid border col-lg-8 col-sm-12 mt-5 p-2" style="background-color: #eee">
+        <h5>Liste des offres de stage à valider</h5>
+        <!-- liste offre-->
+        <div class="card border-dark p-2 col-10 offset-1">
 
-                    <div class="form-group col-3 offset-2">
-                        <!--Ville-->
-                        <label class="col-lg-12 p-2" for="villeOffre">Ville</label>
-                        <input type="text" class="col-12" id="villeOffre"/>
-                    </div>
-                    <div class="form-group col-3">
-                        <!--RUE-->
-                        <label class="col-lg-12 p-2" for="rue">Rue</label>
-                        <input type="text" id="rue" class="col-lg-12"/>
-                    </div>
-                    <div class="form-group col-1">
-                        <!--NUMERO-->
-                        <label class="col-lg-12 p-2" for="numero">n°</label>
-                        <input type="text" id="numero" class="col-lg-12"/>
-                    </div>
-                    <div class="form-group col-1 ">
-                        <!--CP-->
-                        <label class="col-lg-12 p-2" for="codePostal">CP</label>
-                        <input type="text" class="col-12" id="codePostal"/>
-                    </div>
-                </div>
-                <!--FIN ADRESSE-->
-                <div class="form-row ">
-                    <div class="form-group col-3 offset-2">
-                        <!--DATE DEBUT-->
-                        <label class="col-lg-12 p-2" for="date">Date de début</label>
-                        <input type="date" id="date" class="col-lg-12"/>
-                    </div>
-                    <div class="form-group col-4 ">
-                        <!--DUREE-->
-                        <label class="col-lg-12 p-2" for="duree">Durée</label>
-                        <input type="text" id="duree" class="col-lg-12"/>
-                    </div>
-                        <div class="form-group col-1 ">
-                        <!--TFE?-->
-                        <label class="col-lg-12 p-2" for="tfe">TFE?</label>
-                        <input type="checkbox" id="tfe" class="col-lg-12"/>
-                    </div>
-                </div>
-                <!--SECTION -->
-                <label class="col-lg-12 p-2" for="section">Section concernée</label>
-                <select id="section" class="col-lg-8">
-                    <option>Informatique de Gestion</option>
-                    <option>Assistant de direction</option>
-                    <option>Comptabilité</option>
-                </select>
-
-                <!--DETAIL OFFRE-->
-                <label class="col-lg-12 p-2" for="descripton">Description de l'offre</label>
-                <textarea type="text" id="descripton" class="col-lg-8"></textarea>
-                <!--VALIDER L'OFFRE-->
-                <button class="btn col-lg-5 text-light mt-2" style="background-color: #009790">Valider</button>
-            </h:form>
-
-        <!--FIN FORMULAIRE AJOUT-->
+            <div class="card-header">Nom de l'offre</div>
+            <div class="card-body text-dark">
+                <h6 class="card-title">Section</h6>
+                <p class="card-text">Détail offre</p>
+            </div>
+            <div class="row">
+                <div class="col-3 "></div>
+                <!--BOUTON VALIDER-->
+                <button class="text-center col-2 btn btn-success">Valider</button>
+                <div class="col-2"></div>
+                <!--BOUTON REFUSER-->
+                <button class="text-center col-2 btn btn-danger">Refuser</button>
+                <div class="col-3 "></div>
+            </div>
+        </div>
+        <!--fin offre-->
 
     </div>
     <div class="container-fluid col-lg-2">   </div>
