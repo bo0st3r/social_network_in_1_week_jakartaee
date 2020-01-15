@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.Query;
 
 import be.helha.aemt.dao.MemberDAO;
+import be.helha.aemt.entity.FormerStudent;
 import be.helha.aemt.entity.Member;
 
 @Stateless
@@ -35,8 +36,8 @@ public class MemberManagerEJB {
 		return dao.updateFormerApproved(username, approved);
 	}
 	
-	public Member queryByPortrait(int idPortrait) {
-		return dao .queryByPortrait(idPortrait);
+	public FormerStudent queryByPortrait(int idPortrait) {
+		return dao.queryByPortrait(idPortrait);
 	}
 
 }

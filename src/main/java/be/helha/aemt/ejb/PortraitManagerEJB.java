@@ -33,7 +33,7 @@ public class PortraitManagerEJB {
 		return dao.update(portrait);
 	}
 	
-	public boolean deleteById(int id) {
-		return dao.deleteById(id);
+	public boolean delete(Portrait portrait) {
+		return dao.delete(portrait);
 	}
 }

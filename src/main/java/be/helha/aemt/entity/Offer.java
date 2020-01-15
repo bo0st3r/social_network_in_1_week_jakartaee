@@ -8,10 +8,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 import be.helha.aemt.enumeration.MajorEnum;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name="Offer.queryAll", query="SELECT o FROM Offer o ORDER BY o.postingDate ASC"), 
+	@NamedQuery(name="Offer.queryById", query="SELECT o FROM Offer o WHERE o.idOffer = :id"),
+	@NamedQuery(name="Offer.queryIdFromEquals", query="SELECT o.idOffer FROM Offer o WHERE o.labelOffer = :label AND o.companyName = :company AND o.postingDate = :date")
+
+})
 public class Offer implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

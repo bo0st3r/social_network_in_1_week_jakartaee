@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:h="http://www.w3.org/1999/html">
+<html xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<!-- <html lang="fr">-->
 <head>
-    <title>Connection</title>
-    <meta http-equiv="  Content-Type" content="text/html; charset=UTF-8"></meta>
+    <meta charset="UTF-8"/>
+    <title>index</title>
+    	<meta http-equiv="  Content-Type" content="text/html; charset=UTF-8" />
+    
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
 </head>
 <h:body style="background-color: #f4F4F4">
-<!-- Header-->
+<!-- COULEUR HELHa 009790 -->
+<!-- Header du HOME-->
 <div class="container-fluid" style="background-color: white;">
     <div id="homeHeader" class="row">
         <div class="container-fluid col-lg-4"></div>
@@ -17,7 +22,7 @@
          <div class="container-fluid col-lg-4"></div>
     </div>
 </div>
-<!-- FIN header -->
+
 <!--NAVBAR OK-->
 <nav class="navbar navbar-expand-lg text-light nav-fill" style="background-color: #009790">
     <a class="navbar-brand text-light" href="index.xhtml">Accueil</a>
@@ -76,32 +81,16 @@
             </div>
 </nav>
 <!--FIN NAVBAR-->
-<div class="container-fluid col-lg-12 ">
-    <div class="container-fluid col-lg-3">   </div>
-    <div class="container-fluid border col-lg-6 col-sm-12 text-center mt-5 font-weight-bold">
-        <form method="POST" action="j_security_check">
-            <!--PSEUDO-->
-            <label for="j_username" class="col-lg-12 p-2">Nom d'utilisateur</label>
-            <input type="text" id="user" class="col-lg-8" name="j_username"/>
-            <!--PASSWORD-->
-            <label for="j_password" class="col-lg-12 p-2">Mot de passe</label>
-            <input type="password" id="Password" class="col-lg-8" name="j_password"/>
-            <!--CONNECTION BUTTON-->
-            
-<!--             <button type="submit" class="col-lg-5 mt-4 mb-4 btn text-light" style="background-color: #009790"><b>Se connecter</b></button> -->
-            <input type="submit" class="col-lg-5 mt-4 mb-4 btn text-light" style="background-color: #009790" value="Se connecter"/>
-        </form>
-    </div>
-    <div class="col-lg-6 col-sm-12 text-center offset-3 font-italic mt-5">
-        <p>Retrouvez nous sur les réseaux sociaux </p>
-        <a href="https://www.facebook.com/helhaeconomique/"><img src="assets/facebook.png" alt="Responsive image" class="img-fluid m-2 col-lg-2 col-sm-1 " /></a>
-        <a href="https://www.instagram.com/helhabe/?hl=fr"><img src="assets/instagram.png" alt="Responsive image" class="img-fluid m-2 col-lg-2 col-sm-1" /></a>
-        <a href="https://www.linkedin.com/school/helha/?originalSubdomain=fr"><img src="assets/linkedin.png" alt="Responsive image" class="img-fluid m-2 col-lg-2 col-sm-1" /></a>
-
-    </div>
-    <div class="container-fluid col-lg-3"></div>
-
-
+<div class="container-fluid col-lg-12 mb-5 " >
+    <div class="container-fluid col-lg-2">   </div>
+    <div class="container-fluid border col-lg-8 col-sm-12 text-center mt-5 p-2" style="background-color: #eee">
+    	<p>Site réalisé par : </p>
+    	<p>Decorte Bastien</p>
+    	<p>Draux Elsa</p> 
+    	<p>Roekens Robin</p> 
+    	étudiants en informatique de gestion à la HELHa Campus Mons
+    	dans le cadre du cours d' Applications entreprise multi tiers de Mr. V. Altares.
+   	</div>
 </div>
 <!--FOOTER WITH A PROPOS-->
 <div class="fixed-bottom text-right" style="max-height: 150px;min-height: 30px; background-color:#009790">

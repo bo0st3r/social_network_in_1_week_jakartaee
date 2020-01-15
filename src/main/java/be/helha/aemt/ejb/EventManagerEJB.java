@@ -37,7 +37,7 @@ public class EventManagerEJB {
 		return dao.update(event);
 	}
 	
-	public boolean deleteById(int id) {
-		return dao.deleteById(id);
+	public boolean deleteById(Event event) {
+		return dao.delete(event);
 	}
 }

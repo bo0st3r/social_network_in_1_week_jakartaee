@@ -3,10 +3,15 @@ package be.helha.aemt.entity;
 import java.util.Date;
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 import be.helha.aemt.enumeration.MajorEnum;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name="Offer.queryJob", query="SELECT o FROM JobOffer o ORDER BY o.postingDate ASC")
+})
 public class JobOffer extends Offer implements Serializable{
 	private String contractType;
 	private Double salary;

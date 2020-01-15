@@ -18,9 +18,6 @@ import be.helha.aemt.enumeration.Major;
 
 @Entity
 @NamedQueries({
-//	@NamedQuery(name="FormerStudent.updateApproved", query="UPDATE FormerStudent f "
-//			+ "SET f.approved = :approved " 
-//			+ "WHERE f.idMember = :id"),	
 		@NamedQuery(name = "FormerStudent.queryByPortrait", query = "SELECT f FROM FormerStudent f WHERE f.portrait.idPortrait = :id"),
 		@NamedQuery(name = "FormerStudent.queryAll", query = "SELECT f FROM FormerStudent f")
 })
