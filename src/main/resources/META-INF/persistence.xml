@@ -2,28 +2,8 @@
 <persistence version="2.1"
 	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">	
-	
-	<persistence-unit name="groupeB4JTA" transaction-type="JTA">
-		<jta-data-source>jdbc/groupeB4</jta-data-source>
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 		
-		<class>be.helha.aemt.entity.FormerStudent</class>
-		<class>be.helha.aemt.entity.Portrait</class>
-		<class>be.helha.aemt.entity.Address</class>
-		<class>be.helha.aemt.entity.Event</class>
-		<class>be.helha.aemt.entity.Offer</class>
-		<class>be.helha.aemt.entity.InternshipOffer</class>
-		<class>be.helha.aemt.entity.JobOffer</class>
-		<class>be.helha.aemt.entity.Member</class>
-		<class>be.helha.aemt.entity.Admin</class>
-				
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
-	
-		<properties>
-			
-		</properties>
-	</persistence-unit>
-	
 	<persistence-unit name="groupeB4" transaction-type="RESOURCE_LOCAL">
 		<class>be.helha.aemt.entity.FormerStudent</class>
 		<class>be.helha.aemt.entity.Portrait</class>
@@ -49,8 +29,24 @@
 		</properties>
 	</persistence-unit>
 	
+	<persistence-unit name="groupeB4JTA" transaction-type="JTA">
+		<jta-data-source>jdbc/groupeB4</jta-data-source>
+		
+		<class>be.helha.aemt.entity.FormerStudent</class>
+		<class>be.helha.aemt.entity.Portrait</class>
+		<class>be.helha.aemt.entity.Address</class>
+		<class>be.helha.aemt.entity.Event</class>
+		<class>be.helha.aemt.entity.Offer</class>
+		<class>be.helha.aemt.entity.InternshipOffer</class>
+		<class>be.helha.aemt.entity.JobOffer</class>
+		<class>be.helha.aemt.entity.Member</class>
+		<class>be.helha.aemt.entity.Admin</class>
+				
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 	
-	
-	
+		<properties>
+			
+		</properties>
+	</persistence-unit>
 	
 </persistence>

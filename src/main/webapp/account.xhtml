@@ -30,7 +30,6 @@
                     <!--NOM-->
                     <label>Nom </label>
                     <label>prenom :</label>
-                    <p>Nom d'utilisateur</p>
                     <p>Date de naissance</p>
                     <p>Diplôme obtenu en</p>
                     <p>Section :</p>
@@ -38,13 +37,12 @@
                 </div>
                 <div class="form-group col-md-4">
                     <!--NOM-->
-                    <label>NOM </label>
-                    <label>PRENOM</label>
-                    <p>PSEUDO</p>
-                    <p>DATE DE NAISSANCE</p>
-                    <p>ANNEE</p>
-                    <p>SECTION</p>
-                    <p>MAIL</p>
+                    <label>#{memberControl.formerStudent.firstName}</label>
+                    <label>#{memberControl.formerStudent.lastName}</label>
+                    <p>#{memberControl.formerStudent.birthDate}</p>
+                    <p>#{memberControl.formerStudent.graduationYear}</p>
+                    <p>#{memberControl.formerStudent.major.toString()}</p>
+                    <p>#{memberControl.formerStudent.mail}</p>
                 </div>
             </div>
             <!--TEL-->
@@ -55,7 +53,7 @@
                 </div>
                 <div class="form-group col-md-4">
                     <!--AJOUTER TEL-->
-                    <input type="text" class="form-control" id="tel"/>
+                    <input type="text" class="form-control" id="tel" placeholder="#{memberControl.formerStudent.phoneNumber}"/>
                 </div>
             </div>
             <!--ADRESSE-->
@@ -65,19 +63,19 @@
                 </div>
                 <div class="form-group col-md-3">
                     <label for="rue">Rue</label>
-                    <input type="text" class="form-control" id="rue"/>
+                    <input type="text" class="form-control" id="rue" placeholder="#{memberControl.formerStudent.address.street}"/>
                 </div>
                 <div class="form-group col-md-1">
                     <label for="num">N°</label>
-                    <input type="text" class="form-control" id="num"/>
+                    <input type="text" class="form-control" id="num" placeholder="#{memberControl.formerStudent.address.number}"/>
                 </div>
                 <div class="form-group col-md-1">
                     <label for="cp">CP</label>
-                    <input type="text" class="form-control" id="cp"/>
+                    <input type="text" class="form-control" id="cp" placeholder="#{memberControl.formerStudent.address.postCode}"/>
                 </div>
                 <div class="form-group col-md-3">
                     <label for="ville">Ville</label>
-                    <input type="text" class="form-control" id="ville"/>
+                    <input type="text" class="form-control" id="ville" placeholder="#{memberControl.formerStudent.address.city}"/>
                 </div>
             </div>
             <!-- FIN ADRESSE -->
@@ -116,8 +114,8 @@
                     <label for="tel">Description du parcours</label>
                 </div>
                 <div class="form-group col-md-8">
-                    <!--AJOUTER TEL-->
-                    <textarea class="col-12" id="tel"></textarea>
+                    <!--AJOUTER TEXTE-->
+                    <textarea class="col-12" id="texte"></textarea>
                 </div>
             </div>
 

@@ -70,5 +70,8 @@ public class MemberManagerEJB {
 	public long queryFormerAmountToApprove() {
 		return dao.queryFormerAmountToApprove();
 	}
+	public Member queryById(int id) {
+		return dao.queryById(id);
+	}
 
 }

@@ -87,7 +87,6 @@ public class OfferDAO {
 			if(offer instanceof JobOffer) {
 				JobOffer job = (JobOffer)updated;
 				job.setContractType(((JobOffer) offer).getContractType());
-				job.setSalary(((JobOffer) offer).getSalary());
 			}else if(offer instanceof InternshipOffer) {
 				InternshipOffer intern = (InternshipOffer)offer;
 				intern.setDuration(((InternshipOffer) offer).getDuration());

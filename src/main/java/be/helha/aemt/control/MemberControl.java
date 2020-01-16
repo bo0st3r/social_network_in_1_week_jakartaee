@@ -10,6 +10,7 @@ import javax.inject.Named;
 import be.helha.aemt.ejb.MemberManagerEJB;
 import be.helha.aemt.entity.FormerStudent;
 import be.helha.aemt.entity.Member;
+import be.helha.aemt.enumeration.GroupName;
 import be.helha.aemt.util.UserPattern;
 
 @SessionScoped
@@ -19,6 +20,8 @@ public class MemberControl implements Serializable {
 	@EJB
 	private MemberManagerEJB gestion;
 	private Member member = new Member();
+//	private FormerStudent formerStudent = new FormerStudent();
+//	private Admin admin = new Admin();
 
 	public Member addMember() {
 		return gestion.add(member);
@@ -44,7 +47,6 @@ public class MemberControl implements Serializable {
 			gestion.deleteMember(fs);
 		}
 	}
-
 	
 	public int findIdByUsername(String username) {
 		return gestion.findIdByUsername(username);
@@ -57,6 +59,20 @@ public class MemberControl implements Serializable {
 	public long queryFormerAmountToApprove() {
 		return gestion.queryFormerAmountToApprove();
 	}
+	
+	public boolean hasAdminRights() {
+		return member.getGroupName() == GroupName.ADMIN;
+	}
+//	public Member queryById(int id) {
+//		member = gestion.queryById(id);
+//		if (member instanceof FormerStudent) {
+//			formerStudent = (FormerStudent) member;
+//		}else if(member instanceof Admin) {
+//			admin = (Admin) member;
+//		}
+//		return member;
+//	}
+
 
 	/*****************************
 	 * Pages path getters
@@ -95,4 +111,11 @@ public class MemberControl implements Serializable {
 	public void setMember(Member member) {
 		this.member = member;
 	}
+//	public void FormerStudentDetails() {
+//		FacesContext fc= FacesContext.getCurrentInstance();
+//		Map m = fc.getExternalContext().getRequestParameterMap();
+//		int memberID= Integer.parseInt((String) m.get("idClicked"));
+//		queryById(memberID);
+//	}
+
 }
