@@ -77,4 +77,8 @@ public class MemberDAO {
 		}
 		return null;
 	}
+	
+	public long queryFormerAmountToApprove() {
+		return (long) em.createNamedQuery("FormerStudent.queryFormerAmountToApprove").getResultList().get(0);
+	}
 }

@@ -27,6 +27,15 @@ public class OfferManagerEJB {
 		return dao.queryType(InternshipOffer.class.getSimpleName());
 	}
 	
+	public long queryJobAmountToApprove() {
+		return dao.queryTypeAmountToApprove(JobOffer.class.getSimpleName());
+	}
+	
+	public long queryInternshipAmountToApprove() {
+		return dao.queryTypeAmountToApprove(InternshipOffer.class.getSimpleName());
+		
+	}
+	
 	public Offer queryById(int id) {
 		return dao.queryById(id);
 	}

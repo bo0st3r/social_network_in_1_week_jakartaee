@@ -27,10 +27,10 @@ public class OfferControl implements Serializable {
 	private JobOffer job = new JobOffer();
 	private InternshipOffer intern = new InternshipOffer();
 	
-	private boolean iGSelected = true;
-	private boolean aDSelected = false;
-	private boolean comptaSelected = false;
-	private boolean toApproveOnlySelected = false;
+	private boolean iGSelected;
+	private boolean aDSelected;
+	private boolean comptaSelected;
+	private boolean toApproveOnlySelected;
 	
 	public List<Offer> queryAll(){
 		return gestion.queryAll();
@@ -56,6 +56,14 @@ public class OfferControl implements Serializable {
 		}
 		
 		return results;
+	}
+	
+	public long queryJobAmountToApprove() {
+		return gestion.queryJobAmountToApprove();
+	}
+	
+	public long queryInternshipAmountToApprove() {
+		return gestion.queryInternshipAmountToApprove();
 	}
 	
 	public Offer queryById(int id) {
@@ -150,6 +158,7 @@ public class OfferControl implements Serializable {
 
 	public void setToApproveOnlySelected(boolean toApproveOnlySelected) {
 		this.toApproveOnlySelected = toApproveOnlySelected;
+		System.out.println(this.toApproveOnlySelected + "(toApprove)");
 	}
 	
 	/*****************************
@@ -164,33 +173,6 @@ public class OfferControl implements Serializable {
 		intern = new InternshipOffer();
 	}
 	
-	/**
-	 * 
-	 * Bug si aucun job au final
-	 */
-	public List<JobOffer> showJobResults(){
-		List<JobOffer> jobs = queryJob();
-		for (JobOffer jobOffer : jobs) {
-			//System.out.println(jobOffer.isApproved()+"");
-			if(!jobOffer.isApproved() || !((iGSelected && jobOffer.getMajor() == Major.InformatiqueGestion) || 
-					(aDSelected && jobOffer.getMajor() == Major.AssistantDirection) || (comptaSelected && jobOffer.getMajor() == Major.Comptabilite)))
-				jobs.remove(jobOffer);
-		}
-		
-		return jobs;
-	}
-	
-	public List<InternshipOffer> showInternResults(){
-		List<InternshipOffer> intern = queryInternship();
-		for (InternshipOffer internOffer : intern) {
-			if(!internOffer.isApproved() || !((iGSelected && internOffer.getMajor() == Major.InformatiqueGestion) || 
-					(aDSelected && internOffer.getMajor() == Major.AssistantDirection) || (comptaSelected && internOffer.getMajor() == Major.Comptabilite)))
-				intern.remove(internOffer);
-		}
-		
-		return intern;
-	}
-	
 	public boolean canRender(Offer offer) {
 		boolean result = (offer.isApproved() && ((iGSelected && offer.getMajor() == Major.InformatiqueGestion) || 
 				(aDSelected && offer.getMajor() == Major.AssistantDirection) || (comptaSelected && offer.getMajor() == Major.Comptabilite)));
@@ -202,24 +184,23 @@ public class OfferControl implements Serializable {
 		}
 		
 		System.out.println(offer.getLabelOffer() +" " + result + " = " 
-				+ offer.isApproved() + " && ("
-				+ (iGSelected && offer.getMajor() == Major.InformatiqueGestion)+ " || "
-				+ (aDSelected && offer.getMajor() == Major.AssistantDirection)+ " || "
-				+ (comptaSelected && offer.getMajor() == Major.Comptabilite)+ ")");
+				+ toApproveOnlySelected  + " && ("
+				+ !offer.isApproved()+ ")");
 		return result;
+	}
+	
+	public void resetToConsult() {
+		toApproveOnlySelected = false;
 		
+		offer = new Offer();
+		intern = new InternshipOffer();
+		job = new JobOffer();
 	}
 	
-	public String showOffer() {
-		return offer.toString();
-	}
-	
-	public String showJob() {
-		System.out.println(job.toString());
-		return job.toString();
-	}
-	
-	public String showIntern() {
-		return intern.toString();
+	public void resetToApprove(){
+		toApproveOnlySelected = true;
+		offer = new Offer();
+		intern = new InternshipOffer();
+		job = new JobOffer();
 	}
 }

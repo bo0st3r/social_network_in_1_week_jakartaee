@@ -56,6 +56,10 @@ public class MemberControl implements Serializable {
 		return gestion.findIdByUsername(username);
 	}
 	
+	public long queryFormerAmountToApprove() {
+		return gestion.queryFormerAmountToApprove();
+	}
+	
 	public boolean hasAdminRights() {
 		return member instanceof Admin;
 	}

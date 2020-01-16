@@ -13,7 +13,7 @@ xmlns:p="http://primefaces.org/ui">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
 </head>
-<h:body style="background-color: #f4F4F4">
+<h:body style="background-color: #f4F4F4" onload="#{offerControl.resetToConsult()}">
 <ui:insert name="header"><ui:include src="header.xhtml"/></ui:insert>
 <ui:insert name="navBar"> <ui:include src="navBar.xhtml" /></ui:insert>
 <!--RECHERCHE offre-->
@@ -22,16 +22,14 @@ xmlns:p="http://primefaces.org/ui">
         <div class="col-lg-1"></div>
         <h5 class="col-lg-2 col-sm-12 text-center mt-4">Offres de stages</h5>
         <div class="col-lg-2 col-sm-12">
-            <p><h:selectBooleanCheckbox value="#{offerControl.iGSelected}" onchange="sumbit()">Informatique de Gestion
+            <p><h:selectBooleanCheckbox value="#{offerControl.iGSelected}">Informatique de Gestion
             	</h:selectBooleanCheckbox></p>
             <p><h:selectBooleanCheckbox value="#{offerControl.aDSelected}">Assistant de direction
             	</h:selectBooleanCheckbox></p>
             <p><h:selectBooleanCheckbox value="#{offerControl.comptaSelected}">Comptabilité
             	</h:selectBooleanCheckbox></p>
         </div>
-        <h:commandButton class="btn ml-2 mt-4 text-light" style="background-color: #009790;max-height:45px" value="Rechercher">
-        	<f:ajax render="offerResultList"/>
-        </h:commandButton>
+        <h:commandButton class="btn ml-2 mt-4 text-light" style="background-color: #009790;max-height:45px" value="Rechercher"></h:commandButton>
     </h:form>>
     <!--TRI-->
     <div class="dropdown col-11 text-lg-right rounded-bottom" >

@@ -10,7 +10,8 @@ import be.helha.aemt.enumeration.Major;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name="Offer.queryJob", query="SELECT o FROM JobOffer o ORDER BY o.postingDate ASC")
+	@NamedQuery(name="Offer.queryJob", query="SELECT o FROM JobOffer o ORDER BY o.postingDate ASC"),
+	@NamedQuery(name="Offer.queryJobAmountToApprove", query="SELECT count(o) FROM JobOffer o WHERE o.approved = false")
 })
 public class JobOffer extends Offer implements Serializable{
 	private static final long serialVersionUID = 6980329707198003072L;
