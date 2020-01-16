@@ -1,7 +1,7 @@
 <!--NAVBAR OK-->
 
 <nav class="navbar navbar-expand-lg text-light col-lg-12"
-	style="background-color: #009790">
+	style="background-color: #009790" id="navBar">
 	<a class="navbar-brand text-light" href="index.xhtml">Accueil</a>
 
 	<button class="navbar-toggler text-light" type="button"
@@ -13,33 +13,38 @@
 	<div class="collapse navbar-collapse col-lg-10" id="navbarNavDropdown">
 		<ul class="navbar-nav">
 			<!--ANNUAIRE-->
-			<li class="nav-item active"><a class="nav-link text-light"
-				href="glossaryFormer.xhtml">Annuaire Alumni <span
-					class="sr-only">(current)</span></a></li>
-			<!--OFFRE STAGES-->
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle text-light" href="#" id="navStage"
-				role="button" data-toggle="dropdown" aria-haspopup="true"
-				aria-expanded="false"> Offres de stage </a>
-				<div class="dropdown-menu" aria-labelledby="navStage">
-					<a class="dropdown-item text-dark" href="internshipOfferList.xhtml">Consulter
-						les offres</a> <a class="dropdown-item text-dark"
-						href="addInternshipOffer.xhtml">Ajouter une offre</a> <a
-						class="dropdown-item text-dark" href="#">Gérer les offres</a>
-
+			<h:panelGroup xmlns:h="http://xmlns.jcp.org/jsf/html"
+					xmlns:f="http://java.sun.com/jsf/core"
+					rendered="#{authBean.isAuthenticated()}">
+				<li class="nav-item active"><a class="nav-link text-light"
+					href="glossaryFormer.xhtml">Annuaire Alumni <span
+						class="sr-only">(current)</span></a></li>
+			
+				<!--OFFRE STAGES-->
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle text-light" href="#" id="navStage"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> Offres de stage </a>
+					<div class="dropdown-menu" aria-labelledby="navStage">
+						<a class="dropdown-item text-dark" href="internshipOfferList.xhtml">Consulter
+							les offres</a> <a class="dropdown-item text-dark"
+							href="addInternshipOffer.xhtml">Ajouter une offre</a> <a
+							class="dropdown-item text-dark" href="#">Gérer les offres</a>
+	
+					</div></li>
+				<!--OFFRE EMPLOI-->
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle text-light" href="#" id="navEmploi"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> Offres d'emploi </a>
+					<div class="dropdown-menu" aria-labelledby="navEmploi">
+						<a class="dropdown-item text-dark" href="jobOfferList.xhtml">Consulter
+							les offres</a> <a class="dropdown-item text-dark"
+							href="addJobOffer.xhtml">Ajouter une offre</a> <a
+							class="dropdown-item text-dark" href="#">Gérer les offres</a>
 				</div></li>
-			<!--OFFRE EMPLOI-->
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle text-light" href="#" id="navEmploi"
-				role="button" data-toggle="dropdown" aria-haspopup="true"
-				aria-expanded="false"> Offres d'emploi </a>
-				<div class="dropdown-menu" aria-labelledby="navEmploi">
-					<a class="dropdown-item text-dark" href="jobOfferList.xhtml">Consulter
-						les offres</a> <a class="dropdown-item text-dark"
-						href="addJobOffer.xhtml">Ajouter une offre</a> <a
-						class="dropdown-item text-dark" href="#">Gérer les offres</a>
-
-				</div></li>
+			</h:panelGroup>
+			
 			<li class="nav-item"><a class="nav-link text-light"
 				href="https://www.helha.be/formation-continue/">Formation
 					continue</a></li>
@@ -50,9 +55,7 @@
 			<!--                 <a class="nav-link text-light" href="#">Associations</a> -->
 			<!--             </li> -->
 
-
 			<!--ADMIN-->
-
 			<h:panelGroup xmlns:h="http://xmlns.jcp.org/jsf/html"
 				rendered="#{authBean.hasAdminRights()}">
 				<li class="nav-item dropdown"><a
@@ -71,6 +74,17 @@
 							les portraits</a> <a class="dropdown-item text-dark"
 							href="addAnnouncements.xhtml">Ajouter une annonce</a>
 					</div></li>
+			</h:panelGroup>
+			
+			<h:panelGroup xmlns:h="http://xmlns.jcp.org/jsf/html"
+				rendered="#{not authBean.isAuthenticated()}">
+				<li class="nav-item active"><a class="nav-link text-light"
+					href="login.xhtml">Connexion<span
+						class="sr-only">(current)</span></a></li>
+						
+				<li class="nav-item active"><a class="nav-link text-light"
+					href="signUp.xhtml">Inscription<span
+						class="sr-only">(current)</span></a></li>
 			</h:panelGroup>
 		</ul>
 

@@ -10,7 +10,6 @@ import javax.persistence.Query;
 
 import be.helha.aemt.entity.FormerStudent;
 import be.helha.aemt.entity.Member;
-import be.helha.aemt.entity.Offer;
 import be.helha.aemt.helper.Config;
 
 @Stateless

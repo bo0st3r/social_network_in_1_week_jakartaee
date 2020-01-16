@@ -21,7 +21,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 <div class="container-fluid col-lg-12 mb-5">
     <div class="container-fluid col-lg-2">   </div>
     <div class="container-fluid border col-lg-6 col-sm-12 text-center mt-5 font-weight-bold" style="background-color: #eee;">
-        <h:form onsubmit="#{signUpBean.registerMember()}">
+        <h:form onsubmit="#{signUpBean.registerMember()}" action="index.xhtml">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <!--NOM-->
@@ -138,7 +138,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 
             <!--CONNECTION BUTTON-->
             <b><h:commandButton class="col-lg-5 mt-4 mb-4 btn text-light" 
-            style="background-color: #009790" value="Valider">
+            style="background-color: #009790" value="Valider" action="#{memberControl.doLogin()}">
             	<f:ajax execute="@form" render="@form" />
             </h:commandButton></b>
         </h:form>

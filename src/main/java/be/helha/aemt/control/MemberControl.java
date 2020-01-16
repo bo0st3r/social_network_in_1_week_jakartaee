@@ -20,8 +20,6 @@ public class MemberControl implements Serializable {
 	@EJB
 	private MemberManagerEJB gestion;
 	private Member member = new Member();
-//	private FormerStudent formerStudent = new FormerStudent();
-//	private Admin admin = new Admin();
 
 	public Member addMember() {
 		return gestion.add(member);
@@ -78,7 +76,11 @@ public class MemberControl implements Serializable {
 	 * Pages path getters
 	 *****************************/
 	public String doIndex() {
-		return "index.xhtml";
+		return "index?faces-redirect=true";
+	}
+	
+	public String doLogin() {
+		return "login?faces-redirect=true";
 	}
 
 	public String doList() {

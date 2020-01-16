@@ -2,14 +2,13 @@ package be.helha.aemt.control;
 
 import java.io.Serializable;
 
-import javax.annotation.Resource;
 import javax.ejb.EJB;
-import javax.ejb.SessionContext;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 import be.helha.aemt.ejb.MemberManagerEJB;
+import be.helha.aemt.entity.FormerStudent;
 import be.helha.aemt.entity.Member;
 import be.helha.aemt.enumeration.GroupName;
 
@@ -23,7 +22,7 @@ public class AuthBean implements Serializable {
 
 	private Member member;
 	private String mail;
-
+	
 	/**
 	 * Returns the authenticated member. Retrieves it from the FacesContext using
 	 * it's mail if not initialised yet.
@@ -37,7 +36,7 @@ public class AuthBean implements Serializable {
 
 			if (mailCurrent != null && mailCurrent.length() > 0) {
 				member = gestion.findByMail(mailCurrent);
-			}
+			} 
 		}
 
 		return member;
@@ -51,14 +50,23 @@ public class AuthBean implements Serializable {
 		return "index?faces-redirect=true";
 	}
 
+	public boolean hasAddress() {
+		Member m = selectMember();
+		if (m == null || !(m instanceof FormerStudent))
+			return false;
+
+		FormerStudent fs = (FormerStudent) m;
+		return fs.getAddress() != null;
+	}
+
 	public boolean hasAdminRights() {
 		if (selectMember() == null)
 			return false;
 
 		return selectMember().getGroupName() == GroupName.ADMIN;
 	}
-	
+
 	public boolean isAuthenticated() {
-		return member != null;
+		return selectMember() != null;
 	}
 }
