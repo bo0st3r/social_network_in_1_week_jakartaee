@@ -26,13 +26,24 @@ public class OfferDAO {
 	
 	public List<Offer> queryType(String className){
 		Query query = em.createNamedQuery("Offer.queryAll");
-		if(className == JobOffer.class.getSimpleName()) {
+		if(className.equals(JobOffer.class.getSimpleName())) {
 			query = em.createNamedQuery("Offer.queryJob");
-		}else if(className == InternshipOffer.class.getSimpleName()) {
-			query = em.createNamedQuery("Offer.queryIntern");
+		}else if(className.equals(InternshipOffer.class.getSimpleName())) {
+			query = em.createNamedQuery("Offer.queryInternship");
 		}
 		
 		return query.getResultList();
+	}
+	
+	public long queryTypeAmountToApprove(String className){
+		if(className.equals(JobOffer.class.getSimpleName())) {
+			Query query = em.createNamedQuery("Offer.queryJobAmountToApprove");
+			return (long) query.getResultList().get(0);
+		}else if(className.equals(InternshipOffer.class.getSimpleName())) {
+			Query query = em.createNamedQuery("Offer.queryInternshipAmountToApprove");
+			return (long) query.getResultList().get(0);
+		}
+		return -1;
 	}
 	
 	public Offer queryById(int id) {
@@ -72,7 +83,7 @@ public class OfferDAO {
 	public boolean update(Offer offer) {
 		Offer updated = queryById(offer.getIdOffer());
 		
-		if(offer != null) {
+		if(updated != null) {
 			if(offer instanceof JobOffer) {
 				JobOffer job = (JobOffer)updated;
 				job.setContractType(((JobOffer) offer).getContractType());

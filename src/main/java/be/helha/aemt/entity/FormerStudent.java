@@ -19,7 +19,8 @@ import be.helha.aemt.enumeration.Major;
 @Entity
 @NamedQueries({
 		@NamedQuery(name = "FormerStudent.queryByPortrait", query = "SELECT f FROM FormerStudent f WHERE f.portrait.idPortrait = :id"),
-		@NamedQuery(name = "FormerStudent.queryAll", query = "SELECT f FROM FormerStudent f")
+		@NamedQuery(name = "FormerStudent.queryAll", query = "SELECT f FROM FormerStudent f"),
+		@NamedQuery(name="FormerStudent.queryFormerAmountToApprove", query="SELECT count(f) FROM FormerStudent f WHERE f.approved = false")
 })
 public class FormerStudent extends Member {
 	private static final long serialVersionUID = -7782352767686006053L;

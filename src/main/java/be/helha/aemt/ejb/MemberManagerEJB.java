@@ -38,5 +38,9 @@ public class MemberManagerEJB {
 	public FormerStudent queryByPortrait(int idPortrait) {
 		return (FormerStudent) dao.queryByPortrait(idPortrait);
 	}
+	
+	public long queryFormerAmountToApprove() {
+		return dao.queryFormerAmountToApprove();
+	}
 
 }

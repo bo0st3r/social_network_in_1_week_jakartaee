@@ -57,9 +57,9 @@
                     Admin
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navEmploi">
-                    <a class="dropdown-item text-dark" href="adminFormerValid.xhtml">Valider les inscriptions (NOMBRE)</a>
-                    <a class="dropdown-item text-dark" href="adminJobOfferValid.xhtml">Valider les offres d'emploi (NOMBRE)</a>
-                    <a class="dropdown-item text-dark" href="adminInternshipOfferValid.xhtml">Valider les offres de stage (NOMBRE)</a>
+                    <a class="dropdown-item text-dark" href="adminFormerValid.xhtml">Valider les inscriptions (#{memberControl.queryFormerAmountToApprove()})</a>
+                    <a class="dropdown-item text-dark" href="adminJobOfferValid.xhtml">Valider les offres d'emploi (#{offerControl.queryJobAmountToApprove()})</a>
+                    <a class="dropdown-item text-dark" href="adminInternshipOfferValid.xhtml">Valider les offres de stage (#{offerControl.queryInternshipAmountToApprove()})</a>
 					<a class="dropdown-item text-dark" href="portraitsList.xhtml">Gérer les portraits</a>
 					<a class="dropdown-item text-dark" href="addAnnouncements.xhtml">Ajouter une annonce</a>
 					

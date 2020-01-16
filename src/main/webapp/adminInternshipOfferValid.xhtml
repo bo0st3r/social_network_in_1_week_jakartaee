@@ -8,36 +8,37 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
 </head>
-<body style="background-color: #f4F4F4">
+<body style="background-color: #f4F4F4" onload="#{offerControl.resetToApprove()}">
 <ui:insert name="header"><ui:include src="header.xhtml"/></ui:insert>
 
 
 <ui:insert name="navBar"> <ui:include src="navBar.xhtml" /></ui:insert>
 
-<h2 class="text-center pt-2">Admin - Offres d'emploi</h2>
+<h2 class="text-center pt-2">Admin - Offres de stage</h2>
 <!--CADRE-->
 <div class="container-fluid col-lg-12 mb-5 ">
     <div class="container-fluid col-lg-2">   </div>
     <div class="container-fluid border col-lg-8 col-sm-12 mt-5 p-2" style="background-color: #eee">
-        <h5>Liste des offres d'emploi à valider</h5>
+        <h5>Liste des offres de stage à valider</h5>
         <!-- liste offre-->
-        <div class="card border-dark p-2 col-10 offset-1">
-
-            <div class="card-header">Nom de l'offre</div>
-            <div class="card-body text-dark">
-                <h6 class="card-title">Section</h6>
-                <p class="card-text">Détail offre</p>
-            </div>
-            <div class="row">
-                <div class="col-3 "></div>
-                <!--BOUTON VALIDER-->
-                <button class="text-center col-2 btn btn-success">Valider</button>
-                <div class="col-2"></div>
-                <!--BOUTON REFUSER-->
-                <button class="text-center col-2 btn btn-danger">Refuser</button>
-                <div class="col-3 "></div>
-            </div>
-        </div>
+        <ui:repeat var="offer" value="#{offerControl.queryInternship()}" id="offerResultList">
+			<h:panelGroup class="card border-dark p-2 col-12" rendered="#{offerControl.canRender(offer)}">
+	            <div class="card-header">#{offer.labelOffer}</div>
+	            <div class="card-body text-dark">
+	                <h6 class="card-title">#{offer.major.toString()}  à partir du #{offer.startingDate}</h6>
+	                <p class="card-text">Posté par #{offer.companyName} le #{offer.postingDate}</p>
+	            </div>
+	            <div class="row">
+	                <div class="col-3 "></div>
+	                <!--BOUTON VALIDER-->
+	                <button class="text-center col-2 btn btn-success">Valider</button>
+	                <div class="col-2"></div>
+	                <!--BOUTON REFUSER-->
+	                <button class="text-center col-2 btn btn-danger">Refuser</button>
+	                <div class="col-3 "></div>
+	            </div>
+            </h:panelGroup>
+        </ui:repeat>
         <!--fin offre-->
 
     </div>

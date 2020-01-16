@@ -10,7 +10,8 @@ import be.helha.aemt.enumeration.Major;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name="Offer.queryInternship", query="SELECT o FROM InternshipOffer o ORDER BY o.postingDate ASC")
+	@NamedQuery(name="Offer.queryInternship", query="SELECT o FROM InternshipOffer o ORDER BY o.postingDate ASC"),
+	@NamedQuery(name="Offer.queryInternshipAmountToApprove", query="SELECT count(o) FROM InternshipOffer o WHERE o.approved = false")
 })
 
 public class InternshipOffer extends Offer implements Serializable{

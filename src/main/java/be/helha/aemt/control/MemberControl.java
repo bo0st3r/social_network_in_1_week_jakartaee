@@ -60,7 +60,11 @@ public class MemberControl implements Serializable {
 	public int findIdByUsername(String username) {
 		return gestion.findIdByUsername(username);
 	}
-
+	
+	public long queryFormerAmountToApprove() {
+		return gestion.queryFormerAmountToApprove();
+	}
+	
 	public boolean hasAdminRights() {
 		System.out.println("group name:" + (member.getGroupName() == GroupName.ADMIN));
 		System.out.println(member.getGroupName());
