@@ -109,13 +109,8 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
     <div class="container-fluid col-lg-2">   </div>
 
 </div>
-<!--FOOTER WITH A PROPOS-->
-<div class="fixed-bottom text-right" style="max-height: 150px;min-height: 30px; background-color:#009790">
-    <footer class="fixed-bottom text-right" >
-        <a class="text-light p-3" href="about.xhtml">A propos</a>
-    </footer>
-</div>
-<!--FIN FOOTER-->
+<ui:insert name="footer"> <ui:include src="footer.xhtml" /></ui:insert>
+
 
 </h:body>
 </html>

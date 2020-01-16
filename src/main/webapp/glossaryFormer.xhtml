@@ -36,7 +36,10 @@
     <div class="container-fluid border col-lg-10 col-sm-12 text-center mt-5 font-weight-bold p-2" style="background-color: #eee;">
        <!--Container ANCIEN-->
 <!--Container ANCIEN-->
+
         <div class="row row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-3 m-1">
+        
+        <ui:repeat var="item" value="#{memberControl.selectMembers()}">
         <a href="formerDetails.xhtml" class="text-dark">
             <div class="card col text-left p-2">
                 <div class="row no-gutters">
@@ -46,14 +49,15 @@
                     </div>
                     <div class="col-md-8 col-sm-8">
                         <div class="card-body">
-                            <h5 class="card-title">Nom Prénom</h5>
-                            <p class="card-text">année du diplôme</p>
+                            <h5 class="card-title">#{item.firstName} #{item.lastName}</h5>
+<!--                             <p class="card-text">#{item.graduationYear}</p> -->
                             <p class="card-text"><small class="text-muted">section</small></p>
                         </div>
                     </div>
                 </div>
             </div>
         </a>
+     </ui:repeat>
         
         <!--FIN container ANCIEN-->
         </div>
@@ -61,13 +65,8 @@
     <div class="container-fluid col-lg-1">   </div>
 
 </div>
-<!--FOOTER WITH A PROPOS-->
-<div class="fixed-bottom text-right" style="max-height: 150px;min-height: 30px; background-color:#009790">
-    <footer class="fixed-bottom text-right" >
-        <a class="text-light p-3" href="about.xhtml">A propos</a>
-    </footer>
-</div>
-<!--FIN FOOTER-->
+<ui:insert name="footer"> <ui:include src="footer.xhtml" /></ui:insert>
+
 
 </h:body>
 </html>

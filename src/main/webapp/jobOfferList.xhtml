@@ -18,7 +18,7 @@
 <div class="container-fluid mt-2">
     <div class="row">
         <div class="col-lg-1"></div>
-        <h5 class="col-lg-2 col-sm-12 text-center mt-4">Offres de stages</h5>
+        <h5 class="col-lg-2 col-sm-12 text-center mt-4">Offres d'emploi</h5>
         <div class="col-lg-2 col-sm-12">
             <p><input type="checkbox"/>Informatique de Gestion</p>
             <p><input type="checkbox"/>Assistant de direction</p>
@@ -39,31 +39,30 @@
     <!--FIN TRI-->
 
 </div>
-<!--FIN RECHERCHE stage-->
-
+<!--FIN RECHERCHE emploi-->
+<div class="text-center">
+	<h2 class="pt-2">Offres d'emploi </h2>
+</div>
 <div class="container-fluid col-lg-12 mb-5">
     <div class="container-fluid col-lg-1">   </div>
     <div class="container-fluid border col-lg-10 col-sm-12 text-center mt-5 font-weight-bold p-2" style="background-color: #eee;">
         <!-- offre-->
-        <div class="card border-dark p-2 col-12">
+        <a href="jobOfferDetails.xhtml">
+        <div class="card border-dark p-2 col-12 text-dark">
             <div class="card-header">Section</div>
             <div class="card-body text-dark">
                 <h5 class="card-title">Nom de l'offre</h5>
                 <p class="card-text">Détail offre</p>
             </div>
         </div>
+        </a>
         <!--fin offre-->
     </div>
     <div class="container-fluid col-lg-1">   </div>
 
 </div>
-<!--FOOTER WITH A PROPOS-->
-<div class="fixed-bottom text-right" style="max-height: 150px;min-height: 30px; background-color:#009790">
-    <footer class="fixed-bottom text-right" >
-        <a class="text-light p-3" href="about.xhtml">A propos</a>
-    </footer>
-</div>
-<!--FIN FOOTER-->
+<ui:insert name="footer"> <ui:include src="footer.xhtml" /></ui:insert>
+
 
 </h:body>
 </html>

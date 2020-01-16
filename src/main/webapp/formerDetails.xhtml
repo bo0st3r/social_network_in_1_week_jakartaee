@@ -4,7 +4,7 @@
 <!-- <html lang="fr">-->
 <head>
     <meta charset="UTF-8"/>
-    <title>index</title>
+    <title>détail</title>
     	<meta http-equiv="  Content-Type" content="text/html; charset=UTF-8" />
     
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -16,14 +16,6 @@
 <ui:insert name="header"><ui:include src="header.xhtml"/></ui:insert>
 
 <ui:insert name="navBar"> <ui:include src="navBar.xhtml" /></ui:insert>
-
-<div class="text-center">
-	<h2 class="pt-2">Ancien </h2>
-	
-	<!-- ADMIN UNIQUEMENT -->
-		<button class="btn text-light m-1" style="background-color: #009790">Créer portrait</button>
-	<!-- FIN ADMIN UNIQUEMENT -->
-</div>
 
 <!--CADRE-->
 <div class="container-fluid col-lg-12 mb-5 ">
@@ -37,10 +29,11 @@
             <div class="col-9 text-center align-self-lg-center">
                 <h3>Nom    Prenom</h3>
                 <h5>Section</h5>
+                <h5>Diplôme obtenu en ANNEE</h5>
+				<h5>Date de naissance</h5>
                 <h5>Adresse </h5>
-                <h5>Tel</h5>
-                <h5>Mail</h5>
-                <h5>?</h5>
+                <h6><i>Tel</i></h6>
+                <h6><i><a href="#">Mail</a></i></h6>
             </div>
         </div>
 
@@ -51,13 +44,8 @@
 </div>
 <!--FIN CADRE-->
 
-<!--FOOTER WITH A PROPOS-->
-<div class="fixed-bottom text-right mt-5" style="max-height: 150px;min-height: 30px; background-color:#009790">
-    <footer class="fixed-bottom text-right" >
-        <a class="text-light p-3" href="about.xhtml">A propos</a>
-    </footer>
-</div>
-<!--FIN FOOTER-->
+<ui:insert name="footer"> <ui:include src="footer.xhtml" /></ui:insert>
+
 
 </h:body>
 </html>

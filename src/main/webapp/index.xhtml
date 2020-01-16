@@ -21,6 +21,7 @@
 <div class="container-fluid row mb-5">
     <div class="col-lg-9 col-sm-12">
             <!--NEWS-->
+<!--      <ui:repeat var="item" value="#{newsControl.queryAll()}"> -->
         <div class="card mb-3 p-2 mt-2" style="background-color: #eee">
             <div class="row no-gutters">
                 <div class="col-8">
@@ -34,10 +35,11 @@
                 </div>
             </div>
         </div>
-   
+<!--    </ui:repeat> -->
         
         <!--PORTRAIT-->
-        <div class="card mb-3 p-2" style="background-color: #eee">
+<!--      <ui:repeat var="item" value="#{}">     -->
+        <div class="card mb-3 p-2 mt-2" style="background-color: #eee">
             <div class="row no-gutters">
                 <div class="col-3">
                     <img src="assets/portrait-anonyme.png" class="card-img" alt="..."/>
@@ -52,7 +54,10 @@
 
             </div>
         </div>
+<!--       </ui:repeat> -->
          <!--EVENEMENTS-->
+<!--          <ui:repeat var="item" value="#{eventControl.}"> -->
+         
         <div class="card mb-3 p-2 mt-2" style="background-color: #eee">
             <div class="row no-gutters">
                 <div class="col-8">
@@ -67,6 +72,7 @@
                 </div>
             </div>
         </div>
+<!--         </ui:repeat> -->
 
     </div>
     <!--div de droite-->
@@ -79,13 +85,8 @@
         <a href="https://www.linkedin.com/school/helha/?originalSubdomain=fr"><img src="assets/linkedin.png" alt="Responsive image" class="img-fluid m-2 col-lg-3 col-sm-3" /></a>
     </div>
 </div>
-<!--FOOTER WITH A PROPOS-->
-<div class="fixed-bottom text-right" style="max-height: 150px;min-height: 30px; background-color:#009790">
-    <footer class="fixed-bottom text-right" >
-        <a class="text-light p-3" href="about.xhtml">A propos</a>
-    </footer>
-</div>
-<!--FIN FOOTER-->
+<ui:insert name="footer"> <ui:include src="footer.xhtml" /></ui:insert>
+
 
 </h:body>
 </html>

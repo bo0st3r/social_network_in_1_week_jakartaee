@@ -2,12 +2,13 @@
 
 <!--NAVBAR OK-->
 
-<nav class="navbar navbar-expand-lg text-light nav-fill" style="background-color: #009790">
+<nav class="navbar navbar-expand-lg text-light col-lg-12" style="background-color: #009790">
     <a class="navbar-brand text-light" href="index.xhtml">Accueil</a>
+    
     <button class="navbar-toggler text-light" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon text-light"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <div class="collapse navbar-collapse col-lg-10" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <!--ANNUAIRE-->
             <li class="nav-item active">
@@ -40,12 +41,13 @@
             <li class="nav-item">
                 <a class="nav-link text-light" href="https://www.helha.be/formation-continue/">Formation continue</a>
             </li>
-            <li class="nav-item">
+			<!--ANNONCES-->
+           <li class="nav-item">
                 <a class="nav-link text-light" href="announcements.xhtml">Annonces</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" href="#">Associations</a>
-            </li>
+<!--             <li class="nav-item"> -->
+<!--                 <a class="nav-link text-light" href="#">Associations</a> -->
+<!--             </li> -->
             
             
             <!--ADMIN-->
@@ -59,6 +61,8 @@
                     <a class="dropdown-item text-dark" href="adminJobOfferValid.xhtml">Valider les offres d'emploi (NOMBRE)</a>
                     <a class="dropdown-item text-dark" href="adminInternshipOfferValid.xhtml">Valider les offres de stage (NOMBRE)</a>
 					<a class="dropdown-item text-dark" href="portraitsList.xhtml">Gérer les portraits</a>
+					<a class="dropdown-item text-dark" href="addAnnouncements.xhtml">Ajouter une annonce</a>
+					
                 
                 </div>
             </li>
@@ -68,7 +72,7 @@
 
     </div>
     <!--COMPTE-->
-            <div class="nav-item dropdown">
+            <div class="nav-item dropdown text-right col-lg-1">
                 <a class="nav-link dropdown-toggle text-light" href="#" id="navCompte" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Compte
                 </a>

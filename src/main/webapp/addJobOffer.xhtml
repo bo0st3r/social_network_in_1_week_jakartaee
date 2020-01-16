@@ -25,18 +25,24 @@
                 <label class="col-lg-12 p-2" for="nomOffre">Titre de l'offre d'emploi</label>
                 <input id="nomOffre" class="col-lg-8"/>
                  
-                 <div class="form-row ">
-                 	<div class="form-group col-5 offset-2">
-	                    <!--NOM ENTREPRISE-->
-		                <label class="col-lg-12 p-2" for="nomEntreprise">Entreprise</label>
-		                <input type="text" id="nomEntreprise" class="col-lg-12"/>
-		                </div>
-					<div class="form-group col-3">
-		                <!--SALAIRE-->
-		                <label class="col-lg-12 p-2" for="salaire">Salaire</label>
-		                <input type="text" id="salaire" class="col-lg-12"/>
-		            </div>
-		        </div>
+                <!-- CONTACT -->
+				<div class="form-row ">
+                    <div class="form-group col-3 offset-2">
+                        <!--ENTREPRISE-->
+                        <label class="col-lg-12 p-2" for="entreprise">Entreprise</label>
+                        <input type="text" id="entreprise" class="col-lg-12"/>
+                    </div>
+                    <div class="form-group col-3 ">
+                        <!--CONTACT-->
+                        <label class="col-lg-12 p-2" for="personne">Personne de contact</label>
+                        <input type="text" id="personne" class="col-lg-12"/>
+                    </div>
+                    <div class="form-group col-2 ">
+                        <!--CONTACT-->
+                        <label class="col-lg-12 p-2" for="tel">Tel / Mail</label>
+                        <input type="text" id="tel" class="col-lg-12"/>
+                    </div>
+                </div>
                 
                 <!--ADRESSE-->
                 <div class="form-row ">
@@ -101,13 +107,8 @@
 </div>
 <!--FIN CADRE-->
 
-<!--FOOTER WITH A PROPOS-->
-<div class="fixed-bottom text-right mt-5" style="max-height: 150px;min-height: 30px; background-color:#009790">
-    <footer class="fixed-bottom text-right" >
-        <a class="text-light p-3" href="connectionPage.html">A propos</a>
-    </footer>
-</div>
-<!--FIN FOOTER-->
+<ui:insert name="footer"> <ui:include src="footer.xhtml" /></ui:insert>
+
 
 </body>
 </html>

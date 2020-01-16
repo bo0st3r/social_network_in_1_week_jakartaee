@@ -24,24 +24,24 @@ import be.helha.aemt.enumeration.Major;
 public class MemberControl implements Serializable {
 	private static final long serialVersionUID = -37955545070490897L;
 	public static final List<SelectItem> SELECTABLE_MAJORS = selectMajors();
-	
+
 	@EJB
 	private MemberManagerEJB gestion;
 	private Member member = new Member();
 	private FormerStudent former = new FormerStudent();
-	
+
 	private Date birthDateToConvert;
 	private String pswConfirm;
 	private String mailConfirm;
-	
+
 	public void test() {
-		if(birthDateToConvert != null) {
+		if (birthDateToConvert != null) {
 			LocalDate date = birthDateToConvert.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 			former.setBirthDate(date);
 		}
 		System.out.println(former);
 		System.out.println(pswConfirm + " " + mailConfirm);
-	}	
+	}
 
 	public Member addMember() {
 		return gestion.add(member);
@@ -51,18 +51,27 @@ public class MemberControl implements Serializable {
 	public List<Member> selectMembers() {
 		return gestion.selectAll();
 	}
+	
+//	public List<> selectMembers() {
+//		return gestion.selectAll();
+//	}
+
 
 	public int findIdByUsername(String username) {
 		return gestion.findIdByUsername(username);
 	}
-	
+
 	public boolean hasAdminRights() {
-		return member instanceof Admin;
+		System.out.println("group name:" + (member.getGroupName() == GroupName.ADMIN));
+		System.out.println(member.getGroupName());
+		System.out.println(member);
+		return member.getGroupName() == GroupName.ADMIN;
 	}
-	
+
 	public boolean doPswsMatch() {
 		return former.getPassword().equals(pswConfirm);
 	}
+
 	public boolean doMailsMatch() {
 		return former.getMail().equals(mailConfirm);
 	}
@@ -110,7 +119,7 @@ public class MemberControl implements Serializable {
 		for (Major major : Major.values()) {
 			selectables.add(new SelectItem(major, major.toString()));
 		}
-		
+
 		return selectables;
 	}
 
