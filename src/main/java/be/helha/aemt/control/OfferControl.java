@@ -3,10 +3,11 @@ package be.helha.aemt.control;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 import be.helha.aemt.ejb.OfferManagerEJB;
@@ -161,6 +162,7 @@ public class OfferControl implements Serializable {
 		this.toApproveOnlySelected = toApproveOnlySelected;
 	}
 	
+
 	/*****************************
 		 methods used by XHTML
 	*****************************/
@@ -200,5 +202,12 @@ public class OfferControl implements Serializable {
 		intern = new InternshipOffer();
 		job = new JobOffer();
 	}
-
+	
+	public void offerDetails() {
+		System.out.println("click");
+		FacesContext fc= FacesContext.getCurrentInstance();
+		Map m = fc.getExternalContext().getRequestParameterMap();
+		int offerID= Integer.parseInt((String) m.get("idClicked"));
+		queryById(offerID);
+	}
 }

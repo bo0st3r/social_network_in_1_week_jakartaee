@@ -22,6 +22,11 @@ public class MemberDAO {
 		Query selectAll = em.createNamedQuery("Member.queryAll");
 		return selectAll.getResultList();
 	}
+	
+	public List<FormerStudent> selectAllFormers() {
+		Query selectAll = em.createNamedQuery("FormerStudent.queryAll");
+		return selectAll.getResultList();
+	}
 
 	public Member add(Member m) {
 		String username = m.getUsername();
@@ -38,13 +43,38 @@ public class MemberDAO {
 	public int findIdByUsername(String username) {
 		Query selectU = em.createNamedQuery("Member.queryIdByUsername");
 		selectU.setParameter("username", username);
-		int id = (int) selectU.getResultList().get(0);
-		return id;
+		int size = selectU.getResultList().size();
+		if(size > 0) {
+			int id = (int) selectU.getResultList().get(0);
+			return id;
+		} else {
+			return -1;
+		}
+	}
+	
+	public int findIdByMail(String mail) {
+		Query selectU = em.createNamedQuery("Member.queryIdByMail");
+		selectU.setParameter("mail", mail);
+		int size = selectU.getResultList().size();
+		if(size > 0) {
+			int id = (int) selectU.getResultList().get(0);
+			return id;
+		} else {
+			return -1;
+		}
 	}
 
 	public Member findByUsername(String username) {
 		Query selectU = em.createNamedQuery("Member.queryByUsername");
 		selectU.setParameter("username", username);
+		List<Member> tmp = selectU.getResultList();
+
+		return tmp.size() == 0 ? null : tmp.get(0);
+	}
+	
+	public Member findByMail(String mail) {
+		Query selectU = em.createNamedQuery("Member.queryByMail");
+		selectU.setParameter("mail", mail);
 		List<Member> tmp = selectU.getResultList();
 
 		return tmp.size() == 0 ? null : tmp.get(0);

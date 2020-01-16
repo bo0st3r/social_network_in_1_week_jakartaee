@@ -14,6 +14,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
@@ -21,16 +22,20 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
+import be.helha.aemt.entity.keys.MemberKey;
 import be.helha.aemt.enumeration.GroupName;
 
 @Entity
+@IdClass(MemberKey.class)
 @Inheritance(
 	    strategy = InheritanceType.SINGLE_TABLE
 )
 @NamedQueries({
 	@NamedQuery(name="Member.queryAll", query="SELECT m FROM Member m"),
 	@NamedQuery(name="Member.queryByUsername", query="SELECT m FROM Member m WHERE m.username = :username"),
+	@NamedQuery(name="Member.queryByMail", query="SELECT m FROM Member m WHERE m.mail = :mail"),
 	@NamedQuery(name="Member.queryIdByUsername", query="SELECT m.idMember FROM Member m WHERE m.username = :username"),
+	@NamedQuery(name="Member.queryIdByMail", query="SELECT m.idMember FROM Member m WHERE m.mail = :mail"),
 })
 public class Member implements Serializable{
 	private static final long serialVersionUID = 3414596716371149696L;
@@ -38,11 +43,13 @@ public class Member implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idMember;
+	@Id
+	private String mail;
+	
+	private String username;
 	private String firstName;
 	private String lastName;
-	private String username;
 	private String password;
-	private String mail;
 	private LocalDate birthDate;
 	
 	@OneToMany(cascade = CascadeType.ALL)
@@ -60,7 +67,6 @@ public class Member implements Serializable{
 
 	public Member() {
 	}
-	
 	
 	public Member(String firstName, String lastName, String username, String password, String mail, LocalDate birthDate,
 			List<Offer> offers, List<Event> events, GroupName groupName, byte[] photo) {

@@ -19,8 +19,8 @@ public class SHA256Hasher {
 	 *                                  null.
 	 * @return String object, the hashed String.
 	 */
-	public static String hashString(String toHash) {
-		if (toHash.length() > 0) {
+	public static String hash(String toHash) {
+		if (toHash != null && toHash.length() > 0) {
 			try {
 				MessageDigest digest = MessageDigest.getInstance(ALGORITHM_NAME);
 				byte[] byteHash = digest.digest(toHash.getBytes(StandardCharsets.UTF_8));
