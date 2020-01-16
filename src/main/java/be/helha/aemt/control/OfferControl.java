@@ -28,8 +28,8 @@ public class OfferControl implements Serializable {
 	private InternshipOffer intern = new InternshipOffer();
 	
 	private boolean iGSelected = true;
-	private boolean aDSelected = true;
-	private boolean comptaSelected = true;
+	private boolean aDSelected = false;
+	private boolean comptaSelected = false;
 	private boolean toApproveOnlySelected = false;
 	
 	public List<Offer> queryAll(){
@@ -126,7 +126,6 @@ public class OfferControl implements Serializable {
 
 	public void setiGSelected(boolean iGSelected) {
 		this.iGSelected = iGSelected;
-		System.out.println(this.iGSelected);
 	}
 
 	public boolean isaDSelected() {
@@ -173,7 +172,7 @@ public class OfferControl implements Serializable {
 		List<JobOffer> jobs = queryJob();
 		for (JobOffer jobOffer : jobs) {
 			//System.out.println(jobOffer.isApproved()+"");
-			if(jobOffer.isApproved() || !((iGSelected && jobOffer.getMajor() == Major.InformatiqueGestion) || 
+			if(!jobOffer.isApproved() || !((iGSelected && jobOffer.getMajor() == Major.InformatiqueGestion) || 
 					(aDSelected && jobOffer.getMajor() == Major.AssistantDirection) || (comptaSelected && jobOffer.getMajor() == Major.Comptabilite)))
 				jobs.remove(jobOffer);
 		}
@@ -190,6 +189,25 @@ public class OfferControl implements Serializable {
 		}
 		
 		return intern;
+	}
+	
+	public boolean canRender(Offer offer) {
+		boolean result = (offer.isApproved() && ((iGSelected && offer.getMajor() == Major.InformatiqueGestion) || 
+				(aDSelected && offer.getMajor() == Major.AssistantDirection) || (comptaSelected && offer.getMajor() == Major.Comptabilite)));
+		if(toApproveOnlySelected && !offer.isApproved()) {
+			result = true;
+		}else if(toApproveOnlySelected && offer.isApproved())
+		{
+			result = false;
+		}
+		
+		System.out.println(offer.getLabelOffer() +" " + result + " = " 
+				+ offer.isApproved() + " && ("
+				+ (iGSelected && offer.getMajor() == Major.InformatiqueGestion)+ " || "
+				+ (aDSelected && offer.getMajor() == Major.AssistantDirection)+ " || "
+				+ (comptaSelected && offer.getMajor() == Major.Comptabilite)+ ")");
+		return result;
+		
 	}
 	
 	public String showOffer() {
