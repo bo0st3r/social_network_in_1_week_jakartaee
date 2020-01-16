@@ -16,6 +16,7 @@ import be.helha.aemt.ejb.MemberManagerEJB;
 import be.helha.aemt.entity.Admin;
 import be.helha.aemt.entity.FormerStudent;
 import be.helha.aemt.entity.Member;
+import be.helha.aemt.enumeration.GroupName;
 import be.helha.aemt.enumeration.Major;
 
 @SessionScoped
@@ -40,10 +41,11 @@ public class MemberControl implements Serializable {
 		}
 		System.out.println(former);
 		System.out.println(pswConfirm + " " + mailConfirm);
-	}
+	}	
 
-	public Member addMember(Member m) {
-		return gestion.add(m);
+	public Member addMember() {
+		return gestion.add(member);
+
 	}
 
 	public List<Member> selectMembers() {
