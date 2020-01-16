@@ -4,14 +4,14 @@ xmlns:h="http://xmlns.jcp.org/jsf/html"
 xmlns:f="http://java.sun.com/jsf/core"
 xmlns:c="http://java.sun.com/jsp/jstl/core"
 xmlns:ui="http://java.sun.com/jsf/facelets">
-<head>
+<h:head>
     <meta charset="UTF-8"/>
     <title>Inscription</title>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
-</head>
+</h:head>
 <h:body style="background-color: #f4F4F4">
 <!-- Header-->
 <div class="container-fluid" style="background-color: white;">
@@ -83,89 +83,126 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 <div class="container-fluid col-lg-12 ">
     <div class="container-fluid col-lg-2">   </div>
     <div class="container-fluid border col-lg-6 col-sm-12 text-center mt-5 font-weight-bold" style="background-color: #eee;">
-        <h:form>
+        <h:form onsubmit="#{signUpBean.registerMember()}">
             <div class="form-row">
-                <button onclick="#{memberControl.test()}">TEST</button>
                 <div class="form-group col-md-6">
                     <!--NOM-->
                     <label for="nom">Nom</label>
-                    <h:inputText value="#{memberControl.former.lastName}" type="text" class="form-control" id="nom"/>
+                    <h:inputText value="#{signUpBean.former.lastName}" class="form-control" id="nom"
+                    	required="true" requiredMessage="Veuillez indiquer un nom.">
+                		<f:validateRegex pattern="#{memberControl.selectNamePattern()}"/>
+                    </h:inputText>
+                    <h:message for="nom" class="mt-1 d-block text-danger"/>
                 </div>
                 <div class="form-group col-md-6">
                     <!--PRENOM-->
                     <label for="prenom">Prénom</label>
-                    <h:inputText value="#{memberControl.former.firstName}" type="text" class="form-control" id="prenom"/>
+                    <h:inputText value="#{signUpBean.former.firstName}" class="form-control" id="prenom"
+                    	required="true" requiredMessage="Veuillez indiquer un prénom">
+						<f:validateRegex pattern="#{memberControl.selectNamePattern()}"/>
+                    </h:inputText>
+                    <h:message for="prenom" class="mt-1 d-block text-danger"/>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <!--MAIL-->
                     <label for="mail">Mail</label>
-                    <h:inputText value="#{memberControl.former.mail}" type="email" class="form-control" id="mail"/>
+                    <h:inputText value="#{signUpBean.former.mail}" class="form-control" id="mail"
+                    	validatorMessage="Le mail ne convient pas." 
+						required="true" requiredMessage="Veuillez indiquer un mail.">
+              			<f:ajax render="mailMessage"/>
+              			<f:validateRegex pattern="#{memberControl.selectMailPattern()}"/>
+                    </h:inputText>
+                    <h:message id="mailMessage" for="mail" class="mt-1 d-block text-danger"/>
                 </div>
                 <div class="form-group col-md-6">
                     <!--CONFIRMER MAIL-->
                     <label for="mailConfirm">Confirmer le mail</label>
-                    <h:inputText value="#{memberControl.mailConfirm}" type="email" class="form-control" id="mailConfirm"/>
+                    <h:inputText value="#{signUpBean.mailConfirm}" class="form-control" id="mailConfirm"
+						validator="#{signUpBean.validateMailConfirmation}"
+                        required="true" requiredMessage="Veuillez confirmer le mail.">
+					</h:inputText>
+					<h:message for="mailConfirm" class="mt-1 d-block text-danger"/>
                 </div>
             </div>
-            
-            <h:panelGroup layout="block" class="form-row" rendered="#{memberControl.doMailsMatch() == false}">
-                <div class="form-group col">
-            		<h:outputText value="Les mails ne correspondent pas !"/>
-            	</div>
-            </h:panelGroup>
             
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <!--PSEUDO-->
-                    <label for="pseudo">Nom d'utilisateur</label>
-                    <h:inputText value="#{memberControl.former.username}" type="text" class="form-control" id="pseudo" required="true"/>
+                    <label for="username">Nom d'utilisateur</label>
+                    <h:inputText value="#{signUpBean.former.username}" class="form-control" id="username" 
+                   		validatorMessage="Le pseudo ne convient pas." 
+                    	required="true" requiredMessage="Veuillez indiquer un pseudo.">
+						<f:validateRegex pattern="#{memberControl.selectUsernamePattern()}"/>
+                   	</h:inputText>
+                    <h:message for="username" class="mt-1 d-block text-danger"/>
                 </div>
+                
                 <div class="form-group col-md-6">
                     <!--ANNEE DIPLOME-->
                     <label for="anneeDiplome">Année d'obtention du diplôme</label>
-                    <h:inputText value="#{memberControl.former.graduationYear}" type="number" class="form-control" id="anneeDiplome" min="2000" max="2050" required="true"/>
+                    <h:inputText value="#{signUpBean.former.graduationYear}" class="form-control" id="anneeDiplome" 
+                   		validatorMessage="Cette année ne convient pas (yyyy)."
+                   		converterMessage="Année incorrecte" 
+                   		onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;"
+                   		required="true" requiredMessage="Veuillez indiquer une année diplômante.">
+                   		 <f:validateLength minimum="4" maximum="4"/>
+                   		 <f:ajax render="anneeDiplomeMessage"/>
+                   	</h:inputText>
+					<h:message id="anneeDiplomeMessage" for="anneeDiplome" class="mt-1 d-block text-danger"/>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <!--MOT DE PASSE-->
                     <label for="motDePasse">Mot de passe</label>
-                    <h:inputSecret value="#{memberControl.former.password}" type="text" class="form-control" id="motDePasse" required="true"/>
+                    <h:inputSecret value="#{signUpBean.former.password}" class="form-control" id="motDePasse" 
+                    	validatorMessage="Ce mot de passe ne convient pas."
+                    	required="true" requiredMessage="Veuillez indiquer un mot de passe.">
+						<f:validateRegex pattern="#{memberControl.selectPasswordPattern()}"/>
+                    	
+                    	<f:ajax render="motDePasseMessage" />
+                    </h:inputSecret>
+					<h:message id="motDePasseMessage" for="motDePasse" class="mt-1 d-block text-danger"/>
                 </div>
                 <div class="form-group col-md-6">
                     <!--CONFIRM MOT DE PASSE-->
                     <label for="motDePasseConfirm">Confirmer mot de passe</label>
-                    <h:inputSecret value="#{memberControl.pswConfirm}" type="text" class="form-control" id="motDePasseConfirm" required="true"/>
+                    <h:inputSecret value="#{signUpBean.pswConfirm}" class="form-control" id="motDePasseConfirm" 
+                   		validator="#{signUpBean.validatePasswordConfirmation}"
+                    	required="true" requiredMessage="Veuillez confirmer le mot de passe.">
+                       	
+                     </h:inputSecret>
+            		<h:message for="motDePasseConfirm" class="mt-1 d-block text-danger"/>
                 </div>
             </div>
-            
-            <h:panelGroup layout="block" class="form-row" rendered="#{memberControl.doPswsMatch() == false}">
-                <div class="form-group col">
-            		<h:outputText value="Les mots de passe ne correspondent pas !"/>
-            	</div>
-            </h:panelGroup>
-            
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <!--DATE DE NAISSANCE-->
                     <label for="naissance">Date de naissance</label>
-                    <h:inputText value="#{memberControl.birthDateToConvert}" type="date" class="form-control" id="naissance" required="true">
+                    <h:inputText value="#{signUpBean.birthDateToConvert}" class="form-control" id="naissance" 
+                    	converterMessage="Cette date ne convient pas (jj/mm/yyyy)."
+                    	required="true" requiredMessage="Veuillez indiquer une date de naissance.">
                     	<f:convertDateTime pattern="dd/MM/yyyy"/>
                     </h:inputText>
+                    <h:message for="naissance" class="mt-1 d-block text-danger"/>
                 </div>
                 <div class="form-group col-md-6">
                     <!--SECTION-->
                     <label for="section">Section</label>
-                    <h:selectOneMenu value="#{memberControl.former.major}" class="form-control" id="section" required="true">
-					        <f:selectItems value="#{memberControl.getSelectableMajors()}" />
+                    <h:selectOneMenu value="#{signUpBean.former.major}" class="form-control" id="section" required="true">
+					        <f:selectItems value="#{signUpBean.getSelectableMajors()}" />
 					</h:selectOneMenu>
+                    <h:message for="section" class="mt-1 d-block text-danger"/>
                 </div>
             </div>
 
             <!--CONNECTION BUTTON-->
-            <b><h:commandButton action="" class="col-lg-5 mt-4 mb-4 btn text-light" style="background-color: #009790" value="Valider"/></b>
+            <b><h:commandButton class="col-lg-5 mt-4 mb-4 btn text-light" 
+            style="background-color: #009790" value="Valider">
+            	<f:ajax execute="@form" render="@form" />
+            </h:commandButton></b>
         </h:form>
     </div>
     <div class="container-fluid col-lg-2">   </div>

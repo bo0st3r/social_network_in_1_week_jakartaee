@@ -1,46 +1,25 @@
 package be.helha.aemt.control;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.model.SelectItem;
 import javax.inject.Named;
 
 import be.helha.aemt.ejb.MemberManagerEJB;
 import be.helha.aemt.entity.Admin;
-import be.helha.aemt.entity.FormerStudent;
 import be.helha.aemt.entity.Member;
-import be.helha.aemt.enumeration.Major;
+import be.helha.aemt.util.UserPattern;
 
 @SessionScoped
 @Named
 public class MemberControl implements Serializable {
 	private static final long serialVersionUID = -37955545070490897L;
-	public static final List<SelectItem> SELECTABLE_MAJORS = selectMajors();
-	
+
 	@EJB
 	private MemberManagerEJB gestion;
 	private Member member = new Member();
-	private FormerStudent former = new FormerStudent();
-	
-	private Date birthDateToConvert;
-	private String pswConfirm;
-	private String mailConfirm;
-	
-	public void test() {
-		if(birthDateToConvert != null) {
-			LocalDate date = birthDateToConvert.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-			former.setBirthDate(date);
-		}
-		System.out.println(former);
-		System.out.println(pswConfirm + " " + mailConfirm);
-	}
 
 	public Member addMember(Member m) {
 		return gestion.add(m);
@@ -54,15 +33,12 @@ public class MemberControl implements Serializable {
 		return gestion.findIdByUsername(username);
 	}
 	
-	public boolean hasAdminRights() {
-		return member instanceof Admin;
+	public int findIdByMail(String mail) {
+		return gestion.findIdByMail(mail);
 	}
 	
-	public boolean doPswsMatch() {
-		return former.getPassword().equals(pswConfirm);
-	}
-	public boolean doMailsMatch() {
-		return former.getMail().equals(mailConfirm);
+	public boolean hasAdminRights() {
+		return member instanceof Admin;
 	}
 
 	/*****************************
@@ -75,6 +51,22 @@ public class MemberControl implements Serializable {
 	public String doList() {
 		return "list.xhtml";
 	}
+	
+	public String selectMailPattern() {
+		return UserPattern.MAIL_PATTERN.pattern();
+	}
+	
+	public String selectUsernamePattern() {
+		return UserPattern.USERNAME_PATTERN.pattern();
+	}
+	
+	public String selectPasswordPattern() {
+		return UserPattern.PASSWORD_PATTERN.pattern();
+	}
+	
+	public String selectNamePattern() {
+		return UserPattern.NAME_PATTERN.pattern();
+	}
 
 	/*****************************
 	 * Getters & setters
@@ -85,50 +77,5 @@ public class MemberControl implements Serializable {
 
 	public void setMember(Member member) {
 		this.member = member;
-	}
-
-	public FormerStudent getFormer() {
-		return former;
-	}
-
-	public void setFormer(FormerStudent former) {
-		this.former = former;
-	}
-
-	public Date getBirthDateToConvert() {
-		return birthDateToConvert;
-	}
-
-	public void setBirthDateToConvert(Date birthDateToConvert) {
-		this.birthDateToConvert = birthDateToConvert;
-	}
-
-	private static List<SelectItem> selectMajors() {
-		ArrayList<SelectItem> selectables = new ArrayList<SelectItem>();
-		for (Major major : Major.values()) {
-			selectables.add(new SelectItem(major, major.toString()));
-		}
-		
-		return selectables;
-	}
-
-	public List<SelectItem> getSelectableMajors() {
-		return SELECTABLE_MAJORS;
-	}
-
-	public String getPswConfirm() {
-		return pswConfirm;
-	}
-
-	public void setPswConfirm(String pswConfirm) {
-		this.pswConfirm = pswConfirm;
-	}
-
-	public String getMailConfirm() {
-		return mailConfirm;
-	}
-
-	public void setMailConfirm(String mailConfirm) {
-		this.mailConfirm = mailConfirm;
 	}
 }
