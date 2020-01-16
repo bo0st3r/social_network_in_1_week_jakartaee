@@ -10,6 +10,7 @@ import javax.persistence.Query;
 
 import be.helha.aemt.entity.FormerStudent;
 import be.helha.aemt.entity.Member;
+import be.helha.aemt.entity.Offer;
 import be.helha.aemt.helper.Config;
 
 @Stateless
@@ -103,6 +104,17 @@ public class MemberDAO {
 		query.setParameter("id", idPortrait);
 		List<FormerStudent> results = query.getResultList();
 		if (results.size() > 0) {
+			return results.get(0);
+		}
+		return null;
+	}
+	
+	public Member queryById(int id) {
+		Query query = em.createNamedQuery("Member.queryById");
+		query.setParameter("id", id);
+		
+		List<Member> results = query.getResultList();
+		if(results.size() > 0) {
 			return results.get(0);
 		}
 		return null;

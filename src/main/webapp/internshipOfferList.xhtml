@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
+<html xmlns:jsf="http://xmlns.jcp.org/jsf"
+xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
 <head>
     <meta charset="UTF-8"/>
     <title>Offres</title>
@@ -52,15 +57,22 @@
     <div class="container-fluid border col-lg-10 col-sm-12 text-center mt-5 font-weight-bold p-2" style="background-color: #eee;">
         <!-- offre-->
         <ui:repeat var="offer" value="#{offerControl.queryInternship()}" id="offerResultList">
-        <a href="internshipOfferDetails.xhtml"  onclick="#{offerControl.queryById(offer.idOffer)}">
-        <h:panelGroup class="card border-dark p-2 col-12">
-            <div class="card-header">#{offer.major.toString()}</div>
+        <h:panelGroup class="card border-dark  p-2 col-12">
+        <h:form>
+        <h:commandLink action="internshipOfferDetails.xhtml">
+            
+            <f:param name="idClicked" value="#{offer.idOffer}"/>
+            <f:actionListener binding="#{offerControl.offerDetails()}"/>
+            
+            <div class="card-header text-dark"><h4>#{offer.labelOffer}</h4> </div>
             <div class="card-body text-dark">
-                <h5 class="card-title">#{offer.labelOffer} à partir du #{offer.startingDate}</h5>
-                <p class="card-text">Posté par #{offer.companyName} le #{offer.postingDate}</p>
+                <h5 class="card-title">#{offer.major.toString()}</h5>
+                <h6>Début le #{offer.startingDate}</h6>
+                <p class="card-text">#{offer.companyName} - posté le #{offer.postingDate}</p>
             </div>
+		</h:commandLink>
+        </h:form>
         </h:panelGroup>
-        </a>
         </ui:repeat>
         <!--fin offre-->
     </div>

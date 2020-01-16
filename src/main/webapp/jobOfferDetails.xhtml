@@ -26,7 +26,7 @@
       
             <div class="row">
             <h1 class=" col-6 text-left p-5">#{offerControl.job.labelOffer}</h1>
-            <p class=" col-6 text-muted text-right"> POSTE LE DATE</p>
+            <p class=" col-6 text-muted text-right"> Postée le #{offerControl.job.postingDate}</p>
             </div>
 		<!--ENTREPRISE-->
        	 <div class="row p-2">
@@ -34,7 +34,7 @@
                 <i>Nom de l'entreprise</i>
             </div>
             <div class="col-3">
-                NOM ENTREPRISE
+                #{offerControl.job.companyName}
             </div>
         </div>
         <!--CONTACT-->
@@ -61,7 +61,7 @@
                 <i>Lieu :</i>
             </div>
             <div class="col-3">
-                ADRESSE DE L'OFFRE
+                #{offerControl.job.address.street}, #{offerControl.job.address.number}, #{offerControl.job.address.postCode} #{offerControl.job.address.city}
             </div>
         </div>
         <!--Contrat-->
@@ -70,7 +70,7 @@
                 <i>Type de contrat :</i>
             </div>
             <div class="col-3">
-                TYPE DE L'OFFRE
+                #{offerControl.job.contractType} 
             </div>
         </div>
         <!--Section concernée-->
@@ -79,7 +79,7 @@
                 <i>Section :</i>
             </div>
             <div class="col-3">
-                SECTION CONCERNEE
+                #{offerControl.job.major.toString()} 
             </div>
         </div>
         <!--Section concernée-->
@@ -88,7 +88,7 @@
                 <i>Détail de l'offre:</i>
             </div>
             <div class="col-3">
-                DETAIL DE L'OFFRE
+                 #{offerControl.job.descriptionOffer} 
             </div>
         </div>
         <!--FIN FENETRE DETAIL-->

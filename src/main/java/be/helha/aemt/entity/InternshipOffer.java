@@ -2,6 +2,8 @@ package be.helha.aemt.entity;
 
 import java.util.Date;
 import java.io.Serializable;
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -24,15 +26,15 @@ public class InternshipOffer extends Offer implements Serializable{
 		super();
 	}
 	
-	public InternshipOffer(String labelOffer, String companyName, String descriptionOffer, Date startingDate,
-			Date postingDate, boolean approved, Major major, String duration, boolean thesisPossibility) {
+	public InternshipOffer(String labelOffer, String companyName, String descriptionOffer, LocalDate startingDate,
+			LocalDate postingDate, boolean approved, Major major, String duration, boolean thesisPossibility) {
 		super(labelOffer, companyName, descriptionOffer, startingDate, postingDate, approved, major);
 		this.duration = duration;
 		this.thesisPossibility = thesisPossibility;
 	}
 	
-	public InternshipOffer(String labelOffer, String companyName, String descriptionOffer, Date startingDate,
-			Date postingDate, boolean approved, Major major, Address address, String duration,
+	public InternshipOffer(String labelOffer, String companyName, String descriptionOffer, LocalDate startingDate,
+			LocalDate postingDate, boolean approved, Major major, Address address, String duration,
 			boolean thesisPossibility) {
 		super(labelOffer, companyName, descriptionOffer, startingDate, postingDate, approved, major, address);
 		this.duration = duration;
