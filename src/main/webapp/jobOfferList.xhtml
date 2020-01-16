@@ -55,13 +55,19 @@ xmlns:p="http://primefaces.org/ui">
         <!-- offre-->
         <ui:repeat var="offer" value="#{offerControl.queryJob()}" id="offerResultList">
         <h:panelGroup class="card border-dark p-2 col-12" rendered="#{offerControl.canRender(offer)}">
-        <a href="jobOfferDetails.xhtml" onclick="#{offerControl.queryById(offer.idOffer)}">
+        <h:form>
+        <h:commandLink action="jobOfferDetails.xhtml">
+            
+            <f:param name="idClicked" value="#{offer.idOffer}"/>
+            <f:actionListener binding="#{offerControl.offerDetails()}"/>
             <div class="card-header">#{offer.major.toString()}</div>
             <div class="card-body text-dark">
                 <h5 class="card-title">#{offer.labelOffer} à partir du #{offer.startingDate}</h5>
                 <p class="card-text">Posté par #{offer.companyName} le #{offer.postingDate}</p>
             </div>
-        </a>
+            
+        </h:commandLink>
+        </h:form>
         </h:panelGroup>
         </ui:repeat>
         <!--fin offre-->
