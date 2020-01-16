@@ -10,7 +10,6 @@ import javax.inject.Named;
 import be.helha.aemt.ejb.MemberManagerEJB;
 import be.helha.aemt.entity.FormerStudent;
 import be.helha.aemt.entity.Member;
-import be.helha.aemt.enumeration.GroupName;
 import be.helha.aemt.util.UserPattern;
 
 @SessionScoped
@@ -32,8 +31,21 @@ public class MemberControl implements Serializable {
 	public List<FormerStudent> selectFormerStudents() {
 		return gestion.selectAllFormers();
 	}
+	
+	public List<FormerStudent> selectUnapprovedFormerStudents() {
+		System.out.println(gestion.selectAllUnaprovedFormers());
+		return gestion.selectAllUnaprovedFormers();
+	}
+	
+	public void updateFormerApproved(FormerStudent fs, Boolean approve) {
+		if(approve) {
+			gestion.updateFormerApproved(fs.getMail(), true);
+		} else {
+			gestion.deleteMember(fs);
+		}
+	}
 
-
+	
 	public int findIdByUsername(String username) {
 		return gestion.findIdByUsername(username);
 	}

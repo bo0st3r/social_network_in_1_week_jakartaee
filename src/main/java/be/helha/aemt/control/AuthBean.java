@@ -31,9 +31,6 @@ public class AuthBean implements Serializable {
 	 * @return authenticated member, if authenticated.
 	 */
 	public Member selectMember() {
-		System.out.println("----------------");
-		System.out.println(member);
-		System.out.println(mail);
 		String mailCurrent = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
 		if ((mailCurrent != null && mail != mailCurrent) || member == null) {
 			mail = mailCurrent;
@@ -47,8 +44,6 @@ public class AuthBean implements Serializable {
 	}
 
 	public String logout() {
-		System.out.println("----------------");
-		System.out.println("LOGOUT");
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		member = null;
 		mail = null;

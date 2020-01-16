@@ -1,100 +1,105 @@
 <!--NAVBAR OK-->
 
-<nav class="navbar navbar-expand-lg text-light col-lg-12" style="background-color: #009790">
-    <a class="navbar-brand text-light" href="index.xhtml">Accueil</a>
-    
-    <button class="navbar-toggler text-light" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon text-light"></span>
-    </button>
-    <div class="collapse navbar-collapse col-lg-10" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-            <!--ANNUAIRE-->
-            <li class="nav-item active">
-                <a class="nav-link text-light" href="glossaryFormer.xhtml">Annuaire Alumni <span class="sr-only">(current)</span></a>
-            </li>
-            <!--OFFRE STAGES-->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-light" href="#" id="navStage" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Offres de stage
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navStage">
-                    <a class="dropdown-item text-dark" href="internshipOfferList.xhtml">Consulter les offres</a>
-                    <a class="dropdown-item text-dark" href="addInternshipOffer.xhtml">Ajouter une offre</a>
-                    <a class="dropdown-item text-dark" href="#">Gérer les offres</a>
-                    
-                </div>
-            </li>
-            <!--OFFRE EMPLOI-->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-light" href="#" id="navEmploi" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Offres d'emploi
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navEmploi">
-                    <a class="dropdown-item text-dark" href="jobOfferList.xhtml">Consulter les offres</a>
-                    <a class="dropdown-item text-dark" href="addJobOffer.xhtml">Ajouter une offre</a>
-                    <a class="dropdown-item text-dark" href="#">Gérer les offres</a>
+<nav class="navbar navbar-expand-lg text-light col-lg-12"
+	style="background-color: #009790">
+	<a class="navbar-brand text-light" href="index.xhtml">Accueil</a>
 
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" href="https://www.helha.be/formation-continue/">Formation continue</a>
-            </li>
+	<button class="navbar-toggler text-light" type="button"
+		data-toggle="collapse" data-target="#navbarNavDropdown"
+		aria-controls="navbarNavDropdown" aria-expanded="false"
+		aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon text-light"></span>
+	</button>
+	<div class="collapse navbar-collapse col-lg-10" id="navbarNavDropdown">
+		<ul class="navbar-nav">
+			<!--ANNUAIRE-->
+			<li class="nav-item active"><a class="nav-link text-light"
+				href="glossaryFormer.xhtml">Annuaire Alumni <span
+					class="sr-only">(current)</span></a></li>
+			<!--OFFRE STAGES-->
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle text-light" href="#" id="navStage"
+				role="button" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false"> Offres de stage </a>
+				<div class="dropdown-menu" aria-labelledby="navStage">
+					<a class="dropdown-item text-dark" href="internshipOfferList.xhtml">Consulter
+						les offres</a> <a class="dropdown-item text-dark"
+						href="addInternshipOffer.xhtml">Ajouter une offre</a> <a
+						class="dropdown-item text-dark" href="#">Gérer les offres</a>
+
+				</div></li>
+			<!--OFFRE EMPLOI-->
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle text-light" href="#" id="navEmploi"
+				role="button" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false"> Offres d'emploi </a>
+				<div class="dropdown-menu" aria-labelledby="navEmploi">
+					<a class="dropdown-item text-dark" href="jobOfferList.xhtml">Consulter
+						les offres</a> <a class="dropdown-item text-dark"
+						href="addJobOffer.xhtml">Ajouter une offre</a> <a
+						class="dropdown-item text-dark" href="#">Gérer les offres</a>
+
+				</div></li>
+			<li class="nav-item"><a class="nav-link text-light"
+				href="https://www.helha.be/formation-continue/">Formation
+					continue</a></li>
 			<!--ANNONCES-->
-           <li class="nav-item">
-                <a class="nav-link text-light" href="announcements.xhtml">Annonces</a>
-            </li>
-<!--             <li class="nav-item"> -->
-<!--                 <a class="nav-link text-light" href="#">Associations</a> -->
-<!--             </li> -->
-            
-            
-            <!--ADMIN-->
-            
-            <h:panelGroup 
-            xmlns:h="http://xmlns.jcp.org/jsf/html"
-            rendered="#{authBean.hasAdminRights()}">
-	            <li class="nav-item dropdown">
-	                <a class="nav-link dropdown-toggle text-light" href="#" id="navEmploi" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                    Admin
-	                </a>
-	                <div class="dropdown-menu" aria-labelledby="navEmploi">
-	                    <a class="dropdown-item text-dark" href="adminFormerValid.xhtml">Valider les inscriptions (#{memberControl.queryFormerAmountToApprove()})</a>
-	                    <a class="dropdown-item text-dark" href="adminJobOfferValid.xhtml">Valider les offres d'emploi (#{offerControl.queryJobAmountToApprove()})</a>
-	                    <a class="dropdown-item text-dark" href="adminInternshipOfferValid.xhtml">Valider les offres de stage (#{offerControl.queryInternshipAmountToApprove()})</a>
-						<a class="dropdown-item text-dark" href="portraitsList.xhtml">Gérer les portraits</a>
-						<a class="dropdown-item text-dark" href="addAnnouncements.xhtml">Ajouter une annonce</a>
-	                </div>
-	            </li>
-            </h:panelGroup>
-        </ul>
+			<li class="nav-item"><a class="nav-link text-light"
+				href="announcements.xhtml">Annonces</a></li>
+			<!--             <li class="nav-item"> -->
+			<!--                 <a class="nav-link text-light" href="#">Associations</a> -->
+			<!--             </li> -->
 
-    </div>
-    <!--COMPTE-->
-            <div class="nav-item dropdown text-right col-lg-1">
-                <a class="nav-link dropdown-toggle text-light" href="#" id="navCompte" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Compte
-                </a>
-                <h:panelGroup 
-		            xmlns:h="http://xmlns.jcp.org/jsf/html"
-		            rendered="#{authBean.isAuthenticated()}">
-	                <div class="dropdown-menu" aria-labelledby="navCompte">
-	                    <a class="dropdown-item text-dark" href="account.xhtml">Mon compte</a>
-	                    
-	                    <h:form>
-	                    	<h:commandButton action="#{authBean.logout()}" value="Me déconnecter" class="dropdown-item text-dark"/>
-	                    </h:form>
-	                </div>
-                </h:panelGroup>
-                
-                <h:panelGroup 
-		            xmlns:h="http://xmlns.jcp.org/jsf/html"
-		            rendered="#{not authBean.isAuthenticated()}">
-	                <div class="dropdown-menu" aria-labelledby="navCompte">
-	                    <a class="dropdown-item text-dark" href="login.xhtml">Me connecter</a>
-	                    <a class="dropdown-item text-dark" href="signUp.xhtml">Créer un compte</a>
-	                </div>
-                </h:panelGroup>
-            </div>
+
+			<!--ADMIN-->
+
+			<h:panelGroup xmlns:h="http://xmlns.jcp.org/jsf/html"
+				rendered="#{authBean.hasAdminRights()}">
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle text-light" href="#" id="navEmploi"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> Admin </a>
+					<div class="dropdown-menu" aria-labelledby="navEmploi">
+						<a class="dropdown-item text-dark" href="adminFormerValid.xhtml">Valider
+							les inscriptions (#{memberControl.queryFormerAmountToApprove()})</a>
+						<a class="dropdown-item text-dark" href="adminJobOfferValid.xhtml">Valider
+							les offres d'emploi (#{offerControl.queryJobAmountToApprove()})</a> <a
+							class="dropdown-item text-dark"
+							href="adminInternshipOfferValid.xhtml">Valider les offres de
+							stage (#{offerControl.queryInternshipAmountToApprove()})</a> <a
+							class="dropdown-item text-dark" href="portraitsList.xhtml">Gérer
+							les portraits</a> <a class="dropdown-item text-dark"
+							href="addAnnouncements.xhtml">Ajouter une annonce</a>
+					</div></li>
+			</h:panelGroup>
+		</ul>
+
+	</div>
+	<!--COMPTE-->
+	<div class="nav-item dropdown text-right col-lg-1">
+		<a class="nav-link dropdown-toggle text-light" href="#" id="navCompte"
+			role="button" data-toggle="dropdown" aria-haspopup="true"
+			aria-expanded="false"> Compte </a>
+		<h:panelGroup xmlns:h="http://xmlns.jcp.org/jsf/html"
+			rendered="#{authBean.isAuthenticated()}">
+			<div class="dropdown-menu" aria-labelledby="navCompte">
+				<a class="dropdown-item text-dark" href="account.xhtml">Profil</a>
+
+				<h:form>
+					<h:commandButton action="#{authBean.logout()}"
+						value="Se déconnecter" class="dropdown-item text-dark" />
+				</h:form>
+			</div>
+		</h:panelGroup>
+
+		<h:panelGroup xmlns:h="http://xmlns.jcp.org/jsf/html"
+			rendered="#{not authBean.isAuthenticated()}">
+			<div class="dropdown-menu" aria-labelledby="navCompte">
+				<a class="dropdown-item text-dark" href="login.xhtml">Connexion</a> 
+				<a class="dropdown-item text-dark" href="signUp.xhtml">Inscription</a>
+			</div>
+		</h:panelGroup>
+	</div>
 </nav>
 <!--FIN NAVBAR-->
 

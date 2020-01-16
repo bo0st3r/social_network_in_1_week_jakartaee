@@ -20,7 +20,9 @@ import be.helha.aemt.enumeration.Major;
 @NamedQueries({
 		@NamedQuery(name = "FormerStudent.queryByPortrait", query = "SELECT f FROM FormerStudent f WHERE f.portrait.idPortrait = :id"),
 		@NamedQuery(name = "FormerStudent.queryAll", query = "SELECT f FROM FormerStudent f"),
-		@NamedQuery(name="FormerStudent.queryFormerAmountToApprove", query="SELECT count(f) FROM FormerStudent f WHERE f.approved = false")
+		@NamedQuery(name = "FormerStudent.queryAllUnapproved", query = "SELECT f FROM FormerStudent f WHERE f.approved = false"),
+		@NamedQuery(name = "FormerStudent.queryFormerAmountToApprove", query="SELECT count(f) FROM FormerStudent f WHERE f.approved = false")
+		
 })
 public class FormerStudent extends Member {
 	private static final long serialVersionUID = -7782352767686006053L;
@@ -42,6 +44,16 @@ public class FormerStudent extends Member {
 		setGroupName(GroupName.FORMER);
 	}
 
+	public FormerStudent(String firstName, String lastName, String username, String password, String mail, LocalDate birthDate,
+			int graduationYear, Major major, String phoneNumber, boolean approved) {
+		super(firstName, lastName, username, password, mail, birthDate, new ArrayList<Offer>(), new ArrayList<Event>(),
+				GroupName.FORMER, new byte[0]);
+		this.graduationYear = graduationYear;
+		this.phoneNumber = phoneNumber;
+		this.approved = approved;
+		this.major = major;
+	}
+	
 	public FormerStudent(String firstName, String lastName, String username, String password, String mail, LocalDate birthDate,
 			int graduationYear, Major major, String phoneNumber, boolean approved, Address address) {
 		super(firstName, lastName, username, password, mail, birthDate, new ArrayList<Offer>(), new ArrayList<Event>(),
