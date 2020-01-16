@@ -200,4 +200,5 @@ public class OfferControl implements Serializable {
 		intern = new InternshipOffer();
 		job = new JobOffer();
 	}
+
 }
