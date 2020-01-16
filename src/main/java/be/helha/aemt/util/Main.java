@@ -30,6 +30,7 @@ public class Main {
 		Member m3 = new FormerStudent("Bastien","Decorte","user","77e467eb0169e82e77f090df217a323357c6a157a98c0375e6f6dbafe029c83a","user",LocalDate.of(2000, 12, 30), 2021, 
 				Major.InformatiqueGestion, "1111111", true, 
 				new Address("Mons", "Rue du coq", "53a", 7500));
+<<<<<<< HEAD
 		Member m4 = new FormerStudent("Jean","Pierre","jj","77e467eb0169e82e77f090df217a323357c6a157a98c0375e6f6dbafe029c83a","jp@g.g",LocalDate.of(1980, 7, 14), 2012, 
 				Major.AssistantDirection, "1111111", false, null);
 		Member m5 = new FormerStudent("Marie","Jeanne","mar","77e467eb0169e82e77f090df217a323357c6a157a98c0375e6f6dbafe029c83a","mariejeanne@g.g",LocalDate.of(1960, 8, 23), 2015, 
@@ -57,10 +58,17 @@ public class Main {
 		JobOffer jo2 = new JobOffer("CDD Comptable Mons", "Cabinet J et fils","Nous recherchons actuellement un/une comptable pour étoffer notre petite équipe.  Les horaires sont flexibles.  CDD de 6 mois pour commencer", LocalDate.of(2020, 7, 1), LocalDate.now(), true, Major.Comptabilite, a1,"CDD");
 //		Portrait p1 = new Portrait("Un parcours de geek", "La définition du geek peut varier d'un individu à l'autre, mais la définition qui en ressort le plus souvent est celle-ci : un geek (de l'anglais : Écouter) est une personne passionnée par un ou plusieurs domaines précis, plus souvent utilisé pour les domaines liés aux « cultures de l'imaginaire » (certains genres du cinéma, la bande dessinée, les jeux vidéo, les jeux de rôles, etc.), ou encore aux sciences, à la technologie et l'informatique.  R.R.");
 		
+=======
+//		News n1 = new News("Une délégation internationale de l’AWEX à la HELHa","Une délégation internationale de l’AWEX (Agence wallonne à l’exportation et aux investissements étrangers) a visité le campus de la HELHa Mons ce matin dans le but de découvrir la formation DataCenter Engineering.\n" + 
+//				"Des dignitaires venus des quatre coins du monde (Chine, États-Unis, Canada et Singapour) ont pu suivre des modules de la formation continue et assister au maintien d’un vrai Data Center.\n" + 
+//				"Cette rencontre, en plus de promouvoir le savoir-faire belge au-delà de notre continent, a eu pour objectif de faciliter les échanges entre les professionnels du secteur et les professeurs en vue co-développer la formation.\n" + 
+//				"Une véritable plus-value pour la HELHa et ses étudiants en ingénierie !", LocalDate.now());		
+>>>>>>> branch 'master' of https://github.com/bo0st3r/AEMT_2020_groupeB4.git
 		em.getTransaction().begin();
 		em.persist(m1);
 		em.persist(m2);
 		em.persist(m3);
+<<<<<<< HEAD
 		em.persist(m4);
 		em.persist(m5);
 		em.persist(m6);
@@ -79,6 +87,9 @@ public class Main {
 //		em.persist(p1);
 
 
+=======
+//		em.persist(n1);
+>>>>>>> branch 'master' of https://github.com/bo0st3r/AEMT_2020_groupeB4.git
 		em.getTransaction().commit();
 		em.close();
 	}

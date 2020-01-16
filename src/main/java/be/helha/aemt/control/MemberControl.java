@@ -64,6 +64,7 @@ public class MemberControl implements Serializable {
 //		return member;
 //	}
 
+
 	/*****************************
 	 * Pages path getters
 	 *****************************/
