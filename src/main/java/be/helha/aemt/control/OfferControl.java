@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -12,6 +13,7 @@ import be.helha.aemt.ejb.OfferManagerEJB;
 import be.helha.aemt.entity.InternshipOffer;
 import be.helha.aemt.entity.JobOffer;
 import be.helha.aemt.entity.Offer;
+import be.helha.aemt.enumeration.Major;
 
 @SessionScoped
 @Named
@@ -24,6 +26,11 @@ public class OfferControl implements Serializable {
 	private Offer offer = new Offer();
 	private JobOffer job = new JobOffer();
 	private InternshipOffer intern = new InternshipOffer();
+	
+	private boolean iGSelected;
+	private boolean aDSelected;
+	private boolean comptaSelected;
+	private boolean toApproveOnlySelected;
 	
 	public List<Offer> queryAll(){
 		return gestion.queryAll();
@@ -51,7 +58,16 @@ public class OfferControl implements Serializable {
 		return results;
 	}
 	
+	public long queryJobAmountToApprove() {
+		return gestion.queryJobAmountToApprove();
+	}
+	
+	public long queryInternshipAmountToApprove() {
+		return gestion.queryInternshipAmountToApprove();
+	}
+	
 	public Offer queryById(int id) {
+		System.out.println("id : "+id);
 		offer = gestion.queryById(id);
 		if(offer instanceof JobOffer) {
 			job = (JobOffer) offer;
@@ -112,5 +128,76 @@ public class OfferControl implements Serializable {
 	public void setIntern(InternshipOffer intern) {
 		this.intern = intern;
 	}
+
+	public boolean isiGSelected() {
+		return iGSelected;
+	}
+
+	public void setiGSelected(boolean iGSelected) {
+		this.iGSelected = iGSelected;
+	}
+
+	public boolean isaDSelected() {
+		return aDSelected;
+	}
+
+	public void setaDSelected(boolean aDSelected) {
+		this.aDSelected = aDSelected;
+	}
+
+	public boolean isComptaSelected() {
+		return comptaSelected;
+	}
+
+	public void setComptaSelected(boolean comptaSelected) {
+		this.comptaSelected = comptaSelected;
+	}
+
+	public boolean isToApproveOnlySelected() {
+		return toApproveOnlySelected;
+	}
+
+	public void setToApproveOnlySelected(boolean toApproveOnlySelected) {
+		this.toApproveOnlySelected = toApproveOnlySelected;
+	}
 	
+	/*****************************
+		 methods used by XHTML
+	*****************************/
+	
+	public void createJobOffer() {
+		job = new JobOffer();
+	}
+	
+	public void createInternshipOffer() {
+		intern = new InternshipOffer();
+	}
+	
+	public boolean canRender(Offer offer) {
+		boolean result = (offer.isApproved() && ((iGSelected && offer.getMajor() == Major.InformatiqueGestion) || 
+				(aDSelected && offer.getMajor() == Major.AssistantDirection) || (comptaSelected && offer.getMajor() == Major.Comptabilite)));
+		if(toApproveOnlySelected && !offer.isApproved()) {
+			result = true;
+		}else if(toApproveOnlySelected && offer.isApproved())
+		{
+			result = false;
+		}
+	
+		return result;
+	}
+	
+	public void resetToConsult() {
+		toApproveOnlySelected = false;
+		
+		offer = new Offer();
+		intern = new InternshipOffer();
+		job = new JobOffer();
+	}
+	
+	public void resetToApprove(){
+		toApproveOnlySelected = true;
+		offer = new Offer();
+		intern = new InternshipOffer();
+		job = new JobOffer();
+	}
 }

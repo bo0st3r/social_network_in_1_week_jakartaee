@@ -2,6 +2,8 @@ package be.helha.aemt.entity;
 
 import java.util.Date;
 import java.io.Serializable;
+import java.time.LocalDate;
+
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -29,7 +31,7 @@ public class News implements Serializable{
 	private Integer idNews;
 	private String name;
 	private String description;
-	private Date postingDate;
+	private LocalDate postingDate;
 
 	@Lob
 	@Basic(fetch = FetchType.LAZY)
@@ -39,11 +41,11 @@ public class News implements Serializable{
 		super();
 	}
 
-	public News(String name, String description, Date postingDate) {
+	public News(String name, String description, LocalDate postingDate) {
 		this(name, description, postingDate, new byte[0]);
 	}
 
-	public News(String name, String description, Date postingDate, byte[] picture) {
+	public News(String name, String description, LocalDate postingDate, byte[] picture) {
 		super();
 		this.name = name;
 		this.description = description;
@@ -75,11 +77,11 @@ public class News implements Serializable{
 		this.description = description;
 	}
 
-	public Date getPostingDate() {
+	public LocalDate getPostingDate() {
 		return postingDate;
 	}
 
-	public void setPostingDate(Date postingDate) {
+	public void setPostingDate(LocalDate postingDate) {
 		this.postingDate = postingDate;
 	}
 

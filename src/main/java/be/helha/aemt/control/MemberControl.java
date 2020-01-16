@@ -8,26 +8,31 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import be.helha.aemt.ejb.MemberManagerEJB;
-import be.helha.aemt.entity.Admin;
+import be.helha.aemt.entity.FormerStudent;
 import be.helha.aemt.entity.Member;
+import be.helha.aemt.enumeration.GroupName;
 import be.helha.aemt.util.UserPattern;
 
 @SessionScoped
 @Named
 public class MemberControl implements Serializable {
 	private static final long serialVersionUID = -37955545070490897L;
-
 	@EJB
 	private MemberManagerEJB gestion;
 	private Member member = new Member();
 
-	public Member addMember(Member m) {
-		return gestion.add(m);
+	public Member addMember() {
+		return gestion.add(member);
 	}
 
 	public List<Member> selectMembers() {
 		return gestion.selectAll();
 	}
+	
+	public List<FormerStudent> selectFormerStudents() {
+		return gestion.selectAllFormers();
+	}
+
 
 	public int findIdByUsername(String username) {
 		return gestion.findIdByUsername(username);
@@ -37,8 +42,12 @@ public class MemberControl implements Serializable {
 		return gestion.findIdByMail(mail);
 	}
 	
+	public long queryFormerAmountToApprove() {
+		return gestion.queryFormerAmountToApprove();
+	}
+	
 	public boolean hasAdminRights() {
-		return member instanceof Admin;
+		return member.getGroupName() == GroupName.ADMIN;
 	}
 
 	/*****************************

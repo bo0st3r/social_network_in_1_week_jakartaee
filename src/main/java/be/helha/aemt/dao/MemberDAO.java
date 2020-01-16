@@ -22,6 +22,11 @@ public class MemberDAO {
 		Query selectAll = em.createNamedQuery("Member.queryAll");
 		return selectAll.getResultList();
 	}
+	
+	public List<FormerStudent> selectAllFormers() {
+		Query selectAll = em.createNamedQuery("FormerStudent.queryAll");
+		return selectAll.getResultList();
+	}
 
 	public Member add(Member m) {
 		String username = m.getUsername();
@@ -101,5 +106,9 @@ public class MemberDAO {
 			return results.get(0);
 		}
 		return null;
+	}
+	
+	public long queryFormerAmountToApprove() {
+		return (long) em.createNamedQuery("FormerStudent.queryFormerAmountToApprove").getResultList().get(0);
 	}
 }

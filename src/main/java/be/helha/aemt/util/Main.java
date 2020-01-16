@@ -10,6 +10,7 @@ import be.helha.aemt.entity.Address;
 import be.helha.aemt.entity.Admin;
 import be.helha.aemt.entity.FormerStudent;
 import be.helha.aemt.entity.Member;
+import be.helha.aemt.entity.News;
 import be.helha.aemt.enumeration.Major;
 
 public class Main {
@@ -18,18 +19,22 @@ public class Main {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("groupeB4");
         EntityManager em = emf.createEntityManager();
         
-		Member m1 = new Admin("Robin","Roekens","admin","77e467eb0169e82e77f090df217a323357c6a157a98c0375e6f6dbafe029c83a","robin@gmail.com",LocalDate.now());
-		Member m2 = new FormerStudent("Elsa","Draux","ancien","77e467eb0169e82e77f090df217a323357c6a157a98c0375e6f6dbafe029c83a","elsa.draux.couco@gmail.com", LocalDate.of(1988, 7, 4), 2020, 
+		Member m1 = new Admin("Robin","Roekens","admin","77e467eb0169e82e77f090df217a323357c6a157a98c0375e6f6dbafe029c83a","admin",LocalDate.now());
+		Member m2 = new FormerStudent("Elsa","Draux","ancien","77e467eb0169e82e77f090df217a323357c6a157a98c0375e6f6dbafe029c83a","ancien", LocalDate.of(1988, 7, 4), 2020, 
 				Major.InformatiqueGestion, "0000000", true, 
 				new Address("Beloeil", "Rue de la fosse", "114", 7972));
-		Member m3 = new FormerStudent("Bastien","Decorte","user","77e467eb0169e82e77f090df217a323357c6a157a98c0375e6f6dbafe029c83a","testo@gmailo.como",LocalDate.of(2000, 12, 30), 2021, 
+		Member m3 = new FormerStudent("Bastien","Decorte","user","77e467eb0169e82e77f090df217a323357c6a157a98c0375e6f6dbafe029c83a","user",LocalDate.of(2000, 12, 30), 2021, 
 				Major.InformatiqueGestion, "1111111", true, 
 				new Address("Mons", "Rue du coq", "53a", 7500));
-		
+		News n1 = new News("Une délégation internationale de l’AWEX à la HELHa","Une délégation internationale de l’AWEX (Agence wallonne à l’exportation et aux investissements étrangers) a visité le campus de la HELHa Mons ce matin dans le but de découvrir la formation DataCenter Engineering.\n" + 
+				"Des dignitaires venus des quatre coins du monde (Chine, États-Unis, Canada et Singapour) ont pu suivre des modules de la formation continue et assister au maintien d’un vrai Data Center.\n" + 
+				"Cette rencontre, en plus de promouvoir le savoir-faire belge au-delà de notre continent, a eu pour objectif de faciliter les échanges entre les professionnels du secteur et les professeurs en vue co-développer la formation.\n" + 
+				"Une véritable plus-value pour la HELHa et ses étudiants en ingénierie !", LocalDate.now());		
 		em.getTransaction().begin();
 		em.persist(m1);
 		em.persist(m2);
 		em.persist(m3);
+		em.persist(n1);
 		em.getTransaction().commit();
 		em.close();
 	}

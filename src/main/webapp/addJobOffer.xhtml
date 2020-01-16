@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:h="http://xmlns.jcp.org/jsf/html">
+<html xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
 <head>
     <meta charset="UTF-8"/>
     <title>Ajout offres</title>
@@ -9,74 +14,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
 </head>
 <body style="background-color: #f4F4F4">
-<!--BON HEADER-->
-<div class="container-fluid" style="background-color:white;">
-    <div id="homeHeader" class="row">
-        <div class="container-fluid col-lg-4"></div>
-        <img src="assets/LOGO_HELHa_NEW.jpg"  alt="Responsive image" class="img-fluid col-lg-3 col-sm-8 mt-2 "/>
-        <div class="container-fluid col-lg-4"></div>
-    </div>
-</div>
-<!--FIN HEADER-->
+<ui:insert name="header"><ui:include src="header.xhtml"/></ui:insert>
+<ui:insert name="navBar"> <ui:include src="navBar.xhtml" /></ui:insert>
 
-<!--NAVBAR OK-->
-<nav class="navbar navbar-expand-lg text-light nav-fill" style="background-color: #009790">
-    <a class="navbar-brand text-light" href="index.xhtml">Accueil</a>
-    <button class="navbar-toggler text-light" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon text-light"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-            <!--ANNUAIRE-->
-            <li class="nav-item active">
-                <a class="nav-link text-light" href="glossaryFormer.xhtml">Annuaire Alumni <span class="sr-only">(current)</span></a>
-            </li>
-            <!--OFFRE STAGES-->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-light" href="#" id="navStage" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Offres de stages
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navStage">
-                    <a class="dropdown-item text-dark" href="internshipOfferList.xhtml">Consulter les offres</a>
-                    <a class="dropdown-item text-dark" href="addInternshipOffer.xhtml">Ajouter une offre</a>
-                </div>
-            </li>
-            <!--OFFRE EMPLOI-->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-light" href="#" id="navEmploi" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Offres d'emplois
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navEmploi">
-                    <a class="dropdown-item text-dark" href="jobOfferList.xhtml">Consulter les offres</a>
-                    <a class="dropdown-item text-dark" href="addJobOffer.xhtml">Ajouter une offre</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" href="https://www.helha.be/formation-continue/">Formation continue</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" href="#">Annonces</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" href="#">Associations</a>
-            </li>
-        </ul>
-
-    </div>
-    <!--COMPTE-->
-            <div class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-light" href="#" id="navCompte" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Compte
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navCompte">
-                    <a class="dropdown-item text-dark" href="login.xhtml">Me connecter</a>
-                    <a class="dropdown-item text-dark" href="index.xhtml">Me déconnecter</a>
-                    <a class="dropdown-item text-dark" href="account.xhtml">Mon compte</a>
-                    <a class="dropdown-item text-dark" href="signUp.xhtml">Créer un compte</a>
-                </div>
-            </div>
-</nav>
-<!--FIN NAVBAR-->
 <h2 class="text-center pt-2">Ajouter une offre d'emploi</h2>
 <!--CADRE-->
 <div class="container-fluid col-lg-12 mb-5 ">
@@ -88,41 +28,49 @@
                 <label class="col-lg-12 p-2" for="nomOffre">Titre de l'offre d'emploi</label>
                 <input id="nomOffre" class="col-lg-8"/>
                  
-                 <div class="form-row ">
-                 	<div class="form-group col-5 offset-2">
-	                    <!--NOM ENTREPRISE-->
-		                <label class="col-lg-12 p-2" for="nomEntreprise">Entreprise</label>
-		                <input type="text" id="nomEntreprise" class="col-lg-12"/>
-		                </div>
-					<div class="form-group col-3">
-		                <!--SALAIRE-->
-		                <label class="col-lg-12 p-2" for="salaire">Salaire</label>
-		                <input type="text" id="salaire" class="col-lg-12"/>
-		            </div>
-		        </div>
-                
+                <!-- CONTACT -->
+				<div class="form-row ">
+                    <div class="form-group col-3 offset-2">
+                        <!--ENTREPRISE-->
+                        <label class="col-lg-12 p-2" for="entreprise">Entreprise</label>
+                        <input type="text" id="entreprise" class="col-lg-12"/>
+                    </div>
+                    <div class="form-group col-3 ">
+                        <!--CONTACT-->
+                        <label class="col-lg-12 p-2" for="personne">Personne de contact</label>
+                        <input type="text" id="personne" class="col-lg-12"/>
+                    </div>
+                    <div class="form-group col-2 ">
+                        <!--CONTACT-->
+                        <label class="col-lg-12 p-2" for="tel">Tel / Mail</label>
+                        <input type="text" id="tel" class="col-lg-12"/>
+                    </div>
+                </div>
                 <!--ADRESSE-->
                 <div class="form-row ">
 
                     <div class="form-group col-3 offset-2">
                         <!--Ville-->
                         <label class="col-lg-12 p-2" for="villeOffre">Ville</label>
-                        <input type="text" class="col-12" id="villeOffre"/>
+                        <h:inputText type="text" class="col-12" id="villeOffre" value="#{offerControl.job.address.city}"/>
                     </div>
                     <div class="form-group col-3">
                         <!--RUE-->
                         <label class="col-lg-12 p-2" for="rue">Rue</label>
-                        <input type="text" id="rue" class="col-lg-12"/>
+                        <h:inputText type="text" id="rue" class="col-lg-12" value="#{offerControl.job.address.street}"/>
                     </div>
                     <div class="form-group col-1">
                         <!--NUMERO-->
                         <label class="col-lg-12 p-2" for="numero">n°</label>
-                        <input type="text" id="numero" class="col-lg-12"/>
+                        <h:inputText type="text" id="numero" class="col-lg-12" value="#{offerControl.job.address.number}"/>
                     </div>
                     <div class="form-group col-1 ">
                         <!--CP-->
                         <label class="col-lg-12 p-2" for="codePostal">CP</label>
-                        <input type="text" class="col-12" id="codePostal"/>
+<!--                         <h:inputText type="number" class="col-12" id="codePostal" value="#{offerControl.job.address.postCode}" converterMessage="Entrez un code postal compris entre 1000 et 9999"> -->
+<!--                         <f:convertNumber pattern="#####" minIntegerDigits="1000" maxIntegerDigits="9999"/> -->
+<!--                         </h:inputText> -->
+							<p:inputNumber class="col-12" id="codePostal" value="#{offerControl.job.address.postCode}"></p:inputNumber>
                     </div>
                 </div>
                 <!--FIN ADRESSE-->
@@ -130,31 +78,31 @@
                     <div class="form-group col-4 offset-2">
                         <!--TYPE CONTRAT-->
                         <label class="col-lg-12 p-2" for="typeContrat">Type de contrat</label>
-                        <select id="typeContrat" class="col-lg-12">
-                            <option>CDD</option>
-                            <option>CDI</option>
-                            <option>Interim</option>
-                        </select>
+                        <h:selectOneMenu value="#{offerControl.job.contractType}" class="col-lg-2" id="typeContrat" required="true">
+					        <f:selectItem itemValue="CDD" itemLabel="CDD"/>
+					        <f:selectItem itemValue="CDI" itemLabel="CDI"/>
+					        <f:selectItem itemValue="Interim" itemLabel="Interim" />
+						</h:selectOneMenu>
                     </div>
                     <div class="form-group col-4">
                         <!--DATE DEBUT-->
                         <label class="col-lg-12 p-2" for="date">Date de début</label>
-                        <input type="date" id="date" class="col-lg-12"/>
+                        <h:inputText type="date" id="date" class="col-lg-12" value="#{offerControl.job.startingDate}">
+	                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+	                    </h:inputText>
                     </div>
                 </div>
                 <!--SECTION -->
                 <label class="col-lg-12 p-2" for="section">Section concernée</label>
-                <select id="section" class="col-lg-8">
-                    <option>Informatique de Gestion</option>
-                    <option>Assistant de direction</option>
-                    <option>Comptabilité</option>
-                </select>
+                <h:selectOneMenu value="#{offerControl.job.major}" class="col-lg-8" id="section" required="true">
+					        <f:selectItems value="#{memberControl.getSelectableMajors()}" />
+					</h:selectOneMenu>
 
                 <!--DETAIL OFFRE-->
                 <label class="col-lg-12 p-2" for="descripton">Description de l'offre</label>
-                <textarea type="text" id="descripton" class="col-lg-8"></textarea>
+                <h:inputTextarea type="text" id="descripton" class="col-lg-8" value="#{offerControl.job.descriptionOffer}"></h:inputTextarea>
                 <!--VALIDER L'OFFRE-->
-                <button class="btn col-lg-5 text-light mt-2" style="background-color: #009790">Valider</button>
+                <h:commandButton class="btn col-lg-5 text-light mt-2" style="background-color: #009790" onclick="alert(#{offerControl.showJob()});" value="Valider"/>
             </h:form>
 
         <!--FIN FORMULAIRE AJOUT-->
@@ -164,13 +112,8 @@
 </div>
 <!--FIN CADRE-->
 
-<!--FOOTER WITH A PROPOS-->
-<div class="fixed-bottom text-right mt-5" style="max-height: 150px;min-height: 30px; background-color:#009790">
-    <footer class="fixed-bottom text-right" >
-        <a class="text-light p-3" href="connectionPage.html">A propos</a>
-    </footer>
-</div>
-<!--FIN FOOTER-->
+<ui:insert name="footer"> <ui:include src="footer.xhtml" /></ui:insert>
+
 
 </body>
 </html>

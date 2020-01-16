@@ -18,6 +18,10 @@ public class MemberManagerEJB {
 	public List<Member> selectAll() {
 		return dao.selectAll();
 	}
+	
+	public List<FormerStudent> selectAllFormers() {
+		return dao.selectAllFormers();
+	}
 
 	public Member add(Member m) {
 		return dao.add(m);
@@ -26,7 +30,7 @@ public class MemberManagerEJB {
 	public Member hashAndAdd(Member m) {
 		String hashedPassword = SHA256Hasher.hash(m.getPassword());
 		m.setPassword(hashedPassword);
-		return dao.add(m);
+		return add(m);
 	}
 
 	public Member findByUsername(String username) {
@@ -53,6 +57,10 @@ public class MemberManagerEJB {
 
 	public FormerStudent queryByPortrait(int idPortrait) {
 		return (FormerStudent) dao.queryByPortrait(idPortrait);
+	}
+	
+	public long queryFormerAmountToApprove() {
+		return dao.queryFormerAmountToApprove();
 	}
 
 }

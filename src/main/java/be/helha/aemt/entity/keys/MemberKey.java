@@ -1,4 +1,4 @@
-package be.helha.aemt.entity;
+package be.helha.aemt.entity.keys;
 
 import java.io.Serializable;
 
