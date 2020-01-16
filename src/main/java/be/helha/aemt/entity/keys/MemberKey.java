@@ -8,6 +8,15 @@ public class MemberKey implements Serializable {
 	private Integer idMember;
 	private String mail;
 	
+	public MemberKey() {
+		
+	}
+	
+	public MemberKey(Integer idMember, String mail) {
+		this.idMember = idMember;
+		this.mail = mail;
+	}
+	
 	public Integer getIdMember() {
 		return idMember;
 	}

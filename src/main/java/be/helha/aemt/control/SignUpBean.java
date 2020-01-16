@@ -20,8 +20,8 @@ import be.helha.aemt.ejb.MemberManagerEJB;
 import be.helha.aemt.entity.FormerStudent;
 import be.helha.aemt.enumeration.Major;
 
-@SessionScoped
 @Named
+@SessionScoped
 public class SignUpBean implements Serializable {
 	private static final long serialVersionUID = 2679425544218802727L;
 	public static final List<SelectItem> SELECTABLE_MAJORS = selectMajors();

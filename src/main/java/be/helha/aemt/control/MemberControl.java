@@ -45,10 +45,6 @@ public class MemberControl implements Serializable {
 	public long queryFormerAmountToApprove() {
 		return gestion.queryFormerAmountToApprove();
 	}
-	
-	public boolean hasAdminRights() {
-		return member.getGroupName() == GroupName.ADMIN;
-	}
 
 	/*****************************
 	 * Pages path getters

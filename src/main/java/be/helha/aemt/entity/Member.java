@@ -41,7 +41,7 @@ public class Member implements Serializable{
 	private static final long serialVersionUID = 3414596716371149696L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private Integer idMember;
 	@Id
 	private String mail;
