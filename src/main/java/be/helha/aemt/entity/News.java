@@ -22,6 +22,8 @@ import javax.persistence.NamedQuery;
 
 })
 public class News implements Serializable{
+	private static final long serialVersionUID = -9027323488005410644L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idNews;

@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
-import be.helha.aemt.enumeration.MajorEnum;
+import be.helha.aemt.enumeration.Major;
 
 @Entity
 @NamedQueries({
@@ -14,6 +14,8 @@ import be.helha.aemt.enumeration.MajorEnum;
 })
 
 public class InternshipOffer extends Offer implements Serializable{
+	private static final long serialVersionUID = -7456281096807696752L;
+	
 	private String duration;
 	private boolean thesisPossibility;
 
@@ -22,14 +24,14 @@ public class InternshipOffer extends Offer implements Serializable{
 	}
 	
 	public InternshipOffer(String labelOffer, String companyName, String descriptionOffer, Date startingDate,
-			Date postingDate, boolean approved, MajorEnum major, String duration, boolean thesisPossibility) {
+			Date postingDate, boolean approved, Major major, String duration, boolean thesisPossibility) {
 		super(labelOffer, companyName, descriptionOffer, startingDate, postingDate, approved, major);
 		this.duration = duration;
 		this.thesisPossibility = thesisPossibility;
 	}
 	
 	public InternshipOffer(String labelOffer, String companyName, String descriptionOffer, Date startingDate,
-			Date postingDate, boolean approved, MajorEnum major, Address address, String duration,
+			Date postingDate, boolean approved, Major major, Address address, String duration,
 			boolean thesisPossibility) {
 		super(labelOffer, companyName, descriptionOffer, startingDate, postingDate, approved, major, address);
 		this.duration = duration;

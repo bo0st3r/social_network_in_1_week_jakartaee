@@ -1,6 +1,5 @@
 package be.helha.aemt.entity;
 
-import java.util.Arrays;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -25,6 +24,8 @@ import javax.persistence.NamedQuery;
 })
 
 public class Event implements Serializable{
+	private static final long serialVersionUID = -6258765974100413716L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idEvent;

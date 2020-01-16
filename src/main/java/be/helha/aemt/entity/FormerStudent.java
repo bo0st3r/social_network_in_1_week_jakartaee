@@ -22,6 +22,8 @@ import be.helha.aemt.enumeration.Major;
 		@NamedQuery(name = "FormerStudent.queryAll", query = "SELECT f FROM FormerStudent f")
 })
 public class FormerStudent extends Member {
+	private static final long serialVersionUID = -7782352767686006053L;
+	
 	private int graduationYear;
 	private String phoneNumber;
 	private boolean approved;
@@ -36,11 +38,12 @@ public class FormerStudent extends Member {
 	private Address address;
 
 	public FormerStudent() {
+		setGroupName(GroupName.FORMER);
 	}
 
-	public FormerStudent(String firstName, String lastName, String username, String password, LocalDate birthDate,
+	public FormerStudent(String firstName, String lastName, String username, String password, String mail, LocalDate birthDate,
 			int graduationYear, Major major, String phoneNumber, boolean approved, Address address) {
-		super(firstName, lastName, username, password, birthDate, new ArrayList<Offer>(), new ArrayList<Event>(),
+		super(firstName, lastName, username, password, mail, birthDate, new ArrayList<Offer>(), new ArrayList<Event>(),
 				GroupName.FORMER, new byte[0]);
 		this.graduationYear = graduationYear;
 		this.phoneNumber = phoneNumber;
@@ -49,10 +52,10 @@ public class FormerStudent extends Member {
 		this.address = address;
 	}
 
-	public FormerStudent(String firstName, String lastName, String username, String password, LocalDate birthDate,
-			List<Offer> offers, List<Event> events, GroupName groupName, byte[] photo, int graduationYear,
+	public FormerStudent(String firstName, String lastName, String username, String password, String mail, LocalDate birthDate,
+			List<Offer> offers, List<Event> events, byte[] photo, int graduationYear,
 			String phoneNumber, boolean approved, Major major, Portrait portrait, Address address) {
-		super(firstName, lastName, username, password, birthDate, offers, events, groupName, photo);
+		super(firstName, lastName, username, password, mail, birthDate, offers, events, GroupName.FORMER, photo);
 		this.graduationYear = graduationYear;
 		this.phoneNumber = phoneNumber;
 		this.approved = approved;
@@ -94,12 +97,10 @@ public class FormerStudent extends Member {
 	}
 
 	public int getGraduationYear() {
-		System.out.println("GEET graduation");
 		return graduationYear;
 	}
 
 	public void setGraduationYear(int graduationYear) {
-		System.out.println("SEET graduation");
 		this.graduationYear = graduationYear;
 	}
 
