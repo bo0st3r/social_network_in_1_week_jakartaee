@@ -22,36 +22,40 @@ xmlns:p="http://primefaces.org/ui">
 <!--RECHERCHE ALUMNI-->
 <div class="container-fluid mt-2">
     <div class="row">
-        <div class="col-lg-1"></div>
-        <h5 class="col-lg-2 col-sm-12 text-center mt-4">Recherche Alumni</h5>
-        <div class="col-lg-2 col-sm-12">
-            <p><input type="checkbox"/>Informatique de Gestion</p>
-            <p><input type="checkbox"/>Assistant de direction</p>
-            <p><input type="checkbox"/>Comptabilité</p>
-        </div>
-        <input type="text" class="col-lg-4 col-sm-12 ml-2 mt-4" style="max-height:45px"/>
-        <button class="btn ml-2 mt-4 text-light" style="background-color: #009790;max-height:45px">Rechercher</button>
-    </div>
-
+<!--         <div class="col-lg-1"></div> -->
+        <h1 class="col text-center mt-4"><b>Annuaire Alumni</b></h1>
+<!--         <div class="col-lg-2 col-sm-12"> -->
+<!--             <p><input type="checkbox"/>Informatique de Gestion</p> -->
+<!--             <p><input type="checkbox"/>Assistant de direction</p> -->
+<!--             <p><input type="checkbox"/>Comptabilité</p> -->
+<!--         </div> -->
+<!--         <input type="text" class="col-lg-4 col-sm-12 ml-2 mt-4" style="max-height:45px"/> -->
+<!--         <button class="btn ml-2 mt-4 text-light" style="background-color: #009790;max-height:45px">Rechercher</button> -->
+<!--     </div> -->
+	</div>
 </div>
 <!--FIN RECHERCHE ALUMNI-->
 
 <div class="container-fluid col-lg-12 mb-5">
     <div class="container-fluid col-lg-1">   </div>
-    <div class="container-fluid border col-lg-10 col-sm-12 text-center mt-5 font-weight-bold p-2" style="background-color: #eee;">
+    <div class="container-fluid border col-lg-10 col-sm-12 text-center mt-3 font-weight-bold p-2" style="background-color: #eee;">
        <!--Container ANCIEN-->
 <!--Container ANCIEN-->
 
         <div class="row row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-3 m-1">
         
-        <ui:repeat var="item" value="#{memberControl.selectMembers()}">
+        <ui:repeat var="item" value="#{memberControl.selectFormerStudents()}">
 <!--         <h:form> -->
 <!--         <h:commandLink action="formerDetails.xhtml"> -->
-            <a href="formerDetails.xhtml">
+<!--             <a href="formerDetails.xhtml"> -->
 <!--             <f:param name="idClicked" value="#{member.idMember}"/> -->
 <!--             <f:actionListener binding="#{memberControl.FormerStudentDetails()}"/> -->
             
-            <div class="card col text-left p-2">
+				<h:form>
+					<h:commandLink action="#{memberControl.setFormerAndShowProfile(item)}">
+				
+				
+            <div class="card col m-1 text-left p-2 h-100">
                 <div class="row no-gutters">
                     <div class="col-4">
                         <!--PHOTO ANCIEN-->
@@ -61,14 +65,16 @@ xmlns:p="http://primefaces.org/ui">
                         <div class="card-body text-dark">
                             <h5 class="card-title">#{item.firstName} #{item.lastName}</h5>
 <!--                             <p class="card-text">#{item.graduationYear}</p> -->
-                            <p class="card-text"><small class="text-muted">section</small></p>
+                            <p class="card-text"><small class="text-muted">#{item.major.toString()}</small></p>
                         </div>
                     </div>
                 </div>
             </div>
-            </a>
 <!--         </h:commandLink> -->
 <!--         </h:form> -->
+			</h:commandLink>
+		</h:form>
+<!--             </a> -->
      </ui:repeat>
         
         <!--FIN container ANCIEN-->
