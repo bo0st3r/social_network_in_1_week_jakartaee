@@ -53,7 +53,7 @@
         <!-- offre-->
         <ui:repeat var="offer" value="#{offerControl.queryInternship()}" id="offerResultList">
         <a href="#{offerControl.loadInternDetail(offer.idOffer)}">
-        <h:panelGroup class="card border-dark p-2 col-12">
+        <h:panelGroup class="card border-dark p-2 col-12"  rendered="#{offerControl.canRender(offer)}">
             <div class="card-header">#{offer.major.toString()}</div>
             <div class="card-body text-dark">
                 <h5 class="card-title">#{offer.labelOffer} à partir du #{offer.startingDate}</h5>

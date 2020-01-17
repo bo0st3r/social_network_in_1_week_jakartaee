@@ -10,6 +10,7 @@
 		<class>be.helha.aemt.entity.Portrait</class>
 		<class>be.helha.aemt.entity.Address</class>
 		<class>be.helha.aemt.entity.Event</class>
+		<class>be.helha.aemt.entity.News</class>
 		<class>be.helha.aemt.entity.Offer</class>
 		<class>be.helha.aemt.entity.InternshipOffer</class>
 		<class>be.helha.aemt.entity.JobOffer</class>
@@ -28,6 +29,7 @@
 		<class>be.helha.aemt.entity.Portrait</class>
 		<class>be.helha.aemt.entity.Address</class>
 		<class>be.helha.aemt.entity.Event</class>
+		<class>be.helha.aemt.entity.News</class>
 		<class>be.helha.aemt.entity.Offer</class>
 		<class>be.helha.aemt.entity.InternshipOffer</class>
 		<class>be.helha.aemt.entity.JobOffer</class>

@@ -12,11 +12,6 @@ import javax.persistence.Query;
 import be.helha.aemt.entity.Address;
 import be.helha.aemt.helper.Config;
 
-@NamedQuery(name="Address.queryAll", query="SELECT a FROM Adress a") 
-@NamedQuery(name="Address.queryById", query="SELECT a FROM Adress a WHERE a.id = :id")
-@NamedQuery(name="Address.queryEquals", query="SELECT a.id FROM Adress a WHERE a.city = :city AND a.street = :street AND a.number = :number AND a.postCode = :postCode")
-@NamedQuery(name="Address.queryIdFromEquals", query="SELECT a FROM Adress a WHERE a.city = :city AND a.street = :street AND a.number = :number AND a.postCode = :postCode")
-
 @Stateless
 @LocalBean
 public class AddressDAO {
@@ -28,7 +23,7 @@ public class AddressDAO {
 	}
 	
 	public Address queryById(int id){
-		Query query = em.createNamedQuery("Adress.queryById");
+		Query query = em.createNamedQuery("Address.queryById");
 		query.setParameter("id", id);
 		List<Address> results = query.getResultList();
 		if(results.size() > 0)

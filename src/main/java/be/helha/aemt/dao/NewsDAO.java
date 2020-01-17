@@ -21,12 +21,6 @@ public class NewsDAO {
 		return em.createNamedQuery("News.queryAll").getResultList();
 	}
 	
-	public List<News> queryAmount(int amount){
-		Query query = em.createNamedQuery("News.queryAmount");
-		query.setParameter("amount", amount);
-		return query.getResultList();
-	}
-	
 	public News queryById(int id) {
 		Query query = em.createNamedQuery("News.queryById");
 		query.setParameter("id", id);
@@ -41,7 +35,7 @@ public class NewsDAO {
 	public int queryIdFromEquals(News news) {
 		Query query = em.createNamedQuery("News.queryIdFromEquals");
 		query.setParameter("name", news.getName());
-		query.setParameter("postingDate", news.getPostingDate());
+		query.setParameter("date", news.getPostingDate());
 		
 		List<Integer> results = query.getResultList();
 		if(results.size() > 0)
@@ -55,6 +49,7 @@ public class NewsDAO {
 		news.setIdNews(queryIdFromEquals(news));
 		
 		em.persist(news);
+		System.out.println(news.getIdNews());
 		return news;
 	}
 	

@@ -6,8 +6,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name="Address.queryAll", query="SELECT a FROM Address a") ,
+	@NamedQuery(name="Address.queryById", query="SELECT a FROM Address a WHERE a.id = :id"),
+	@NamedQuery(name="Address.queryEquals", query="SELECT a.id FROM Address a WHERE a.city = :city AND a.street = :street AND a.number = :number AND a.postCode = :postCode"),
+	@NamedQuery(name="Address.queryIdFromEquals", query="SELECT a FROM Address a WHERE a.city = :city AND a.street = :street AND a.number = :number AND a.postCode = :postCode")
+
+})
 public class Address implements Serializable {
 	private static final long serialVersionUID = -7471270879571466492L;
 

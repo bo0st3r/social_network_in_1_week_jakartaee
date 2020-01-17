@@ -17,7 +17,7 @@ import be.helha.aemt.helper.Config;
 public class EventDAO {
 	@PersistenceContext(unitName = Config.UNIT_NAME)
 	private EntityManager em;
-	private AddressDAO addressDao;
+	private AddressDAO addressDao = new AddressDAO();
 	
 	public List<Event> queryAll(){
 		return em.createNamedQuery("Event.queryAll").getResultList();
@@ -63,7 +63,8 @@ public class EventDAO {
 	
 	public Event post(Event event) {
 		event.setIdEvent(queryIdFromEquals(event));
-		event.getAddressEvent().setId(addressDao.queryIdFromEquals(event.getAddressEvent()));;
+		addressDao.queryAll();
+		event.getAddressEvent().setId(addressDao.queryIdFromEquals(event.getAddressEvent()));
 		
 		em.persist(event);
 		

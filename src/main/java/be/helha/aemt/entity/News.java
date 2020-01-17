@@ -17,7 +17,6 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({
 	@NamedQuery(name="News.queryAll", query="SELECT n FROM News n ORDER BY n.postingDate ASC"),
-	@NamedQuery(name="News.queryAmount", query="SELECT n FROM News n ORDER BY n.postingDate ASC LIMIT :amount"),
 	@NamedQuery(name="News.queryById", query="SELECT n FROM News n WHERE n.idNews = :id"),
 	@NamedQuery(name="News.queryIdFromEquals", query="SELECT n.idNews FROM News n "
 			+ "WHERE n.name = :name AND n.postingDate = :date")

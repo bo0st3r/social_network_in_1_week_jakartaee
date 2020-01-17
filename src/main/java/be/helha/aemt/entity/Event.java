@@ -1,6 +1,7 @@
 package be.helha.aemt.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Basic;
@@ -31,12 +32,12 @@ public class Event implements Serializable{
 	private Integer idEvent;
 
 	private String labelEvent;
-	private Date dateEvent;
+	private LocalDate dateEvent;
 	private String descriptionEvent;
 	private boolean approved;
 	@Lob
 	@Basic(fetch = FetchType.LAZY)
-	private Byte[] imageEvent;
+	private byte[] imageEvent;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Address addressEvent;
@@ -45,7 +46,7 @@ public class Event implements Serializable{
 		super();
 	}
 
-	public Event(String labelEvent, Date dateEvent, String descriptionEvent, Byte[] imageEvent,
+	public Event(String labelEvent, LocalDate dateEvent, String descriptionEvent, byte[] imageEvent,
 			Address addressEvent) {
 		super();
 		this.labelEvent = labelEvent;
@@ -56,8 +57,8 @@ public class Event implements Serializable{
 		this.addressEvent = addressEvent;
 	}
 
-	public Event(Integer idEvent, String intituleEvent, Date dateEvent, String descriptionEvent,
-			Byte[] imageEvent, Address addressEvent) {
+	public Event(Integer idEvent, String intituleEvent, LocalDate dateEvent, String descriptionEvent,
+			byte[] imageEvent, Address addressEvent) {
 		super();
 		this.idEvent = idEvent;
 		this.labelEvent = intituleEvent;
@@ -84,11 +85,11 @@ public class Event implements Serializable{
 		this.labelEvent = labelEvent;
 	}
 
-	public Date getDateEvent() {
+	public LocalDate getDateEvent() {
 		return dateEvent;
 	}
 
-	public void setDateEvent(Date dateEvent) {
+	public void setDateEvent(LocalDate dateEvent) {
 		this.dateEvent = dateEvent;
 	}
 
@@ -108,11 +109,11 @@ public class Event implements Serializable{
 		this.approved = approved;
 	}
 
-	public Byte[] getImageEvent() {
+	public byte[] getImageEvent() {
 		return imageEvent;
 	}
 
-	public void setImageEvent(Byte[] imageEvent) {
+	public void setImageEvent(byte[] imageEvent) {
 		this.imageEvent = imageEvent;
 	}
 
