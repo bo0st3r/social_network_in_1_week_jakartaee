@@ -2,6 +2,8 @@ package be.helha.aemt.entity;
 
 import java.util.Date;
 import java.io.Serializable;
+import java.time.LocalDate;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,8 +32,8 @@ public class Offer implements Serializable{
 	private String labelOffer;
 	private String companyName;
 	private String descriptionOffer;
-	private Date startingDate;
-	private Date postingDate;
+	private LocalDate startingDate;
+	private LocalDate postingDate;
 	private boolean approved;
 	private Major major;
 	
@@ -43,7 +45,7 @@ public class Offer implements Serializable{
 		address = new Address();
 	}
 
-	public Offer(String labelOffer, String companyName, String descriptionOffer, Date startingDate, Date postingDate,
+	public Offer(String labelOffer, String companyName, String descriptionOffer, LocalDate startingDate, LocalDate postingDate,
 			boolean approved, Major major) {
 		super();
 		this.labelOffer = labelOffer;
@@ -56,7 +58,7 @@ public class Offer implements Serializable{
 		address = new Address();
 	}
 	
-	public Offer(String labelOffer, String companyName, String descriptionOffer, Date startingDate, Date postingDate,
+	public Offer(String labelOffer, String companyName, String descriptionOffer, LocalDate startingDate, LocalDate postingDate,
 			boolean approved, Major major, Address address) {
 		super();
 		this.labelOffer = labelOffer;
@@ -101,19 +103,19 @@ public class Offer implements Serializable{
 		this.descriptionOffer = descriptionOffer;
 	}
 
-	public Date getPostingDate() {
+	public LocalDate getPostingDate() {
 		return postingDate;
 	}
 
-	public void setPostingDate(Date postingDate) {
+	public void setPostingDate(LocalDate postingDate) {
 		this.postingDate = postingDate;
 	}
 
-	public Date getStartingDate() {
+	public LocalDate getStartingDate() {
 		return startingDate;
 	}
 
-	public void setStartingDate(Date startingDate) {
+	public void setStartingDate(LocalDate startingDate) {
 		this.startingDate = startingDate;
 	}
 

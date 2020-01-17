@@ -27,6 +27,10 @@ public class MemberDAO {
 		Query selectAll = em.createNamedQuery("FormerStudent.queryAll");
 		return selectAll.getResultList();
 	}
+	public List<FormerStudent> selectAllUnaprovedFormers() {
+		Query selectAll = em.createNamedQuery("FormerStudent.queryAllUnapproved");
+		return selectAll.getResultList();
+	}
 
 	public Member add(Member m) {
 		String username = m.getUsername();
@@ -80,22 +84,22 @@ public class MemberDAO {
 		return tmp.size() == 0 ? null : tmp.get(0);
 	}
 
-	public boolean updateFormerApproved(String username, boolean approved) {
-		Member m = findByUsername(username);
+	public boolean updateFormerApproved(String mail, boolean approved) {
+		Member m = findByMail(mail);
 		if (m instanceof FormerStudent) {
 			FormerStudent fs = (FormerStudent) m;
-			if (fs.isApproved() == approved) {
+			if (fs.isApproved() != approved) {
 				fs.setApproved(approved);
 				FormerStudent fsMerged = em.merge(fs);
 				return fs.isApproved() != fsMerged.isApproved();
-			} else {
-				throw new IllegalArgumentException(
-						"FormerStudent is already " + ((approved) ? "approved" : "unapproved"));
 			}
-
 		}
-
-		throw new IllegalArgumentException("Given username not related to a FormerStudent.");
+		return false;
+//		throw new IllegalArgumentException("Given mail not related to a FormerStudent.");
+	}
+	
+	public void deleteMember(Member m) {
+		em.remove(em.merge(m));
 	}
 
 	public FormerStudent queryByPortrait(int idPortrait) {
@@ -103,6 +107,17 @@ public class MemberDAO {
 		query.setParameter("id", idPortrait);
 		List<FormerStudent> results = query.getResultList();
 		if (results.size() > 0) {
+			return results.get(0);
+		}
+		return null;
+	}
+	
+	public Member queryById(int id) {
+		Query query = em.createNamedQuery("Member.queryById");
+		query.setParameter("id", id);
+		
+		List<Member> results = query.getResultList();
+		if(results.size() > 0) {
 			return results.get(0);
 		}
 		return null;

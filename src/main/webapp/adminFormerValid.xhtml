@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
+<html xmlns:jsf="http://xmlns.jcp.org/jsf" 
+	xmlns:h="http://xmlns.jcp.org/jsf/html" 
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 <head>
     <meta charset="UTF-8"/>
-    <title>Ajout offres</title>
+    <title>Confirmation d'inscriptions</title>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -21,12 +23,29 @@
     <div class="container-fluid border col-lg-8 col-sm-12 mt-5 p-2" style="background-color: #eee">
         <h5>Liste des inscriptions à valider</h5>
         <div class="row">
-            <div class="col-lg-9">
-                <li>NOM PRENOM SECTION ANNEE DIPLOME (DATE NAISSANCE) </li>
-            </div>
-            <div class="col-lg-3 ">
-                <button class="btn btn-success">Accepter</button> <button class="btn btn-danger">Refuser</button>
-            </div>
+           	<ui:repeat var="item" value="#{memberControl.selectUnapprovedFormerStudents()}">
+            	<div class="col-lg-9">
+            		<div class="mb-4 ml-2">
+						<b>Nom :</b>
+							<h:outputText value=" #{item.lastName}"></h:outputText>
+							<h:outputText value=" #{item.firstName}"> </h:outputText>
+						<br/><b>Section :</b>
+							<h:outputText value=" #{item.major}"></h:outputText>
+						<br/><b>Année diplômante :</b>
+							<h:outputText value=" #{item.graduationYear}"></h:outputText>
+						<br/><b>Date de naissance : </b>
+							<h:outputText value=" #{item.birthDate}"></h:outputText>
+					</div>	
+            	</div>
+	            <div class="col-lg-3">
+	            	<h:form>
+		            	<h:commandButton action="#{memberControl.updateFormerApproved(item, true)}"
+							value="Accepter" class="btn btn-success mr-2"/>
+						<h:commandButton action="#{memberControl.updateFormerApproved(item, false)}"
+							value="Refuser" class="btn btn-danger"/>
+	            	</h:form>
+	            </div>
+			</ui:repeat>
         </div>
 
     </div>

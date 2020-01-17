@@ -68,7 +68,6 @@ public class OfferControl implements Serializable {
 	}
 	
 	public Offer queryById(int id) {
-		System.out.println("id : "+id);
 		offer = gestion.queryById(id);
 		if(offer instanceof JobOffer) {
 			job = (JobOffer) offer;
@@ -204,7 +203,6 @@ public class OfferControl implements Serializable {
 	}
 	
 	public void offerDetails() {
-		System.out.println("click");
 		FacesContext fc= FacesContext.getCurrentInstance();
 		Map m = fc.getExternalContext().getRequestParameterMap();
 		int offerID= Integer.parseInt((String) m.get("idClicked"));

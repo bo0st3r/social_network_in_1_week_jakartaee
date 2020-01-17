@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:h="http://www.w3.org/1999/html" xmlns:ui="http://java.sun.com/jsf/facelets">
 <head>
-    <title>Connection</title>
+    <title>Connexion</title>
     <meta http-equiv="  Content-Type" content="text/html; charset=UTF-8"></meta>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -18,13 +18,12 @@
     <div class="container-fluid border col-lg-6 col-sm-12 text-center mt-5 font-weight-bold"  style="background-color: #eee;">
         <form method="POST" action="j_security_check">
             <!--PSEUDO-->
-            <label for="j_username" class="col-lg-12 p-2">Nom d'utilisateur</label>
-            <input type="text" id="user" class="col-lg-8" name="j_username"/>
+            <label for="j_username" class="col-lg-12 p-2">Mail</label>
+            <input type="text" id="user" class="form-control offset-2 col-lg-8" name="j_username"/>
             <!--PASSWORD-->
-            <label for="j_password" class="col-lg-12 p-2">Mot de passe</label>
-            <input type="password" id="Password" class="col-lg-8" name="j_password"/>
+            <label for="j_password" class="col-lg-12 p-2 mt-3">Mot de passe</label>
+            <input type="password" id="Password" class="form-control offset-2 col-lg-8" name="j_password"/>
             <!--CONNECTION BUTTON-->
-            
 <!--             <button type="submit" class="col-lg-5 mt-4 mb-4 btn text-light" style="background-color: #009790"><b>Se connecter</b></button> -->
             <input type="submit" class="col-lg-5 mt-4 mb-4 btn text-light" style="background-color: #009790" value="Se connecter"/>
         </form>

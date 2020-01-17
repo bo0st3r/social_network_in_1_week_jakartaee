@@ -20,8 +20,8 @@ import be.helha.aemt.ejb.MemberManagerEJB;
 import be.helha.aemt.entity.FormerStudent;
 import be.helha.aemt.enumeration.Major;
 
-@SessionScoped
 @Named
+@SessionScoped
 public class SignUpBean implements Serializable {
 	private static final long serialVersionUID = 2679425544218802727L;
 	public static final List<SelectItem> SELECTABLE_MAJORS = selectMajors();
@@ -29,13 +29,13 @@ public class SignUpBean implements Serializable {
 	@EJB
 	private MemberManagerEJB gestion;
 
-	private FormerStudent former = new FormerStudent();
+	private FormerStudent former;
 	private Date birthDateToConvert;
 	private String pswConfirm;
 	private String mailConfirm;
 
 	public SignUpBean() {
-		former.setGraduationYear(2009);
+		defaultFormer();
 	}
 
 	public void registerMember() {
@@ -43,9 +43,18 @@ public class SignUpBean implements Serializable {
 			if (birthDateToConvert != null) {
 				LocalDate date = birthDateToConvert.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 				former.setBirthDate(date);
+				gestion.hashAndAdd(former);
+				defaultFormer();
 			}
-			former = new FormerStudent();
 		}
+	}
+	
+	public void defaultFormer() {
+		former = new FormerStudent();
+		former.setGraduationYear(2009);
+		mailConfirm = null;
+		pswConfirm = null;
+		birthDateToConvert = null;
 	}
 
 	public boolean doPswsMatch() {
@@ -84,7 +93,7 @@ public class SignUpBean implements Serializable {
 			context.addMessage(component.getClientId(context), msg);
 		} else if (mailExists()) {
 			((UIInput) component).setValid(false);
-			FacesMessage msg = new FacesMessage("Ce mail est déjà utilisé.");
+			FacesMessage msg = new FacesMessage("Ce mail est dï¿½jï¿½ utilisï¿½.");
 			context.addMessage(component.getClientId(context), msg);
 		}
 	}

@@ -26,8 +26,8 @@
         
         <ui:repeat var="item" value="#{offerControl.queryById(offer.idOffer)}">
             <div class="row">
-            <h1 class=" col-6 text-left p-5">#{item.labelOffer}</h1>
-            <p class=" col-6 text-muted text-right"> Postée le #{item.postingDate}</p>
+            <h1 class=" col-6 text-left p-5">#{offerControl.intern.labelOffer}</h1>
+            <p class=" col-6 text-muted text-right"> Postée le #{offerControl.intern.postingDate}</p>
             </div>
             <!--ENTREPRISE-->
         <div class="row p-2">
@@ -35,7 +35,7 @@
                 <i>Nom de l'entreprise:</i>
             </div>
             <div class="col-3">
-                NOM ENTREPRISE
+                #{offerControl.intern.companyName}
             </div>
         </div>
         <!--CONTACT-->
@@ -62,7 +62,7 @@
                 <i>Lieu :</i>
             </div>
             <div class="col-3">
-                ADRESSE DE L'OFFRE
+                 #{offerControl.intern.address.street}, #{offerControl.intern.address.number}, #{offerControl.intern.address.postCode} #{offerControl.intern.address.city}
             </div>
         </div>
         <!--DEBUT-->
@@ -71,7 +71,7 @@
                 <i>Date de début du stage:</i>
             </div>
             <div class="col-3">
-                DATE
+                #{offerControl.intern.startingDate} 
             </div>
         </div>
 		<!--DUREE-->
@@ -80,8 +80,8 @@
                 <i>Durée du stage:</i>
             </div>
             <div class="col-3">
-                DUREE 
-            </div>
+ 			#{offerControl.intern.duration}             
+ 			</div>
         </div>
         <!--Section concernée-->
         <div class="row p-2">
@@ -89,7 +89,7 @@
                 <i>Section :</i>
             </div>
             <div class="col-3">
-                SECTION CONCERNEE
+                #{offerControl.intern.major.toString()} 
             </div>
         </div>
         <!--Detail-->
@@ -98,7 +98,7 @@
                 <i>Détail de l'offre:</i>
             </div>
             <div class="col-3">
-                DETAIL DE L'OFFRE
+                #{offerControl.intern.descriptionOffer} 
             </div>
         </div>
         </ui:repeat>

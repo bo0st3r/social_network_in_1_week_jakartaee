@@ -30,7 +30,11 @@
 		<web-resource-collection>
 			<web-resource-name>Protected Admin Area</web-resource-name>
 			<description></description>
-			<url-pattern>/add.xhtml</url-pattern>
+			<url-pattern>/adminFormerValid.xhtml</url-pattern>
+			<url-pattern>/adminJobOfferValid.xhtml</url-pattern>
+			<url-pattern>/adminInternshipOfferValid.xhtml</url-pattern>
+			<url-pattern>/portraitsList.xhtml</url-pattern>
+			<url-pattern>/addAnnouncements.xhtml</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<description/>
@@ -47,6 +51,11 @@
 			<web-resource-name>Signed-In User Area</web-resource-name>
 			<description></description>
 			<url-pattern>/account.xhtml</url-pattern>
+			<url-pattern>/internshipOfferList.xhtml</url-pattern>
+			<url-pattern>/addInternshipOffer.xhtml</url-pattern>
+			<url-pattern>/jobOfferList.xhtml</url-pattern>
+			<url-pattern>/addJobOffer.xhtml</url-pattern>
+			<url-pattern>/glossaryFormer.xhtml</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<description/>

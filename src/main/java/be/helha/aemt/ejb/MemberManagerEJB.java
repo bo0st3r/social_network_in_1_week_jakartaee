@@ -22,6 +22,10 @@ public class MemberManagerEJB {
 	public List<FormerStudent> selectAllFormers() {
 		return dao.selectAllFormers();
 	}
+	
+	public List<FormerStudent> selectAllUnaprovedFormers() {
+		return dao.selectAllUnaprovedFormers();
+	}
 
 	public Member add(Member m) {
 		return dao.add(m);
@@ -51,8 +55,12 @@ public class MemberManagerEJB {
 		return (id > 0) ? id : -1;
 	}
 
-	public boolean updateFormerApproved(String username, boolean approved) {
-		return dao.updateFormerApproved(username, approved);
+	public boolean updateFormerApproved(String mail, boolean approved) {
+		return dao.updateFormerApproved(mail, approved);
+	}
+	
+	public void deleteMember(Member m) {
+		dao.deleteMember(m);
 	}
 
 	public FormerStudent queryByPortrait(int idPortrait) {
@@ -61,6 +69,9 @@ public class MemberManagerEJB {
 	
 	public long queryFormerAmountToApprove() {
 		return dao.queryFormerAmountToApprove();
+	}
+	public Member queryById(int id) {
+		return dao.queryById(id);
 	}
 
 }

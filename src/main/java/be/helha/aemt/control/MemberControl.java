@@ -32,8 +32,20 @@ public class MemberControl implements Serializable {
 	public List<FormerStudent> selectFormerStudents() {
 		return gestion.selectAllFormers();
 	}
-
-
+	
+	public List<FormerStudent> selectUnapprovedFormerStudents() {
+		System.out.println(gestion.selectAllUnaprovedFormers());
+		return gestion.selectAllUnaprovedFormers();
+	}
+	
+	public void updateFormerApproved(FormerStudent fs, Boolean approve) {
+		if(approve) {
+			gestion.updateFormerApproved(fs.getMail(), true);
+		} else {
+			gestion.deleteMember(fs);
+		}
+	}
+	
 	public int findIdByUsername(String username) {
 		return gestion.findIdByUsername(username);
 	}
@@ -49,12 +61,26 @@ public class MemberControl implements Serializable {
 	public boolean hasAdminRights() {
 		return member.getGroupName() == GroupName.ADMIN;
 	}
+//	public Member queryById(int id) {
+//		member = gestion.queryById(id);
+//		if (member instanceof FormerStudent) {
+//			formerStudent = (FormerStudent) member;
+//		}else if(member instanceof Admin) {
+//			admin = (Admin) member;
+//		}
+//		return member;
+//	}
+
 
 	/*****************************
 	 * Pages path getters
 	 *****************************/
 	public String doIndex() {
-		return "index.xhtml";
+		return "index?faces-redirect=true";
+	}
+	
+	public String doLogin() {
+		return "login?faces-redirect=true";
 	}
 
 	public String doList() {
@@ -87,4 +113,11 @@ public class MemberControl implements Serializable {
 	public void setMember(Member member) {
 		this.member = member;
 	}
+//	public void FormerStudentDetails() {
+//		FacesContext fc= FacesContext.getCurrentInstance();
+//		Map m = fc.getExternalContext().getRequestParameterMap();
+//		int memberID= Integer.parseInt((String) m.get("idClicked"));
+//		queryById(memberID);
+//	}
+
 }
