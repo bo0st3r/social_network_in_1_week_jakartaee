@@ -22,7 +22,7 @@ public class AuthBean implements Serializable {
 
 	private Member member;
 	private String mail;
-	
+
 	/**
 	 * Returns the authenticated member. Retrieves it from the FacesContext using
 	 * it's mail if not initialised yet.
@@ -33,10 +33,17 @@ public class AuthBean implements Serializable {
 		String mailCurrent = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
 		if ((mailCurrent != null && mail != mailCurrent) || member == null) {
 			mail = mailCurrent;
-
 			if (mailCurrent != null && mailCurrent.length() > 0) {
-				member = gestion.findByMail(mailCurrent);
-			} 
+				Member retrieved = gestion.findByMail(mailCurrent);
+
+				if (retrieved instanceof FormerStudent) {
+					FormerStudent fs = (FormerStudent) retrieved;
+					if (!fs.isApproved()) {
+						return null;
+					}
+				}
+				member = retrieved;
+			}
 		}
 
 		return member;

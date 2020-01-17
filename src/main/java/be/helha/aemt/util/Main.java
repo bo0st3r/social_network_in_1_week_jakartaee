@@ -53,6 +53,13 @@ public class Main {
 		InternshipOffer oi4= new InternshipOffer("Stage en Informatique SPF finance", "SPF Finance", "Stage non rémunéré, bien encadré", LocalDate.of(2020, 4, 01), LocalDate.now(), true, Major.InformatiqueGestion, a4, "3 mois", true);
 		JobOffer jo1 = new JobOffer("Consultant Informatique", "IT Company", "Mobile partout en Belgique, la route ne vous fait pas peur", LocalDate.of(2020, 2, 1), LocalDate.now(), true, Major.InformatiqueGestion, a2,"CDI");
 		JobOffer jo2 = new JobOffer("CDD Comptable Mons", "Cabinet J et fils","Nous recherchons actuellement un/une comptable pour étoffer notre petite équipe.  Les horaires sont flexibles.  CDD de 6 mois pour commencer", LocalDate.of(2020, 7, 1), LocalDate.now(), true, Major.Comptabilite, a1,"CDD");
+		JobOffer jo3 = new JobOffer("Developpeur Java", "CGI","Nous recherchons actuellement un/une comptable pour étoffer notre petite équipe. "
+				+ " Les horaires sont flexibles.  CDD de 6 mois pour commencer", LocalDate.of(2020, 7, 1), LocalDate.now(), true, Major.InformatiqueGestion, a6,"CDI");
+		JobOffer jo4 = new JobOffer("DevOp senior", "Google","Place de DevOp vacante pour un projet de machine learning.", LocalDate.of(2020, 4, 15),
+				LocalDate.now(), true, Major.InformatiqueGestion, a7,"CDI");
+		JobOffer jo5 = new JobOffer("Secrétaire", "Cabinet J et fils",
+				"Nous recherchons actuellement un/une secrétaire.  CDD de 6 mois pour commencer", 
+				LocalDate.of(2020, 7, 1), LocalDate.now(), true, Major.AssistantDirection, a5,"CDD");
 //		Portrait p1 = new Portrait("Un parcours de geek", "La définition du geek peut varier d'un individu à l'autre, mais la définition qui en ressort le plus souvent est celle-ci : un geek (de l'anglais : Écouter) est une personne passionnée par un ou plusieurs domaines précis, plus souvent utilisé pour les domaines liés aux « cultures de l'imaginaire » (certains genres du cinéma, la bande dessinée, les jeux vidéo, les jeux de rôles, etc.), ou encore aux sciences, à la technologie et l'informatique.  R.R.");
 		
 		em.getTransaction().begin();
@@ -74,6 +81,9 @@ public class Main {
 		em.persist(oi3);
 		em.persist(jo1);
 		em.persist(jo2);
+		em.persist(jo3);
+		em.persist(jo4);
+		em.persist(jo5);
 //		em.persist(p1);
 //		em.persist(n1);
 		em.getTransaction().commit();

@@ -136,11 +136,14 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
                 </div>
             </div>
 
+            <h5 style="color: #009790" class="mt-3"><b>Vous devrez attendre la validation de votre inscription.</b></h5>
+
             <!--CONNECTION BUTTON-->
-            <b><h:commandButton class="col-lg-5 mt-4 mb-4 btn text-light" 
+            <b><h:commandButton class="col-lg-5 mt-3 mb-4 btn text-light" 
             style="background-color: #009790" value="Valider" action="#{memberControl.doLogin()}">
             	<f:ajax execute="@form" render="@form" />
             </h:commandButton></b>
+            
         </h:form>
     </div>
     <div class="container-fluid col-lg-2"></div>

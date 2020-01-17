@@ -54,7 +54,7 @@ xmlns:p="http://primefaces.org/ui">
     <div class="container-fluid border col-lg-10 col-sm-12 text-center mt-5 font-weight-bold p-2" style="background-color: #eee;">
         <!-- offre-->
         <ui:repeat var="offer" value="#{offerControl.queryJob()}" id="offerResultList">
-        <h:panelGroup class="card border-dark p-2 col-12" rendered="#{offerControl.canRender(offer)}">
+        <h:panelGroup class="card border-dark p-2 col-12 mt-3" rendered="#{offerControl.canRender(offer)}">
         <h:form>
         <h:commandLink action="jobOfferDetails.xhtml">
             
