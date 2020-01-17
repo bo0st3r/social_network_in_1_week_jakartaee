@@ -2,6 +2,7 @@ package be.helha.aemt.dao;
 
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -17,6 +18,7 @@ import be.helha.aemt.helper.Config;
 public class EventDAO {
 	@PersistenceContext(unitName = Config.UNIT_NAME)
 	private EntityManager em;
+	@EJB
 	private AddressDAO addressDao = new AddressDAO();
 	
 	public List<Event> queryAll(){

@@ -12,6 +12,8 @@ import be.helha.aemt.entity.FormerStudent;
 import be.helha.aemt.entity.InternshipOffer;
 import be.helha.aemt.entity.JobOffer;
 import be.helha.aemt.entity.Member;
+import be.helha.aemt.entity.News;
+import be.helha.aemt.entity.Portrait;
 import be.helha.aemt.enumeration.Major;
 
 public class Main {
@@ -37,10 +39,7 @@ public class Main {
 		Member m7 = new FormerStudent("Steven","Durenne","stev","77e467eb0169e82e77f090df217a323357c6a157a98c0375e6f6dbafe029c83a","test@gmail.com",LocalDate.of(1999, 2, 22), 2013, 
 				Major.Comptabilite, "1111111", false, null);
 		
-//		News n1 = new News("Une délégation internationale de l’AWEX à la HELHa","Une délégation internationale de l’AWEX (Agence wallonne à l’exportation et aux investissements étrangers) a visité le campus de la HELHa Mons ce matin dans le but de découvrir la formation DataCenter Engineering.\n" + 
-//				"Des dignitaires venus des quatre coins du monde (Chine, États-Unis, Canada et Singapour) ont pu suivre des modules de la formation continue et assister au maintien d’un vrai Data Center.\n" + 
-//				"Cette rencontre, en plus de promouvoir le savoir-faire belge au-delà de notre continent, a eu pour objectif de faciliter les échanges entre les professionnels du secteur et les professeurs en vue co-développer la formation.\n" + 
-//				"Une véritable plus-value pour la HELHa et ses étudiants en ingénierie !", LocalDate.now());
+		News n1 = new News("Une délégation internationale de l’AWEX à la HELHa","Une délégation internationale de l’AWEX (Agence wallonne à l’exportation et aux investissements étrangers) a visité le campus de la HELHa Mons ce matin dans le but de découvrir la formation DataCenter Engineering.", LocalDate.now());
 		Address a1 = new Address("Mons", "Rue de la paix", "98", 7000);
 		Address a2 = new Address("Charleroi", "Rue du carreaux", "12", 6000);
 		Address a3 = new Address("Namur", "Rue de Charleroi", "102", 5000);
@@ -60,7 +59,7 @@ public class Main {
 		JobOffer jo5 = new JobOffer("Secrétaire", "Cabinet J et fils",
 				"Nous recherchons actuellement un/une secrétaire.  CDD de 6 mois pour commencer", 
 				LocalDate.of(2020, 7, 1), LocalDate.now(), true, Major.AssistantDirection, a5,"CDD");
-//		Portrait p1 = new Portrait("Un parcours de geek", "La définition du geek peut varier d'un individu à l'autre, mais la définition qui en ressort le plus souvent est celle-ci : un geek (de l'anglais : Écouter) est une personne passionnée par un ou plusieurs domaines précis, plus souvent utilisé pour les domaines liés aux « cultures de l'imaginaire » (certains genres du cinéma, la bande dessinée, les jeux vidéo, les jeux de rôles, etc.), ou encore aux sciences, à la technologie et l'informatique.  R.R.");
+		Portrait p1 = new Portrait("Un parcours de geek", "La définition du geek peut varier d'un individu à l'autre, mais la définition qui en ressort le plus souvent est celle-ci : un geek (de l'anglais : Écouter) est une personne passionnée par un ou plusieurs domaines précis, plus souvent utilisé pour les domaines liés aux « cultures de l'imaginaire » (certains genres du cinéma, la bande dessinée, les jeux vidéo, les jeux de rôles, etc.), ou encore aux sciences, à la technologie et l'informatique.  R.R.");
 		
 		em.getTransaction().begin();
 		em.persist(m1);
@@ -85,7 +84,7 @@ public class Main {
 		em.persist(jo4);
 		em.persist(jo5);
 //		em.persist(p1);
-//		em.persist(n1);
+		em.persist(n1);
 		em.getTransaction().commit();
 		em.close();
 	}
