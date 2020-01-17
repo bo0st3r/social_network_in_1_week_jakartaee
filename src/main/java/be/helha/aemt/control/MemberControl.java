@@ -28,38 +28,50 @@ public class MemberControl implements Serializable {
 	public List<Member> selectMembers() {
 		return gestion.selectAll();
 	}
-	
+
 	public List<FormerStudent> selectFormerStudents() {
 		return gestion.selectAllFormers();
 	}
-	
+
 	public List<FormerStudent> selectUnapprovedFormerStudents() {
 		System.out.println(gestion.selectAllUnaprovedFormers());
 		return gestion.selectAllUnaprovedFormers();
 	}
-	
+
 	public void updateFormerApproved(FormerStudent fs, Boolean approve) {
-		if(approve) {
+		if (approve) {
 			gestion.updateFormerApproved(fs.getMail(), true);
 		} else {
 			gestion.deleteMember(fs);
 		}
 	}
-	
+
 	public int findIdByUsername(String username) {
 		return gestion.findIdByUsername(username);
 	}
-	
+
 	public int findIdByMail(String mail) {
 		return gestion.findIdByMail(mail);
 	}
-	
+
 	public long queryFormerAmountToApprove() {
 		return gestion.queryFormerAmountToApprove();
 	}
-	
+
 	public boolean hasAdminRights() {
 		return member.getGroupName() == GroupName.ADMIN;
+	}
+	
+	public boolean hasPhoneNumber() {
+		if(!(member instanceof FormerStudent))
+			return false;
+		return ((FormerStudent) member).getPhoneNumber() != null;
+	}
+	
+	public String setFormerAndShowProfile(FormerStudent fs) {
+		if (fs != null)
+			member = fs;
+		return "formerDetails?faces-redirect=true";
 	}
 //	public Member queryById(int id) {
 //		member = gestion.queryById(id);
@@ -71,14 +83,13 @@ public class MemberControl implements Serializable {
 //		return member;
 //	}
 
-
 	/*****************************
 	 * Pages path getters
 	 *****************************/
 	public String doIndex() {
 		return "index?faces-redirect=true";
 	}
-	
+
 	public String doLogin() {
 		return "login?faces-redirect=true";
 	}
@@ -86,19 +97,19 @@ public class MemberControl implements Serializable {
 	public String doList() {
 		return "list.xhtml";
 	}
-	
+
 	public String selectMailPattern() {
 		return UserPattern.MAIL_PATTERN.pattern();
 	}
-	
+
 	public String selectUsernamePattern() {
 		return UserPattern.USERNAME_PATTERN.pattern();
 	}
-	
+
 	public String selectPasswordPattern() {
 		return UserPattern.PASSWORD_PATTERN.pattern();
 	}
-	
+
 	public String selectNamePattern() {
 		return UserPattern.NAME_PATTERN.pattern();
 	}

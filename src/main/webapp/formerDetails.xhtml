@@ -26,14 +26,15 @@
             <div class="col-3">
                 <img src="assets/profil.png" style="max-height: 175px; max-width: 175px"/>
             </div>
-            <div class="col-9 text-center align-self-lg-center">
-                <h3>#{memberControl.formerStudent.firstName}    #{memberControl.formerStudent.lastName}</h3>
-                <h5>#{memberControl.formerStudent.major.toString()} </h5>
-                <h5>Diplôme obtenu en #{memberControl.formerStudent.graduationYear}</h5>
-				<h5>Date de naissance: #{memberControl.formerStudent.birthDate}</h5>
-                <h5>#{memberControl.formerStudent.phoneNumber} </h5>
-                <h6><i></i></h6>
-                <h6><i><a href="mailto:#{memberControl.formerStudent.mail}">#{memberControl.formerStudent.mail}</a></i></h6>
+            <div class="col-9  align-self-lg-center">
+                <h3><b>#{memberControl.member.firstName}    #{memberControl.member.lastName}</b></h3>
+                <h5>#{memberControl.member.major.toString()} </h5>
+                <h5><b>Diplôme obtenu en : </b>#{memberControl.member.graduationYear}</h5>
+				<h5><b>Date de naissance : </b>#{memberControl.member.birthDate}</h5>
+				<h:panelGroup rendered="#{memberControl.hasPhoneNumber()}"></h:panelGroup>
+                <h5><b>Numéro de téléphone : </b>#{memberControl.member.phoneNumber}</h5>
+                <h5><i></i></h5>
+                <h5><b>Adresse mail : </b><i><a href="mailto:#{memberControl.member.mail}">#{memberControl.member.mail}</a></i></h5>
             </div>
         </div>
 
